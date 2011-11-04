@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 
 @SessionScoped
-public class CdiBean implements Serializable {
+public class SessionScopedCdiBean implements Serializable {
 
    private int serialId;
 
