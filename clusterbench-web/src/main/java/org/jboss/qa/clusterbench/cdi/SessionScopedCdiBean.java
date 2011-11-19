@@ -1,4 +1,4 @@
-package org.jboss.clusterbench;
+package org.jboss.qa.clusterbench.cdi;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
@@ -6,13 +6,13 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 public class SessionScopedCdiBean implements Serializable {
 
-   private int serialId;
+    private int serial;
 
-   public int getSerialId() {
-      return serialId;
-   }
+    public int getSerial() {
+        return serial;
+    }
 
-   public void setSerialId(int serialId) {
-      this.serialId = serialId;
-   }
+    public void setSerial(int serial) {
+        this.serial = serial;
+    }
 }

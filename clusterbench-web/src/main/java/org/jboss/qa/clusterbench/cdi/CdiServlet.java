@@ -1,4 +1,4 @@
-package org.jboss.clusterbench;
+package org.jboss.qa.clusterbench.cdi;
 
 import java.io.IOException;
 import javax.inject.Inject;
@@ -11,18 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/cdi")
 public class CdiServlet extends HttpServlet {
 
-   @Inject
-   private SessionScopedCdiBean bean;
+    @Inject
+    private SessionScopedCdiBean bean;
 
-   @Override
-   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      resp.setContentType("text/plain");
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain");
 
-      Integer id = bean.getSerialId();
-      bean.setSerialId(id + 1);
+        int id = bean.getSerial();
+        bean.setSerial(id + 1);
 
-      resp.getWriter().print(id);
-      //resp.getWriter().flush();
+        resp.getWriter().print(id);
+    }
 
-   }
+    @Override
+    public String getServletInfo() {
+        return "Servlet using CDI bean to store serial.";
+    }
 }
