@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-   <modelVersion>4.0.0</modelVersion>
-   <groupId>org.jboss.qa</groupId>
-   <artifactId>clusterbench</artifactId>
-   <version>1.0.0-SNAPSHOT</version>
-   <packaging>pom</packaging>
-   <name>clusterbench</name>
-   <modules>
-      <module>clusterbench-ear</module>
-      <module>clusterbench-web</module>
-      <module>clusterbench-ejb</module>
-   </modules>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jboss.qa</groupId>
+    <artifactId>clusterbench</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>clusterbench</name>
+    
+    <modules>
+        <module>clusterbench-ear</module>
+        <module>clusterbench-web</module>
+        <module>clusterbench-ejb</module>
+    </modules>
+      
+    <properties>
+        <linkXRef>false</linkXRef>
+    </properties>
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Checkstyle -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <!-- <version>${version.checkstyle.plugin}</version> -->
+                    <configuration>
+                        <configLocation>jboss-as-checkstyle/checkstyle.xml</configLocation>
+                        <consoleOutput>true</consoleOutput>
+                        <failsOnError>true</failsOnError>
+                        <useFile/>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.jboss.as</groupId>
+                            <artifactId>jboss-as-build-config</artifactId>
+                            <version>7.1.0.Alpha2-SNAPSHOT</version>
+                            <!-- <version>${project.version}</version> -->
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>check-style</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>checkstyle</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin> 
+            </plugins>            
+        </pluginManagement> 
+    </build>
+
 </project>
