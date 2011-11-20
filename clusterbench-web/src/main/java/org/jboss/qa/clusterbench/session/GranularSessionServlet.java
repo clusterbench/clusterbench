@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "SessionServlet", urlPatterns = {"/session"})
-public class SessionServlet extends HttpServlet {
+public class GranularSessionServlet extends HttpServlet {
 
-    private static final Logger log = Logger.getLogger(SessionServlet.class.getName());
-    public static final String KEY = SessionServlet.class.getName();
+    private static final Logger log = Logger.getLogger(GranularSessionServlet.class.getName());
+    public static final String KEY = GranularSessionServlet.class.getName();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

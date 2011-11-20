@@ -1,15 +1,18 @@
-package org.jboss.qa.clusterbench.session;
+package org.jboss.qa.clusterbench.common;
 
 import java.io.Serializable;
+import java.util.Random;
 
-public class HttpSessionBean implements Serializable {
+public class SerialBean implements Serializable {
 
     private int serial;
     private byte[] cargo;
 
-    public HttpSessionBean() {
+    public SerialBean() {
         this.serial = 0;
         this.cargo = new byte[4 * 1024];
+        Random rand = new Random();
+        rand.nextBytes(cargo);
     }
 
     public byte[] getCargo() {

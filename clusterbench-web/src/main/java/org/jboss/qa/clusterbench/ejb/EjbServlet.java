@@ -1,31 +1,31 @@
-package org.jboss.qa.clusterbench.cdi;
+package org.jboss.qa.clusterbench.ejb;
 
 import java.io.IOException;
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jboss.qa.clusterbench.singleton.SingletonSessionBean;
 
-@WebServlet(name = "CdiServlet", urlPatterns = {"/cdi"})
-public class CdiServlet extends HttpServlet {
+/**
+ *
+ * @author rhusar
+ */
+@WebServlet(name = "NewServlet", urlPatterns = {"/ejb"})
+public class EjbServlet extends HttpServlet {
 
-    @Inject
-    private SessionScopedCdiSerialBean bean;
+    @EJB
+    private SingletonSessionBean bean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/plain");
-
-        int id = bean.getSerial();
-        bean.setSerial(id + 1);
-
-        resp.getWriter().print(id);
+        resp.getWriter().print(bean.getSerial());
     }
 
     @Override
     public String getServletInfo() {
-        return "Servlet using CDI bean to store serial.";
+        return "TBD";
     }
 }
