@@ -1,20 +1,23 @@
-package org.jboss.qa.clusterbench.singleton;
+package org.jboss.qa.clusterbench.stateful;
 
-import javax.ejb.Singleton;
+import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
+import javax.enterprise.context.SessionScoped;
 import org.jboss.qa.clusterbench.common.SerialBean;
 
-@Singleton
+@Stateful
 @LocalBean
-public class SingletonSessionBean {
+@SessionScoped
+//@Clustered
+public class LocalStatefulSB {
 
     private SerialBean bean;
 
-    public SingletonSessionBean() {
+    public LocalStatefulSB() {
         bean = new SerialBean();
     }
 
-    public int getSerial() {
+    public int getSerialAndIncrement() {
         int serial = bean.getSerial();
 
         bean.setSerial(serial + 1);

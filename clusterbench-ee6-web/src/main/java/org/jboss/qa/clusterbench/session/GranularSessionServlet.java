@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "SessionServlet", urlPatterns = {"/session"})
+@WebServlet(name = "SessionServlet", urlPatterns = {"/granular"})
 public class GranularSessionServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(GranularSessionServlet.class.getName());

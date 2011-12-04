@@ -7,25 +7,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.jboss.qa.clusterbench.singleton.SingletonSessionBean;
+import org.jboss.qa.clusterbench.singleton.LocalSingletonSB;
 
-/**
- *
- * @author rhusar
- */
-@WebServlet(name = "NewServlet", urlPatterns = {"/ejb"})
-public class EjbServlet extends HttpServlet {
+@WebServlet(name = "LocalSingletonEjbServlet", urlPatterns = {"/singletonejb", "/singleton"})
+public class LocalSingletonEjbServlet extends HttpServlet {
 
     @EJB
-    private SingletonSessionBean bean;
+    private LocalSingletonSB bean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print(bean.getSerial());
+        resp.setContentType("text/plain");
+        int serial = bean.getSerialAndIncrement();
+        resp.getWriter().print(serial);
     }
 
     @Override
     public String getServletInfo() {
-        return "TBD";
+        return "Servlet invoking Singleton Session Bean to store serial.";
     }
 }
