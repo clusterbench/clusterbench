@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>clusterbench</artifactId>
-        <groupId>org.jboss.qa</groupId>
+        <groupId>org.jboss.test</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.jboss.qa</groupId>
+    <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench-ee6-web</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -21,7 +21,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.jboss.qa</groupId>
+            <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee6-ejb</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>provided</scope>
