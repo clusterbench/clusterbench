@@ -1,7 +1,7 @@
-package org.jboss.qa.clusterbench.stateful;
+package org.jboss.test.clusterbench.ejb.stateful;
 
 import javax.ejb.Stateful;
-import org.jboss.qa.clusterbench.common.SerialBean;
+import org.jboss.test.clusterbench.common.SerialBean;
 
 @Stateful
 //@Clustered

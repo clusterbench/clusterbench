@@ -1,6 +1,6 @@
-package org.jboss.qa.clusterbench.session;
+package org.jboss.test.clusterbench.web.session;
 
-import org.jboss.qa.clusterbench.common.SerialBean;
+import org.jboss.test.clusterbench.common.SerialBean;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

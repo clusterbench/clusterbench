@@ -1,8 +1,8 @@
-package org.jboss.qa.clusterbench.singleton;
+package org.jboss.test.clusterbench.ejb.singleton;
 
 import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
-import org.jboss.qa.clusterbench.common.SerialBean;
+import org.jboss.test.clusterbench.common.SerialBean;
 
 /**
  * Scope interface javax.enterprise.context.SessionScoped is not allowed on singleton enterprise beans.

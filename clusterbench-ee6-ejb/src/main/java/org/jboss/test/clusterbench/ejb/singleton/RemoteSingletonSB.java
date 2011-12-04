@@ -1,4 +1,4 @@
-package org.jboss.qa.clusterbench.singleton;
+package org.jboss.test.clusterbench.ejb.singleton;
 
 import javax.ejb.Remote;
 

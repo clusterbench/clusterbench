@@ -1,4 +1,4 @@
-package org.jboss.qa.clusterbench.stateful;
+package org.jboss.test.clusterbench.ejb.stateful;
 
 import javax.ejb.Remote;
 

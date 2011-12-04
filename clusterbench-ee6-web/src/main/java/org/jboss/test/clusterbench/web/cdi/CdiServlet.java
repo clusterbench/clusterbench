@@ -1,4 +1,4 @@
-package org.jboss.qa.clusterbench.ejb;
+package org.jboss.test.clusterbench.web.cdi;
 
 import java.io.IOException;
 import javax.inject.Inject;
@@ -7,24 +7,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.jboss.qa.clusterbench.stateful.LocalStatefulSB;
 
-@WebServlet(name = "LocalEjbServlet", urlPatterns = {"/ejb"})
-public class LocalEjbServlet extends HttpServlet {
+@WebServlet(name = "CdiServlet", urlPatterns = {"/cdi"})
+public class CdiServlet extends HttpServlet {
 
     @Inject
-    // @SessionScoped -> This mistake is not in anyway treated. TODO discuss.
-    private LocalStatefulSB bean;
+    private SessionScopedCdiSerialBean bean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
-        int serial = bean.getSerialAndIncrement();
+
+        int serial = bean.getSerial();
+        bean.setSerial(serial + 1);
+
         resp.getWriter().print(serial);
     }
 
     @Override
     public String getServletInfo() {
-        return "Servlet invoking Stateful Session Bean to store serial.";
+        return "Servlet using CDI bean to store serial.";
     }
 }

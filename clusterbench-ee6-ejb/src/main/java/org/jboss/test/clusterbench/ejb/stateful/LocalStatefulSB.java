@@ -1,9 +1,9 @@
-package org.jboss.qa.clusterbench.stateful;
+package org.jboss.test.clusterbench.ejb.stateful;
 
 import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
 import javax.enterprise.context.SessionScoped;
-import org.jboss.qa.clusterbench.common.SerialBean;
+import org.jboss.test.clusterbench.common.SerialBean;
 
 @Stateful
 @LocalBean

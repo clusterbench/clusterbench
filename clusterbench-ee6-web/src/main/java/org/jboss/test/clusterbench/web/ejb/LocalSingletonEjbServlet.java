@@ -1,4 +1,4 @@
-package org.jboss.qa.clusterbench.ejb;
+package org.jboss.test.clusterbench.web.ejb;
 
 import java.io.IOException;
 import javax.ejb.EJB;
@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.jboss.qa.clusterbench.singleton.LocalSingletonSB;
+import org.jboss.test.clusterbench.ejb.singleton.LocalSingletonSB;
 
 @WebServlet(name = "LocalSingletonEjbServlet", urlPatterns = {"/singletonejb", "/singleton"})
 public class LocalSingletonEjbServlet extends HttpServlet {
