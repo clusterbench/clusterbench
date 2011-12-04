@@ -1,3 +1,7 @@
-/clusterbench-ear/target/
-/clusterbench-web/target/
-/clusterbench-ejb/target/
+/clusterbench-ee5-ear/target/
+/clusterbench-ee5-ejb/target/
+/clusterbench-ee5-web/target/
+/clusterbench-ee6-ear/target/
+/clusterbench-ee6-ejb/target/
+/clusterbench-ee6-web/target/
+/clusterbench-common/target/

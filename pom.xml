@@ -8,14 +8,34 @@
     <name>clusterbench</name>
     
     <modules>
-        <module>clusterbench-ear</module>
-        <module>clusterbench-web</module>
-        <module>clusterbench-ejb</module>
+        <module>clusterbench-common</module>
     </modules>
       
     <properties>
         <linkXRef>false</linkXRef>
     </properties>
+    
+    <profiles>
+        <profile>                    
+            <id>ee6</id>            
+            <activation>
+                <activeByDefault>true</activeByDefault>            
+            </activation>
+            <modules>
+                <module>clusterbench-ee6-ear</module>
+                <module>clusterbench-ee6-web</module>
+                <module>clusterbench-ee6-ejb</module>
+            </modules> 
+        </profile>   
+        <profile>
+            <id>ee5</id>
+            <modules>
+                <module>clusterbench-ee5-ear</module>
+                <module>clusterbench-ee5-web</module>
+                <module>clusterbench-ee5-ejb</module>
+            </modules>
+        </profile>
+    </profiles>
     
     <build>
         <pluginManagement>

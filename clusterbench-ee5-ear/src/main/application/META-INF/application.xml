@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" 
+             version="6">
+    
+    <display-name>clusterbench-ear</display-name>
+    
+    <module>
+        <ejb>clusterbench-ee5-ejb.jar</ejb>
+    </module>
+    
+    <module>
+        <web>
+            <web-uri>clusterbench-ee5-web.war</web-uri>
+            <context-root>/clusterbench</context-root>
+        </web>
+    </module>
+    
+</application>
