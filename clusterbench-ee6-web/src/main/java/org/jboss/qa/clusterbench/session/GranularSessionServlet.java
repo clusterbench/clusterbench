@@ -11,36 +11,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "SessionServlet", urlPatterns = {"/granular"})
+@WebServlet(name = "GranularSessionServlet", urlPatterns = {"/granular"})
 public class GranularSessionServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(GranularSessionServlet.class.getName());
-    public static final String KEY = GranularSessionServlet.class.getName();
+    public static final String KEY_SERIAL = GranularSessionServlet.class.getName() + "Serial";
+    public static final String KEY_CARGO = GranularSessionServlet.class.getName() + "Cargo";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession s = req.getSession(true);
+        HttpSession session = req.getSession(true);
 
-        if (s.isNew()) {
-            log.log(Level.INFO, "New session created: {0}", s.getId());
-            s.setAttribute(KEY, new SerialBean());
+        if (session.isNew()) {
+            log.log(Level.INFO, "New session created: {0}", session.getId());
+            // Reuse serial bean logic to generate the data.
+            SerialBean tempBean = new SerialBean();
+            session.setAttribute(KEY_SERIAL, tempBean.getSerial());
+            session.setAttribute(KEY_CARGO, tempBean.getCargo());
         }
 
-        SerialBean bean = (SerialBean) s.getAttribute(KEY);
+        Integer serial = (Integer) session.getAttribute(KEY_SERIAL);
+        // Do nothing with cargo?
+        byte[] cargo = (byte[]) session.getAttribute(KEY_CARGO);
 
         resp.setContentType("text/plain");
 
-        int id = bean.getSerial();
-        bean.setSerial(id + 1);
+        // Now store it in an attribute
+        session.setAttribute(KEY_SERIAL, serial + 1);
 
-        // Now store it in the session
-        s.setAttribute(KEY, bean);
-
-        resp.getWriter().print(id);
+        resp.getWriter().print(serial);
     }
 
     @Override
     public String getServletInfo() {
-        return "Servlet using Session to store serial.";
+        return "Servlet using HTTP Session attributes to store serial and cargo separately.";
     }
 }
