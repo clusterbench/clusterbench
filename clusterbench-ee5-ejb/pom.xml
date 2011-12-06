@@ -21,9 +21,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
+            <groupId>org.jboss.test</groupId>
+            <artifactId>clusterbench-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>javaee</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>6.0</version>
+            <version>5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -35,7 +40,7 @@
     </dependencies>
 
     <build>
-        <finalName>clusterbench-ee5</finalName>
+        <finalName>${artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
