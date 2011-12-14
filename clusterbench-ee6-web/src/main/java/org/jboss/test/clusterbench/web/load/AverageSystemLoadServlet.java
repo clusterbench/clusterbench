@@ -29,7 +29,7 @@ import org.jboss.test.clusterbench.common.load.AverageSystemLoad;
  * DONE, I was stressing CPU with 4 evil threads for 20000 milliseconds (including warm-up).
  * 
  * NOTE: Do not forget to set some reasonable time-out on your client...
- * That's it. No more functionality.
+ * That's it. No more functionality. 
  */
 @WebServlet(name = "AverageSystemLoadServlet", urlPatterns = { "/averagesystemload" })
 public class AverageSystemLoadServlet extends HttpServlet {

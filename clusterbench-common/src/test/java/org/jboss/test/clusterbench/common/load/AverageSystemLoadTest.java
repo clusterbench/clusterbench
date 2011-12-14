@@ -4,6 +4,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * 
+ * @author Michal Babacek 
+ *
+ */
 public class AverageSystemLoadTest {
 
    @Test
