@@ -32,6 +32,15 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <!-- TODO: Just pull in the client libraries to make sure the package really
+            brings in whats needed (unless we'll add some whitebox data). -->
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-ejb3</artifactId>
+            <!-- TODO: Update to something stable, Beta1 didn't have @Clustered in here. -->
+            <version>7.1.0.CR1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>

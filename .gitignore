@@ -8,6 +8,7 @@
 /clusterbench-ee6-web/.classpath
 /clusterbench-ee6-web/.project
 /clusterbench-ee6-web/.settings/
+*.*~
 /clusterbench-ee5-ear/target/
 /clusterbench-ee5-ejb/target/
 /clusterbench-ee5-web/target/
