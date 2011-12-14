@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-/clusterbench-common/.classpath
-/clusterbench-common/.project
-/clusterbench-ee6-ear/.project
-/clusterbench-ee6-ear/.settings/
-/clusterbench-ee6-ejb/.classpath
-/clusterbench-ee6-ejb/.project
-/clusterbench-ee6-ejb/.settings/
-/clusterbench-ee6-web/.classpath
-/clusterbench-ee6-web/.project
-/clusterbench-ee6-web/.settings/
 *.*~
+.classpath
+.project
+.settings
 /clusterbench-ee5-ear/target/
 /clusterbench-ee5-ejb/target/
 /clusterbench-ee5-web/target/
@@ -18,5 +10,3 @@
 /clusterbench-ee6-web/target/
 /clusterbench-common/target/
 /target/
-=======
->>>>>>> 8a7a2917aa4684f2f50cfa41cab0c0c1b135ed15

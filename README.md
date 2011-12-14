@@ -9,7 +9,6 @@ Building
 
 It comes in 2 flavors for Java EE 5 and 6:
 
-<<<<<<< HEAD
     $ mvn clean install -Pee6 # default
     $ mvn clean install -Pee5
     $ mvn clean install -Pee5,ee6 # build both
@@ -18,16 +17,6 @@ Output files:
 
     ./clusterbench-ee5-ear/target/clusterbench-ee5.ear
     ./clusterbench-ee6-ear/target/clusterbench-ee6.ear
-=======
-    $ mvn clean install -Pee6 # default
-    $ mvn clean install -Pee5
-    $ mvn clean install -Pee5,ee6 # build both
-
-Output files:
-
-    ./clusterbench-ee5-ear/target/clusterbench-ee5.ear
-    ./clusterbench-ee6-ear/target/clusterbench-ee6.ear
->>>>>>> 8a7a2917aa4684f2f50cfa41cab0c0c1b135ed15
 
 Issues
 ------
