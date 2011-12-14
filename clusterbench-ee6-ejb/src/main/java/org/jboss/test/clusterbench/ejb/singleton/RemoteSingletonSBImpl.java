@@ -3,10 +3,11 @@ package org.jboss.test.clusterbench.ejb.singleton;
 import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
 import org.jboss.test.clusterbench.common.SerialBean;
+//import org.jboss.ejb3.annotation.Clustered; -- dropped in AS 7.1 release.
 
 @Singleton
 @LocalBean
-//@Clustered
+//@Clustered -- dropped in AS 7.1 release.
 public class RemoteSingletonSBImpl implements RemoteSingletonSB {
 
     private SerialBean bean;
