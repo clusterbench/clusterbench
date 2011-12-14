@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 /**
  * 
- * @author Michal Babacek <mbabacek@redhat.com> 
+ * @author Michal Babacek
  *
  * @see org.jboss.test.clusterbench.web.load.AverageSystemLoadServlet
  */
