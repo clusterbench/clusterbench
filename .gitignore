@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /clusterbench-common/.classpath
 /clusterbench-common/.project
 /clusterbench-ee6-ear/.project
@@ -17,3 +18,5 @@
 /clusterbench-ee6-web/target/
 /clusterbench-common/target/
 /target/
+=======
+>>>>>>> 8a7a2917aa4684f2f50cfa41cab0c0c1b135ed15
