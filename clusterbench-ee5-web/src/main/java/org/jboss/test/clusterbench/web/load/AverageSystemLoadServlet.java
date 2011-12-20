@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +31,6 @@ import org.jboss.test.clusterbench.common.load.AverageSystemLoad;
  * NOTE: Do not forget to set some reasonable time-out on your client...
  * That's it. No more functionality. 
  */
-@WebServlet(name = "AverageSystemLoadServlet", urlPatterns = { "/averagesystemload" })
 public class AverageSystemLoadServlet extends HttpServlet {
    private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
    private final AverageSystemLoad averageSystemLoad = new AverageSystemLoad();
