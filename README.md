@@ -5,21 +5,21 @@ ClusterBench is, or rather will be, a sample application to be deployed in a clu
 
 
 Building
-========
+--------
 
 It comes in 2 flavors for Java EE 5 and 6:
 
-$ mvn clean install -Pee6 # default
-$ mvn clean install -Pee5
-$ mvn clean install -Pee5,ee6 # build both
+    $ mvn clean install -Pee6 # default
+    $ mvn clean install -Pee5
+    $ mvn clean install -Pee5,ee6 # build both
 
 Output files:
-./clusterbench-ee5-ear/target/clusterbench-ee5.ear
-./clusterbench-ee6-ear/target/clusterbench-ee6.ear
 
+    ./clusterbench-ee5-ear/target/clusterbench-ee5.ear
+    ./clusterbench-ee6-ear/target/clusterbench-ee6.ear
 
 Issues
-======
+------
 
 Create them on GitHub:
 https://github.com/rhusar/clusterbench/issues

@@ -1,4 +1,7 @@
 *.*~
+.classpath
+.project
+.settings
 /clusterbench-ee5-ear/target/
 /clusterbench-ee5-ejb/target/
 /clusterbench-ee5-web/target/
