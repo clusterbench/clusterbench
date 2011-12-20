@@ -1,5 +1,6 @@
 package org.jboss.test.clusterbench.ejb.singleton;
 
+import java.io.Serializable;
 import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
 import javax.ejb.Remove;
@@ -9,11 +10,16 @@ import org.jboss.test.clusterbench.common.SerialBean;
 /**
  * Scope interface javax.enterprise.context.SessionScoped is not allowed on singleton enterprise beans.
  * Only @Dependent is allowed on singleton enterprise beans.
+ * 
+ * Serializable? https://issues.jboss.org/browse/AS7-3018
+ * 
+ * @author Radoslav Husar
+ * @version Dec 2011
  */
 @Singleton
 @LocalBean
 @Clustered
-public class LocalSingletonSB {
+public class LocalSingletonSB implements Serializable {
 
     private SerialBean bean;
 
