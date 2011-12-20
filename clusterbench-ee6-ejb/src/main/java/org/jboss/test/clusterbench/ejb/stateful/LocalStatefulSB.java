@@ -1,5 +1,6 @@
 package org.jboss.test.clusterbench.ejb.stateful;
 
+import java.io.Serializable;
 import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
 import javax.ejb.Remove;
@@ -7,11 +8,17 @@ import javax.enterprise.context.SessionScoped;
 import org.jboss.test.clusterbench.common.SerialBean;
 import org.jboss.ejb3.annotation.Clustered;
 
+/**
+ * Serializable? https://issues.jboss.org/browse/AS7-3018
+ * 
+ * @author Radoslav Husar
+ * @version Dec 2011
+ */
 @Stateful
 @LocalBean
 @SessionScoped
 @Clustered
-public class LocalStatefulSB {
+public class LocalStatefulSB implements Serializable {
 
     private SerialBean bean;
 
