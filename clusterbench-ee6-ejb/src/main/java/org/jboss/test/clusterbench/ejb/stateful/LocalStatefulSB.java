@@ -9,8 +9,8 @@ import org.jboss.test.clusterbench.common.SerialBean;
 import org.jboss.ejb3.annotation.Clustered;
 
 /**
- * Serializable? https://issues.jboss.org/browse/AS7-3018
- * 
+ * TODO: Remove Serializable once AS7-3018 is fixed.
+ *  
  * @author Radoslav Husar
  * @version Dec 2011
  */

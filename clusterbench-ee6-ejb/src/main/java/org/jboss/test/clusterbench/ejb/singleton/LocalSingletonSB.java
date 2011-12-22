@@ -4,21 +4,21 @@ import java.io.Serializable;
 import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
 import javax.ejb.Remove;
-import org.jboss.ejb3.annotation.Clustered;
+//import org.jboss.ejb3.annotation.Clustered;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 /**
  * Scope interface javax.enterprise.context.SessionScoped is not allowed on singleton enterprise beans.
  * Only @Dependent is allowed on singleton enterprise beans.
  * 
- * Serializable? https://issues.jboss.org/browse/AS7-3018
+ * TODO: Remove Serializable once AS7-3018 is fixed.
  * 
  * @author Radoslav Husar
  * @version Dec 2011
  */
 @Singleton
 @LocalBean
-@Clustered
+//@Clustered -- JBAS014549: @Clustered annotation is currently not supported for singleton EJB.
 public class LocalSingletonSB implements Serializable {
 
     private SerialBean bean;
