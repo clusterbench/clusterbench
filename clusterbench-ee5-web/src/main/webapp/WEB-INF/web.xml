@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
     <distributable/>
+    
     <servlet>
         <servlet-name>HttpSessionServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.session.HttpSessionServlet</servlet-class>
@@ -9,6 +11,11 @@
         <servlet-name>GranularSessionServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.session.GranularSessionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AverageSystemLoadServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.AverageSystemLoadServlet</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>HttpSessionServlet</servlet-name>
         <url-pattern>/session</url-pattern>
@@ -17,6 +24,11 @@
         <servlet-name>GranularSessionServlet</servlet-name>
         <url-pattern>/granular</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageSystemLoadServlet</servlet-name>
+        <url-pattern>/averagesystemload</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <!-- minutes -->
         <session-timeout>1</session-timeout>
