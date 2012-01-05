@@ -69,6 +69,11 @@
                 <version>2.3</version>
                 <configuration>
                     <ejbVersion>3.1</ejbVersion>
+                    <generateClient>true</generateClient>
+                    <clientExcludes>
+                        <clientExclude>**/**Impl.class</clientExclude>
+                        <clientExclude>**/Local**.class</clientExclude>
+                    </clientExcludes>
                 </configuration>
             </plugin>
             <plugin>
