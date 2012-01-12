@@ -27,6 +27,12 @@ public class SerialBean implements Serializable {
         return serial;
     }
 
+    public int getSerialAndIncrement() {
+        int retVal = this.getSerial();
+        serial++;
+        return retVal;
+    }
+
     public void setSerial(int serial) {
         this.serial = serial;
     }
