@@ -1,15 +1,15 @@
 package org.jboss.test.clusterbench.ejb.singleton;
 
-import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
 import javax.ejb.Remove;
-// import org.jboss.ejb3.annotation.Clustered;
+import javax.ejb.Singleton;
 import org.jboss.test.clusterbench.common.SerialBean;
+// import org.jboss.ejb3.annotation.Clustered;
 
 /**
- * Scope interface javax.enterprise.context.SessionScoped is not allowed on singleton enterprise beans.
- * Only @Dependent is allowed on singleton enterprise beans.
- * 
+ * Scope interface javax.enterprise.context.SessionScoped is not allowed on singleton enterprise beans. Only @Dependent is
+ * allowed on singleton enterprise beans.
+ *
  * @author Radoslav Husar
  * @version Dec 2011
  */

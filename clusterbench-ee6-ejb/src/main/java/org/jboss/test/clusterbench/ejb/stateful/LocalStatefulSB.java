@@ -1,14 +1,14 @@
 package org.jboss.test.clusterbench.ejb.stateful;
 
-import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
 import javax.ejb.Remove;
+import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
-import org.jboss.test.clusterbench.common.SerialBean;
 import org.jboss.ejb3.annotation.Clustered;
+import org.jboss.test.clusterbench.common.SerialBean;
 
 /**
- *  
+ *
  * @author Radoslav Husar
  * @version Dec 2011
  */

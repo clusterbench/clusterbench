@@ -6,7 +6,7 @@ import org.jboss.ejb3.annotation.Clustered;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 /**
- * 
+ *
  * @author Radoslav Husar
  * @version Dec 2011
  */
