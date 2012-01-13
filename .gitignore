@@ -1,12 +1,14 @@
+# Backup files
 *.*~
+
+# Eclipse IDE
 .classpath
 .project
 .settings
-/clusterbench-ee5-ear/target/
-/clusterbench-ee5-ejb/target/
-/clusterbench-ee5-web/target/
-/clusterbench-ee6-ear/target/
-/clusterbench-ee6-ejb/target/
-/clusterbench-ee6-web/target/
-/clusterbench-common/target/
-/target/
+
+# Maven
+target/
+
+# NetBeans IDE
+nb-configuration.xml
+*.NavData
