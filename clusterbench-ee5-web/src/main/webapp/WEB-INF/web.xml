@@ -15,11 +15,11 @@
         <servlet-name>AverageSystemLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.AverageSystemLoadServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EJBServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.ejb.LocalEjbServlet</servlet-class>
+    </servlet>    
     
-    <servlet-mapping>
-        <servlet-name>HttpSessionServlet</servlet-name>
-        <url-pattern>/session</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GranularSessionServlet</servlet-name>
         <url-pattern>/granular</url-pattern>
@@ -27,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>AverageSystemLoadServlet</servlet-name>
         <url-pattern>/averagesystemload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EJBServlet</servlet-name>
+        <url-pattern>/ejb</url-pattern>
     </servlet-mapping>
     
     <session-config>
