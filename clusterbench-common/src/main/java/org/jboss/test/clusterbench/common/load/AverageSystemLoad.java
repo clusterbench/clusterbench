@@ -17,6 +17,7 @@ public class AverageSystemLoad {
    private List<LoadRunner> loadRunners = new ArrayList<LoadRunner>();
    private long operationStarted = 0L;
    
+   @SuppressWarnings("SleepWhileInLoop")
    public String spawnLoadThreads(int numberOfThreads, int milliseconds) {
       operationStarted = System.currentTimeMillis();
       for(int i = 0; i < numberOfThreads; i++) {
