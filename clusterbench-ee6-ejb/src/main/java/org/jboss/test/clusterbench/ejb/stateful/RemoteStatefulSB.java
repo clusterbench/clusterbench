@@ -1,6 +1,7 @@
 package org.jboss.test.clusterbench.ejb.stateful;
 
 import javax.ejb.Remote;
+import org.jboss.test.clusterbench.common.ejb.CommonStatefulSB;
 
 /**
  * The enterprise bean must implement a business interface. That is, remote clients may not access an enterprise bean through a
@@ -10,9 +11,6 @@ import javax.ejb.Remote;
  * @version Dec 2011
  */
 @Remote
-public interface RemoteStatefulSB {
-
-    int getSerial();
-
-    byte[] getCargo();
+public interface RemoteStatefulSB extends CommonStatefulSB {
+    // Inherit.
 }

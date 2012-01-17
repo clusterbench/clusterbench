@@ -16,24 +16,10 @@ import org.jboss.test.clusterbench.common.SerialBean;
 @Singleton
 @LocalBean
 // @Clustered -- JBAS014549: @Clustered annotation is currently not supported for singleton EJB.
-public class LocalSingletonSB {
-
-    private SerialBean bean;
-
-    public LocalSingletonSB() {
-        bean = new SerialBean();
-    }
-
-    public int getSerialAndIncrement() {
-        int serial = bean.getSerial();
-
-        bean.setSerial(serial + 1);
-
-        return serial;
-    }
+public class LocalSingletonSB extends SerialBean {
 
     @Remove
     private void destroy() {
-        bean = null;
+        // Let container do the work.
     }
 }
