@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
  *         BusyConnectorsLoadServlet that will wait for the given amount of milliseconds and thus "pretending" some work
  * 
  */
-@WebServlet(name = "BusyConnectorsLoadServlet", urlPatterns = { "/busyconnectorsload" })
 public class BusyConnectorsLoadServlet extends HttpServlet {
     private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
 
