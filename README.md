@@ -53,3 +53,7 @@ MemoryUsageServlet
 AverageSystemLoadServlet
 ------------------------
 [/clusterbench/averagesystemload?milliseconds=10000&threads=4](http://localhost:8080/clusterbench/averagesystemload?milliseconds=10000&threads=4)
+
+BusyConnectorsLoadServlet
+------------------------
+[/clusterbench/busyconnectorsload?milliseconds=10000](http://localhost:8080/clusterbench/busyconnectorsload?milliseconds=10000)
