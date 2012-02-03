@@ -29,7 +29,13 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>javaee</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>5</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>

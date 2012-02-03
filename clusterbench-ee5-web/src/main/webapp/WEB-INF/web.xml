@@ -5,7 +5,8 @@
     <distributable/>
     
     <session-config>
-        <session-timeout>1</session-timeout> <!-- in minutes -->
+        <!-- in minutes -->
+        <session-timeout>1</session-timeout>        
     </session-config>
 
 
@@ -22,11 +23,11 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>GranularSessionServlet</servlet-name>
-        <servlet-class>org.jboss.test.clusterbench.web.session.GranularSessionServlet</servlet-class>
+        <servlet-name>GranularHttpSessionServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.session.GranularHttpSessionServlet</servlet-class>
     </servlet>    
     <servlet-mapping>
-        <servlet-name>GranularSessionServlet</servlet-name>
+        <servlet-name>GranularHttpSessionServlet</servlet-name>
         <url-pattern>/granular</url-pattern>
     </servlet-mapping>
     
@@ -49,5 +50,5 @@
         <servlet-name>AverageSystemLoadServlet</servlet-name>
         <url-pattern>/averagesystemload</url-pattern>
     </servlet-mapping>
-    
+  
 </web-app>

@@ -1,6 +1,5 @@
-package org.jboss.test.clusterbench.web.session;
+package org.jboss.test.clusterbench.common.session;
 
-import org.jboss.test.clusterbench.common.SerialBean;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.jboss.test.clusterbench.common.SerialBean;
 
-public class GranularSessionServlet extends HttpServlet {
+public class CommonGranularHttpSessionServlet extends HttpServlet {
 
-    private static final Logger log = Logger.getLogger(GranularSessionServlet.class.getName());
-    public static final String KEY_SERIAL = GranularSessionServlet.class.getName() + "Serial";
-    public static final String KEY_CARGO = GranularSessionServlet.class.getName() + "Cargo";
+    private static final Logger log = Logger.getLogger(CommonGranularHttpSessionServlet.class.getName());
+    public static final String KEY_SERIAL = CommonGranularHttpSessionServlet.class.getName() + "Serial";
+    public static final String KEY_CARGO = CommonGranularHttpSessionServlet.class.getName() + "Cargo";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,20 +22,22 @@ public class GranularSessionServlet extends HttpServlet {
 
         if (session.isNew()) {
             log.log(Level.INFO, "New session created: {0}", session.getId());
-            // Reuse serial bean logic to generate the data.
+
+            // Reuse serial bean logic to generate the data but don't store the SerialBean instance directly.
             SerialBean tempBean = new SerialBean();
             session.setAttribute(KEY_SERIAL, tempBean.getSerial());
             session.setAttribute(KEY_CARGO, tempBean.getCargo());
         }
 
         Integer serial = (Integer) session.getAttribute(KEY_SERIAL);
-        // Do nothing with cargo?
         byte[] cargo = (byte[]) session.getAttribute(KEY_CARGO);
 
         resp.setContentType("text/plain");
 
-        // Now store it in an attribute
+        // Now store the serial in an attribute
         session.setAttribute(KEY_SERIAL, serial + 1);
+
+        // Do nothing with cargo.
 
         resp.getWriter().print(serial);
     }
