@@ -50,5 +50,21 @@
         <servlet-name>AverageSystemLoadServlet</servlet-name>
         <url-pattern>/averagesystemload</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>MemoryUsageServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.MemoryUsageServlet</servlet-class>
+    </servlet>
+    </servlet-mapping>
+        <servlet-name>MemoryUsageServlet</servlet-name>
+        <url-pattern>/memoryusage</url-pattern>
+    </servlet-mapping>
+    <servlet>   
+        <servlet-name>BusyConnectorsLoadServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.BusyConnectorsLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BusyConnectorsLoadServlet</servlet-name>
+        <url-pattern>/busyconnectorsload</url-pattern>
+    </servlet-mapping>
   
 </web-app>
