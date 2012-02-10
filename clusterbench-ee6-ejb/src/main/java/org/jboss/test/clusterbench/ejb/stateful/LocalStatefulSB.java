@@ -1,11 +1,10 @@
 package org.jboss.test.clusterbench.ejb.stateful;
 
 import javax.ejb.LocalBean;
-import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import org.jboss.ejb3.annotation.Clustered;
-import org.jboss.test.clusterbench.common.SerialBean;
+import org.jboss.test.clusterbench.common.ejb.CommonStatefulSBImpl;
 
 /**
  * @author Radoslav Husar
@@ -15,10 +14,6 @@ import org.jboss.test.clusterbench.common.SerialBean;
 @LocalBean
 @SessionScoped
 @Clustered
-public class LocalStatefulSB extends SerialBean {
-
-    @Remove
-    private void destroy() {
-        // Let container do the work.
-    }
+public class LocalStatefulSB extends CommonStatefulSBImpl {
+    // Inherit.
 }
