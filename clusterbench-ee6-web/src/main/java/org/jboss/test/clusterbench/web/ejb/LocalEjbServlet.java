@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jboss.test.clusterbench.ejb.stateful.LocalStatefulSB;
 
-@WebServlet(name = "LocalEjbServlet", urlPatterns = {"/ejb"})
+@WebServlet(name = "LocalEjbServlet", urlPatterns = {"/ejbservlet"})
 public class LocalEjbServlet extends HttpServlet {
 
     @Inject

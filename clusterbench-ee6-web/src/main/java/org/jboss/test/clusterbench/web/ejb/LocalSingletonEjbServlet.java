@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jboss.test.clusterbench.ejb.singleton.LocalSingletonSB;
 
-@WebServlet(name = "LocalSingletonEjbServlet", urlPatterns = {"/singletonejb", "/singleton"})
+@WebServlet(name = "LocalSingletonEjbServlet", urlPatterns = {"/singletonejbservlet"})
 public class LocalSingletonEjbServlet extends HttpServlet {
 
     @EJB
