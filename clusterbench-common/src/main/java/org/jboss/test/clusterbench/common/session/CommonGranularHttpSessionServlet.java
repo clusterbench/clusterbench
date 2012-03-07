@@ -35,6 +35,12 @@ public class CommonGranularHttpSessionServlet extends HttpServlet {
 
         resp.setContentType("text/plain");
 
+        // Readonly?
+        if (req.getParameter(ClusterBenchConstants.READONLY) != null) {
+            resp.getWriter().print(serial);
+            return;
+        }
+
         // Now store the serial in an attribute
         session.setAttribute(KEY_SERIAL, serial + 1);
 

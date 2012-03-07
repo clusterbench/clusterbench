@@ -29,6 +29,12 @@ public class CommonHttpSessionServlet extends HttpServlet {
 
         resp.setContentType("text/plain");
 
+        // Readonly?
+        if (req.getParameter(ClusterBenchConstants.READONLY) != null) {
+            resp.getWriter().print(bean.getSerial());
+            return;
+        }
+
         int serial = bean.getSerial();
         bean.setSerial(serial + 1);
 
