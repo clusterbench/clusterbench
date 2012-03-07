@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 public class CommonHttpSessionServlet extends HttpServlet {
@@ -35,6 +36,12 @@ public class CommonHttpSessionServlet extends HttpServlet {
         session.setAttribute(KEY, bean);
 
         resp.getWriter().print(serial);
+
+        // Invalidate?
+        if (req.getParameter(ClusterBenchConstants.INVALIDATE) != null) {
+            log.log(Level.INFO, "Invalidating: {0}", session.getId());
+            session.invalidate();
+        }
     }
 
     @Override
