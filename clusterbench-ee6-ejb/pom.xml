@@ -36,8 +36,7 @@
             brings in whats needed (unless we'll add some whitebox data). -->
             <groupId>org.jboss.as</groupId>
             <artifactId>jboss-as-ejb3</artifactId>
-            <!-- TODO: Update to something stable, Beta1 didn't have @Clustered in here. -->
-            <version>7.1.0.CR1-SNAPSHOT</version>
+            <version>7.1.1.Final</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
