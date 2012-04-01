@@ -24,6 +24,7 @@
             <modules>
                 <module>clusterbench-ee6-ear</module>
                 <module>clusterbench-ee6-web</module>
+                <module>clusterbench-ee6-web-granular</module>
                 <module>clusterbench-ee6-ejb</module>
             </modules> 
         </profile>   
