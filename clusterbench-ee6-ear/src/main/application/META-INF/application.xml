@@ -17,11 +17,13 @@
         </web>
     </module>
 
+    <!-- JBPAPP-8595 -->
+    <!--
     <module>
         <web>
             <web-uri>clusterbench-ee6-web-granular.war</web-uri>
             <context-root>/clusterbench-granular</context-root>
         </web>
     </module>
-    
+    -->
 </application>
