@@ -5,8 +5,12 @@
            xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/j2ee/schema/jboss-web_6_0.xsd">
 
     <replication-config>
+        <!-- The default value is SET_AND_NON_PRIMITIVE_GET, therefore the byte array which is carrying the data is considered
+             non-primitive and would cause replication even in read only scenario. -->
         <replication-trigger>SET</replication-trigger>
-        <replication-granularity>ATTRIBUTE</replication-granularity>
+
+        <!-- Replicating entire session is the default. -->
+        <replication-granularity>SESSION</replication-granularity>
     </replication-config>
     
 </jboss-web>
