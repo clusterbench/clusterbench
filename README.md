@@ -1,7 +1,7 @@
 ClusterBench
 ============
 
-ClusterBench is, or rather will be, a sample application to be deployed in a cluster of JBoss AS 7 and AS 5. Then it is easy to stress (curl, JMeter, whatnot) and monitor the perfrormance of the cluster and at the same time easily check correctness of replicated sessions.
+ClusterBench is, or rather will be, a sample application to be deployed in a cluster of JBoss AS 7 and AS 5. Then it is easy to stress (curl, JMeter, whatnot) and monitor the performance of the cluster and at the same time easily check correctness of replicated sessions.
 
 Building
 --------
@@ -40,7 +40,7 @@ LocalSingletonEjbServlet
 
 GranularSessionServlet
 ----------------------
-[/clusterbench/granular](http://localhost:8080/clusterbench/granular)
+[/clusterbench-granular/granular](http://localhost:8080/clusterbench-granular/granular)
 
 HttpSessionServlet
 -------------------
@@ -53,3 +53,4 @@ MemoryUsageServlet
 AverageSystemLoadServlet
 ------------------------
 [/clusterbench/averagesystemload?milliseconds=10000&threads=4](http://localhost:8080/clusterbench/averagesystemload?milliseconds=10000&threads=4)
+
