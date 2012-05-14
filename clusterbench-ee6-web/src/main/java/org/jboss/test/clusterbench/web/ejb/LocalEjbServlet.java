@@ -13,7 +13,6 @@ import org.jboss.test.clusterbench.ejb.stateful.LocalStatefulSB;
 public class LocalEjbServlet extends HttpServlet {
 
     @Inject
-    // @SessionScoped -> This mistake is not in anyway treated. TODO discuss.
     private LocalStatefulSB bean;
 
     @Override
