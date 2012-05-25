@@ -21,7 +21,9 @@
         <servlet-name>HttpSessionServlet</servlet-name>
         <url-pattern>/session</url-pattern>
     </servlet-mapping>
-    
+
+    <!-- Requires a separate module -->
+    <!--
     <servlet>
         <servlet-name>GranularHttpSessionServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.session.GranularHttpSessionServlet</servlet-class>
@@ -30,6 +32,7 @@
         <servlet-name>GranularHttpSessionServlet</servlet-name>
         <url-pattern>/granular</url-pattern>
     </servlet-mapping>
+    -->
     
     <!-- EJB -->
     <servlet>
@@ -38,7 +41,7 @@
     </servlet>    
     <servlet-mapping>
         <servlet-name>LocalEjbServlet</servlet-name>
-        <url-pattern>/ejb</url-pattern>
+        <url-pattern>/ejbservlet</url-pattern>
     </servlet-mapping>
     
     <!-- Load -->
