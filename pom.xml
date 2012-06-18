@@ -7,6 +7,10 @@
     <packaging>pom</packaging>
     <name>clusterbench</name>
     
+    <scm>
+        <developerConnection>scm:git:git://github.com/rhusar/clusterbench.git</developerConnection>
+    </scm>
+    
     <modules>
         <module>clusterbench-common</module>
     </modules>
