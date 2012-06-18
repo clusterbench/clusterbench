@@ -7,6 +7,10 @@
     <packaging>pom</packaging>
     <name>clusterbench</name>
     
+    <scm>
+        <developerConnection>scm:git:github.com/rhusar/clusterbench.git</developerConnection>
+    </scm>
+    
     <modules>
         <module>clusterbench-common</module>
     </modules>
@@ -40,39 +44,15 @@
     </profiles>
     
     <build>
-        <pluginManagement>
-            <plugins>
-                <!-- Checkstyle -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <!-- <version>${version.checkstyle.plugin}</version> -->
-                    <configuration>
-                        <configLocation>jboss-as-checkstyle/checkstyle.xml</configLocation>
-                        <consoleOutput>true</consoleOutput>
-                        <failsOnError>true</failsOnError>
-                        <useFile/>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.jboss.as</groupId>
-                            <artifactId>jboss-as-build-config</artifactId>
-                            <version>7.1.0.Final-SNAPSHOT</version>
-                            <!-- <version>${project.version}</version> -->
-                        </dependency>
-                    </dependencies>
-                    <executions>
-                        <execution>
-                            <id>check-style</id>
-                            <phase>compile</phase>
-                            <goals>
-                                <goal>checkstyle</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin> 
-            </plugins>            
-        </pluginManagement> 
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <distributionManagement>
