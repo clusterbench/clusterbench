@@ -6,12 +6,12 @@
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
 
     <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench-ee6-ear-passivating</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>ear</packaging>
     <name>${project.artifactId}</name>
 
@@ -47,20 +47,20 @@
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee6-ejb</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.1</version>
             <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee6-web</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.1</version>
             <classifier>passivating</classifier>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee6-web-granular</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.1</version>
             <type>war</type>
         </dependency>
     </dependencies>

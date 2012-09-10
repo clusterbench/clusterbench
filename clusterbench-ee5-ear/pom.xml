@@ -6,12 +6,12 @@
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
 
     <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench-ee5-ear</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>ear</packaging>
     <name>${project.artifactId}</name>
 
@@ -47,13 +47,13 @@
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee5-ejb</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.1</version>
             <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee5-web</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.1</version>
             <type>war</type>
         </dependency>
     </dependencies>
