@@ -12,3 +12,7 @@ target/
 # NetBeans IDE
 nb-configuration.xml
 *.NavData
+
+# IntelliJ IDEA IDE
+.idea/
+*.iml
