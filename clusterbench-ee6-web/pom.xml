@@ -33,6 +33,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-core</artifactId>
+            <version>5.1.8.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
@@ -68,6 +74,11 @@
                         </goals>
                         <configuration>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                            <archive>
+                                <manifestEntries>
+                                    <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                </manifestEntries>
+                            </archive>
                         </configuration>
                     </execution>
                     <!-- Build passivating modification with differet jboss-web and web xml-s. -->
