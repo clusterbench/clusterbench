@@ -92,6 +92,19 @@
         </pluginManagement>
     </build>
 
+<repositories>
+	<repository>
+		<id>jboss</id>
+   	 	<name>JBoss Public Nexus Repository</name>
+   		<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+	</repository>
+	<repository>
+        <id>deprecated</id>
+        <name>JBoss Deprecated</name>
+        <url>https://repository.jboss.org/nexus/content/repositories/deprecated</url>
+      </repository>
+</repositories>
+
     <distributionManagement>
         <repository>
             <id>nexus-releases</id>
