@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench</artifactId>
     <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>clusterbench</name>
-    
+
     <scm>
         <developerConnection>scm:git:git@github.com:rhusar/clusterbench.git</developerConnection>
     </scm>
-    
+
     <modules>
         <module>clusterbench-common</module>
     </modules>
-      
+
     <properties>
         <linkXRef>false</linkXRef>
     </properties>
-    
+
     <profiles>
-        <profile>                    
-            <id>ee6</id>            
+        <profile>
+            <id>ee6</id>
             <activation>
-                <activeByDefault>true</activeByDefault>            
+                <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
                 <module>clusterbench-ee6-ear</module>
@@ -31,8 +32,8 @@
                 <module>clusterbench-ee6-web</module>
                 <module>clusterbench-ee6-web-granular</module>
                 <module>clusterbench-ee6-ejb</module>
-            </modules> 
-        </profile>   
+            </modules>
+        </profile>
         <profile>
             <id>ee5</id>
             <modules>
@@ -42,7 +43,7 @@
             </modules>
         </profile>
     </profiles>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -56,54 +57,54 @@
             </plugin>
         </plugins>
         <pluginManagement>
-        	<plugins>
-        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-        		<plugin>
-        			<groupId>org.eclipse.m2e</groupId>
-        			<artifactId>lifecycle-mapping</artifactId>
-        			<version>1.0.0</version>
-        			<configuration>
-        				<lifecycleMappingMetadata>
-        					<pluginExecutions>
-        						<pluginExecution>
-        							<pluginExecutionFilter>
-        								<groupId>
-        									org.apache.maven.plugins
-        								</groupId>
-        								<artifactId>
-        									maven-dependency-plugin
-        								</artifactId>
-        								<versionRange>
-        									[2.1,)
-        								</versionRange>
-        								<goals>
-        									<goal>copy</goal>
-        								</goals>
-        							</pluginExecutionFilter>
-        							<action>
-        								<ignore></ignore>
-        							</action>
-        						</pluginExecution>
-        					</pluginExecutions>
-        				</lifecycleMappingMetadata>
-        			</configuration>
-        		</plugin>
-        	</plugins>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.apache.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            maven-dependency-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [2.1,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>copy</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
 
-<repositories>
-	<repository>
-		<id>jboss</id>
-   	 	<name>JBoss Public Nexus Repository</name>
-   		<url>https://repository.jboss.org/nexus/content/groups/public/</url>
-	</repository>
-	<repository>
-        <id>deprecated</id>
-        <name>JBoss Deprecated</name>
-        <url>https://repository.jboss.org/nexus/content/repositories/deprecated</url>
-      </repository>
-</repositories>
+    <repositories>
+        <repository>
+            <id>jboss-public-nexus</id>
+            <name>JBoss Public Nexus Repository</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>jboss-deprecated</id>
+            <name>JBoss Deprecated</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/deprecated</url>
+        </repository>
+    </repositories>
 
     <distributionManagement>
         <repository>
