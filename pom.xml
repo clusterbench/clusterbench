@@ -9,7 +9,7 @@
     <name>clusterbench</name>
 
     <scm>
-        <developerConnection>scm:git:git@github.com:rhusar/clusterbench.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:clusterbench/clusterbench.git</developerConnection>
     </scm>
 
     <modules>
