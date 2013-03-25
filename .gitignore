@@ -16,3 +16,4 @@ nb-configuration.xml
 # IntelliJ IDEA IDE
 .idea/
 *.iml
+*.ipr
