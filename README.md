@@ -23,7 +23,7 @@ Issues
 ------
 
 Create them on GitHub:
-[https://github.com/clusterbench/clusterbench/issues](https://github.com/rhusar/clusterbench/issues)
+[https://github.com/clusterbench/clusterbench/issues](https://github.com/clusterbench/clusterbench/issues)
 
 Contributing
 ------------
