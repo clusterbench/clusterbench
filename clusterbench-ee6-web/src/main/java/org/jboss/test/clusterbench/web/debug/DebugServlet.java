@@ -33,7 +33,7 @@ import org.jgroups.Event;
 import org.jgroups.stack.IpAddress;
 
 /**
- * A simple debug Servlet. Feel free to add anything you shall need.
+ * A simple debug Servlet. Feel free to add anything you should need.
  *
  * @author Radoslav Husar
  */
