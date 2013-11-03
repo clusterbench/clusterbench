@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.SerialBean;
 
@@ -22,6 +23,9 @@ public class CommonHttpSessionServlet extends HttpServlet {
 
         if (session.isNew()) {
             log.log(Level.INFO, "New session created: {0}", session.getId());
+            session.setAttribute(KEY, new SerialBean());
+        } else if (session.getAttribute(KEY) == null) {
+            log.log(Level.INFO, "Session is not new, creating SerialBean: {0}", session.getId());
             session.setAttribute(KEY, new SerialBean());
         }
 
