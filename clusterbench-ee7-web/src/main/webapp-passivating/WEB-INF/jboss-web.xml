@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web version="6.0"
+           xmlns="http://www.jboss.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/j2ee/schema/jboss-web_6_0.xsd">
+
+    <replication-config>
+        <!-- The default value is SET_AND_NON_PRIMITIVE_GET, therefore the byte array which is carrying the data is considered
+             non-primitive and would cause replication even in read only scenario. -->
+        <replication-trigger>SET</replication-trigger>
+
+        <!-- Replicating entire session is the default. -->
+        <replication-granularity>SESSION</replication-granularity>
+    </replication-config>
+
+    <passivation-config>
+        <use-session-passivation>true</use-session-passivation>
+        <passivation-min-idle-time>75</passivation-min-idle-time>
+        <passivation-max-idle-time>150</passivation-max-idle-time>
+    </passivation-config>
+
+</jboss-web>

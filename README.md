@@ -8,17 +8,18 @@ at the same time it can be easily checked the correctness of replicated sessions
 Building
 --------
 
-It comes in 2 flavors for Java EE 5 and 6:
+It comes in 3 flavors for Java EE 5, 6 and 7:
 
     $ mvn clean install -Pee6 # default
     $ mvn clean install -Pee5
-    $ mvn clean install -Pee5,ee6 # builds both
+    $ mvn clean install -Pee5,ee6,ee7 # builds everything; requires JDK 7 or newer
 
 Output files:
 
     ./clusterbench-ee5-ear/target/clusterbench-ee5.ear
     ./clusterbench-ee6-ear/target/clusterbench-ee6.ear
     ./clusterbench-ee6-ear-passivating/target/clusterbench-ee6-passivating.ear
+    ./clusterbench-ee7-ear/target/clusterbench-ee7.ear
 
 Issues
 ------

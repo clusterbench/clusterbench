@@ -44,6 +44,14 @@
 
     <profiles>
         <profile>
+            <id>ee7</id>
+            <modules>
+                <module>clusterbench-ee7-ear</module>
+                <module>clusterbench-ee7-web</module>
+                <module>clusterbench-ee7-ejb</module>
+            </modules>
+        </profile>
+        <profile>
             <id>ee6</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -104,7 +112,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -125,6 +133,11 @@
             <id>jboss-deprecated</id>
             <name>JBoss Deprecated</name>
             <url>https://repository.jboss.org/nexus/content/repositories/deprecated</url>
+        </repository>
+        <repository>
+            <id>java-promoted</id>
+            <name>Java EE 7</name>
+            <url>https://maven.java.net/content/groups/promoted/</url>
         </repository>
     </repositories>
 
