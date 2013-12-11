@@ -89,13 +89,6 @@ LocalEjbServlet
 Stores serial and data in `@Stateful` EJB Session bean (SFSB). The EJB is invoked on every request.
 
 
-LocalSingletonEjbServlet
-------------------------
-[/clusterbench/singletonejbservlet](http://localhost:8080/clusterbench/singletonejbservlet)
-
-Stores a serial number in `@Singleton` bean. _Experimental._
-
-
 GranularSessionServlet
 ----------------------
 [/clusterbench-granular/granular](http://localhost:8080/clusterbench-granular/granular)
