@@ -20,6 +20,10 @@ import javax.ejb.Remote;
 
 import org.jboss.test.clusterbench.common.ejb.CommonStatelessSB;
 
+/**
+ * @author Radoslav Husar
+ * @version Dec 2011
+ */
 @Remote
 public interface RemoteStatelessSB extends CommonStatelessSB {
 }

@@ -18,10 +18,12 @@ package org.jboss.test.clusterbench.ejb.stateless;
 
 import javax.ejb.Stateless;
 
-import org.jboss.ejb3.annotation.Clustered;
 import org.jboss.test.clusterbench.common.ejb.CommonStatelessSBImpl;
 
+/**
+ * @author Radoslav Husar
+ * @version Dec 2011
+ */
 @Stateless
-@Clustered
 public class RemoteStatelessSBImpl extends CommonStatelessSBImpl implements RemoteStatelessSB {
 }

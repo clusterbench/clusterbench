@@ -20,7 +20,6 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 
-import org.jboss.ejb3.annotation.Clustered;
 import org.jboss.test.clusterbench.common.ejb.CommonStatefulSBImpl;
 
 /**
@@ -30,7 +29,6 @@ import org.jboss.test.clusterbench.common.ejb.CommonStatefulSBImpl;
 @Stateful
 @LocalBean
 @SessionScoped
-@Clustered
 public class LocalStatefulSB extends CommonStatefulSBImpl {
     // Inherit.
 }
