@@ -28,7 +28,7 @@ import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 /**
- * Let this Servlet just output some debug information provided in the overridden method.
+ * Servlet which outputs debug information provided by the {@link #getDebugInfo(HttpServletRequest)} method.
  *
  * @author Radoslav Husar
  * @version April 2012
@@ -43,13 +43,23 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
         HttpSession session = req.getSession(true);
 
         if (session.isNew()) {
-            log.log(Level.INFO, "New DEBUG session created: {0}", session.getId());
+            log.log(Level.INFO, "New session created: {0}", session.getId());
+            session.setAttribute(KEY, new SerialBean());
+        } else if (session.getAttribute(KEY) == null) {
+            log.log(Level.INFO, "Session is not new, creating SerialBean: {0}", session.getId());
             session.setAttribute(KEY, new SerialBean());
         }
 
         SerialBean bean = (SerialBean) session.getAttribute(KEY);
 
         resp.setContentType("text/plain");
+
+        // Readonly?
+        if (req.getParameter(ClusterBenchConstants.READONLY) != null) {
+            resp.getWriter().print(bean.getSerial());
+            resp.getWriter().println(this.getDebugInfo(req));
+            return;
+        }
 
         int serial = bean.getSerial();
         bean.setSerial(serial + 1);
@@ -72,5 +82,11 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
         return "Debug servlet.";
     }
 
+    /**
+     * Implement this method to print out any debug info.
+     *
+     * @param req HttpServletRequest
+     * @return String debug info
+     */
     abstract public String getDebugInfo(HttpServletRequest req);
 }
