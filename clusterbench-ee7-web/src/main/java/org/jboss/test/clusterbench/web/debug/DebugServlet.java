@@ -43,6 +43,11 @@ public class DebugServlet extends AbstractCommonDebugServlet {
     public String getDebugInfo(HttpServletRequest req) {
         StringBuilder info = new StringBuilder();
 
+        // Display Server/Local ports
+        // @see https://issues.jboss.org/browse/UNDERTOW-122
+        info.append("ServletRequest.getServerPort(): ").append(req.getServerPort()).append(System.getProperty("line.separator"));
+        info.append("ServletRequest.getLocalPort(): ").append(req.getLocalPort()).append(System.getProperty("line.separator"));
+
         // Fetch just the node name for now
         info.append("Node name: ").append(System.getProperty("jboss.node.name")).append(System.getProperty("line.separator"));
 
