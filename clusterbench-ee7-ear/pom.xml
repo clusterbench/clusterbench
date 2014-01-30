@@ -40,7 +40,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>3.1</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
@@ -53,7 +53,6 @@
                 <configuration>
                     <version>7</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
-
                     <modules>
                         <ejbModule>
                             <groupId>org.jboss.test</groupId>
@@ -62,7 +61,14 @@
                         <webModule>
                             <groupId>org.jboss.test</groupId>
                             <artifactId>clusterbench-ee7-web</artifactId>
+                            <classifier>default</classifier>
                             <contextRoot>/clusterbench</contextRoot>
+                        </webModule>
+                        <webModule>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee7-web</artifactId>
+                            <classifier>passivating</classifier>
+                            <contextRoot>/clusterbench-passivating</contextRoot>
                         </webModule>
                     </modules>
                 </configuration>
@@ -81,6 +87,14 @@
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee7-web</artifactId>
             <version>${project.version}</version>
+            <classifier>default</classifier>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.test</groupId>
+            <artifactId>clusterbench-ee7-web</artifactId>
+            <version>${project.version}</version>
+            <classifier>passivating</classifier>
             <type>war</type>
         </dependency>
     </dependencies>
