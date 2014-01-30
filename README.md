@@ -21,7 +21,6 @@ Output files:
     ./clusterbench-ee6-ear-passivating/target/clusterbench-ee6-passivating.ear
     ./clusterbench-ee7-ear/target/clusterbench-ee7.ear
 
-Note that bulding EE7 version requires new and yet unreleased version of maven-ear-plugin version 2.9. 
 To build it locally do:
 
     $ git clone https://github.com/apache/maven-plugins.git
