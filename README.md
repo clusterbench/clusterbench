@@ -35,6 +35,7 @@ Create them on GitHub Issues:
 
 [https://github.com/clusterbench/clusterbench/issues](https://github.com/clusterbench/clusterbench/issues)
 
+
 Contributing
 ------------
 
@@ -55,59 +56,63 @@ You can try a demo running for free on [OpenShift by Red Hat](https://www.opensh
 _Please do not benchmark this instance!_
 
 
-Servlets
-========
+Scenario Servlets
+-----------------
 
 Each servlet stresses a different replication logic, but they all produce the same reply:
-integer number of times the servlet has been previously invoked within the existing session in a `text/plain` response.
+number of times (integer) the servlet has been previously invoked within the existing session in a `text/plain` response.
 In other words, the first request returns 0 and each following invocation returns number incremented by 1.
 
 Furthermore, each HTTP session carries 4 KB of dummy session data in a byte array.
 
-There are also 2 load driving servlets for memory and CPU usage.
+### HttpSessionServlet
 
-
-HttpSessionServlet
--------------------
 [/clusterbench/session](http://localhost:8080/clusterbench/session)
 
-The "default" servlet. Stores serial number and data in `SerialBean` object which is directly put to `javax.servlet.http.HttpSession`.
+The 'default' servlet. Stores serial number and data in `SerialBean` object (POJO) which is directly stored in `javax.servlet.http.HttpSession`.
 
 
-CdiServlet
-----------
+### CdiServlet
+
 [/clusterbench/cdi](http://localhost:8080/clusterbench/cdi)
 
 Stores a serial number in `@SessionScoped` bean.
 
 
-LocalEjbServlet
----------------
+### LocalEjbServlet
+
 [/clusterbench/ejbservlet](http://localhost:8080/clusterbench/ejbservlet)
 
-Stores serial and data in `@Stateful` EJB Session bean (SFSB). The EJB is invoked on every request.
+Stores serial and data in `@Stateful` EJB Session bean (SFSB). The EJB is then invoked on every request.
 
 
-GranularSessionServlet
-----------------------
+### GranularSessionServlet
+
 [/clusterbench-granular/granular](http://localhost:8080/clusterbench-granular/granular)
 
 Stores serial number and data separately and are both directly put to `javax.servlet.http.HttpSession`.
+The byte array is never changed therefore this can be used to test effectivity of using granular session replication.
 
 
-MemoryUsageServlet
-------------------
+Load Servlets
+-------------
+
+There are also two oad generating Servlets for memory and CPU usage. These Servlets simulate load on the target system. These can be
+used to test the load-balancing mechanism of the reverse proxy.
+
+
+### MemoryUsageServlet
+
 [/clusterbench/memoryusage?milliseconds=10000&megabytes=500](http://localhost:8080/clusterbench/memoryusage?milliseconds=10000&megabytes=500)
 
 Servlet simulating memory usage of the Java Virtual Machine (JVM). Parameters are `milliseconds` (duration) and `megabytes`.
 
 
-AverageSystemLoadServlet
-------------------------
+### AverageSystemLoadServlet
+
 [/clusterbench/averagesystemload?milliseconds=10000&threads=4](http://localhost:8080/clusterbench/averagesystemload?milliseconds=10000&threads=4)
 
 Servlet simulating CPU load of the cluster node. Parameters are `milliseconds` (duration) and `threads`.
-
 
 
 Happy benchmarking!
