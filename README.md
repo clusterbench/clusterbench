@@ -106,7 +106,7 @@ Stores serial and data in `@Stateful` EJB Session bean (SFSB). The EJB is then i
 [/clusterbench-granular/granular](http://localhost:8080/clusterbench-granular/granular)
 
 Stores serial number and data separately and are both directly put to `javax.servlet.http.HttpSession`.
-The byte array is never changed therefore this can be used to test effectivity of using granular session replication.
+The byte array is never changed therefore this can be used to test effectiveness of using granular session replication.
 
 
 Load Servlets
