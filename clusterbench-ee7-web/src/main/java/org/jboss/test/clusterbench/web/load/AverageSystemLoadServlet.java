@@ -30,17 +30,17 @@ import org.jboss.test.clusterbench.common.load.AverageSystemLoad;
 
 /**
  * AverageSystemLoadServlet is used for stressing the server's CPU.
- * <p/>
+ * <p>
  * Usage:
- * <p/>
- * You may GET e.g. this URL: http://localhost:8080/clusterbench/averagesystemload?milliseconds=20000&threads=4
+ * <p>
+ * You may GET e.g. this URL: <a href="http://localhost:8080/clusterbench/averagesystemload?milliseconds=20000&threads=4">http://localhost:8080/clusterbench/averagesystemload?milliseconds=20000&amp;threads=4</a>
  * By doing so, there will be 4 threads with evil active-loops created.
  * These threads will be running for 20000 milliseconds.
- * <p/>
+ * <p>
  * After the aforementioned time, you shall receive a response saying something like:
- * <p/>
+ * <p>
  * DONE, I was stressing CPU with 4 evil threads for 20000 milliseconds (including warm-up).
- * <p/>
+ * <p>
  * NOTE: Do not forget to set some reasonable time-out on your client...
  * That's it. No more functionality.
  *
