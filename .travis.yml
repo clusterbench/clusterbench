@@ -1,4 +1,4 @@
 language: java
 jdk:
-  - oraclejdk7
-script: "mvn clean install -Pee5,ee6,ee7; mvn test -Pee5,ee6,ee7"
+  - oraclejdk8
+script: "mvn clean install -Pee5,ee6,ee7"
