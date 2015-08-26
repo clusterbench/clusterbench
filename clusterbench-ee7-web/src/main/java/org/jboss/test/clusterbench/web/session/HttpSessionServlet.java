@@ -16,10 +16,15 @@
 
 package org.jboss.test.clusterbench.web.session;
 
-import javax.servlet.annotation.WebServlet;
-
 import org.jboss.test.clusterbench.common.session.CommonHttpSessionServlet;
+
+import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "HttpSessionServlet", urlPatterns = {"/session"})
 public class HttpSessionServlet extends CommonHttpSessionServlet {
+
+    @Override
+    protected Object createSerialBean() {
+        return new ImmutableSerialBean();
+    }
 }
