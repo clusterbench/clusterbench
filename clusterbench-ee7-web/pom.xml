@@ -35,6 +35,13 @@
     </properties>
 
     <dependencies>
+        <!-- @org.wildfly.clustering.web.annotation.Immutable -->
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-clustering-web-api</artifactId>
+            <version>10.0.0.Beta2</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee7-ejb</artifactId>

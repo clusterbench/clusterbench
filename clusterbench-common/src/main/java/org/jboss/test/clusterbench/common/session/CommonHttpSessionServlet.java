@@ -30,7 +30,7 @@ import org.jboss.test.clusterbench.common.SerialBean;
 
 public class CommonHttpSessionServlet extends HttpServlet {
 
-    private static final Logger log = Logger.getLogger(CommonHttpSessionServlet.class.getName());
+    protected static final Logger log = Logger.getLogger(CommonHttpSessionServlet.class.getName());
     public static final String KEY = CommonHttpSessionServlet.class.getName();
 
     @Override
@@ -39,10 +39,10 @@ public class CommonHttpSessionServlet extends HttpServlet {
 
         if (session.isNew()) {
             log.log(Level.INFO, "New session created: {0}", session.getId());
-            session.setAttribute(KEY, new SerialBean());
+            session.setAttribute(KEY, this.createSerialBean());
         } else if (session.getAttribute(KEY) == null) {
             log.log(Level.INFO, "Session is not new, creating SerialBean: {0}", session.getId());
-            session.setAttribute(KEY, new SerialBean());
+            session.setAttribute(KEY, this.createSerialBean());
         }
 
         SerialBean bean = (SerialBean) session.getAttribute(KEY);
@@ -68,6 +68,10 @@ public class CommonHttpSessionServlet extends HttpServlet {
             log.log(Level.INFO, "Invalidating: {0}", session.getId());
             session.invalidate();
         }
+    }
+
+    protected Object createSerialBean() {
+        return new SerialBean();
     }
 
     @Override
