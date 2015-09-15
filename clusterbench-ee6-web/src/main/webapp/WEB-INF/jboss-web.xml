@@ -15,10 +15,10 @@
   ~ limitations under the License.
   -->
 
-<jboss-web version="6.0"
-           xmlns="http://www.jboss.com/xml/ns/javaee"
+<jboss-web xmlns="http://www.jboss.com/xml/ns/javaee"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/j2ee/schema/jboss-web_6_0.xsd">
+           xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/j2ee/schema/jboss-web_7_1.xsd"
+           version="7.1">
 
     <replication-config>
         <!-- The default value is SET_AND_NON_PRIMITIVE_GET, therefore the byte array which is carrying the data is considered
@@ -27,6 +27,9 @@
 
         <!-- Replicating entire session is the default. -->
         <replication-granularity>SESSION</replication-granularity>
+
+        <!-- Always replicate the metadata -->
+        <max-unreplicated-interval>0</max-unreplicated-interval>
     </replication-config>
     
 </jboss-web>
