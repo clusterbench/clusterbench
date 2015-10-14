@@ -82,28 +82,28 @@ In other words, the first request returns 0 and each following invocation return
 
 Furthermore, each HTTP session carries 4 KB of dummy session data in a byte array.
 
-### HttpSessionServlet
+##### HttpSessionServlet
 
 [/clusterbench/session](http://localhost:8080/clusterbench/session)
 
 The 'default' servlet. Stores serial number and data in `SerialBean` object (POJO) which is directly stored in `javax.servlet.http.HttpSession`.
 
 
-### CdiServlet
+##### CdiServlet
 
 [/clusterbench/cdi](http://localhost:8080/clusterbench/cdi)
 
 Stores a serial number in `@SessionScoped` bean.
 
 
-### LocalEjbServlet
+##### LocalEjbServlet
 
 [/clusterbench/ejbservlet](http://localhost:8080/clusterbench/ejbservlet)
 
 Stores serial and data in `@Stateful` EJB Session bean (SFSB). The EJB is then invoked on every request.
 
 
-### GranularSessionServlet
+##### GranularSessionServlet
 
 [/clusterbench-granular/granular](http://localhost:8080/clusterbench-granular/granular)
 
@@ -118,14 +118,14 @@ There are also two oad generating Servlets for memory and CPU usage. These Servl
 used to test the load-balancing mechanism of the reverse proxy.
 
 
-### MemoryUsageServlet
+##### MemoryUsageServlet
 
 [/clusterbench/memoryusage?milliseconds=10000&megabytes=500](http://localhost:8080/clusterbench/memoryusage?milliseconds=10000&megabytes=500)
 
 Servlet simulating memory usage of the Java Virtual Machine (JVM). Parameters are `milliseconds` (duration) and `megabytes`.
 
 
-### AverageSystemLoadServlet
+##### AverageSystemLoadServlet
 
 [/clusterbench/averagesystemload?milliseconds=10000&threads=4](http://localhost:8080/clusterbench/averagesystemload?milliseconds=10000&threads=4)
 
