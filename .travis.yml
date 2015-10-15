@@ -2,3 +2,4 @@ language: java
 jdk:
   - oraclejdk8
 script: "mvn clean install -Pee5,ee6,ee7"
+sudo: false
