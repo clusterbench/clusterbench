@@ -23,4 +23,5 @@ import org.jboss.test.clusterbench.common.SerialBean;
 
 @SessionScoped
 public class SessionScopedCdiSerialBean extends SerialBean implements Serializable {
+    // Inherit.
 }

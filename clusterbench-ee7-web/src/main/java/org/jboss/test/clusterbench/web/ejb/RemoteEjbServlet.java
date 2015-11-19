@@ -25,17 +25,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jboss.test.clusterbench.ejb.stateful.LocalStatefulSB;
+import org.jboss.test.clusterbench.ejb.stateful.RemoteStatefulSB;
 
 /**
  * @author Radoslav Husar
- * @version Nov 2011
+ * @version Nov 2015
  */
-@WebServlet(name = "LocalEjbServlet", urlPatterns = { "/ejbservlet", "/localejbservlet" })
-public class LocalEjbServlet extends HttpServlet {
+@WebServlet(name = "RemoteEjbServlet", urlPatterns = {"/remoteejbservlet"})
+public class RemoteEjbServlet extends HttpServlet {
 
     @Inject
-    private LocalStatefulSB bean;
+    private RemoteStatefulSB bean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,6 +46,6 @@ public class LocalEjbServlet extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Servlet invoking @LocalBean Stateful Session Bean to store serial.";
+        return "Servlet invoking @Remote Stateful Session Bean to store serial.";
     }
 }
