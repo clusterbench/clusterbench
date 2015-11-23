@@ -32,6 +32,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <wildfly.version>10.0.0.CR4</wildfly.version>
     </properties>
 
     <build>
@@ -99,5 +100,44 @@
             <type>war</type>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>1.1.0.Alpha4</version>
+                        <executions>
+                            <execution>
+                                <id>integration-test-wildfly-deploy</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>start</goal>
+                                    <goal>deploy</goal>
+                                </goals>
+                                <configuration>
+                                    <version>${wildfly.version}</version>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>integration-test-wildfly-undeploy</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>undeploy</goal>
+                                    <goal>shutdown</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
