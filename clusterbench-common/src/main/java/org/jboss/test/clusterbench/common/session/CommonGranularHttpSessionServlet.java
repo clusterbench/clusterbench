@@ -19,11 +19,13 @@ package org.jboss.test.clusterbench.common.session;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.SerialBean;
 
@@ -43,11 +45,11 @@ public class CommonGranularHttpSessionServlet extends HttpServlet {
             // Reuse serial bean logic to generate the data but don't store the SerialBean instance directly.
             SerialBean tempBean = new SerialBean();
             session.setAttribute(KEY_SERIAL, tempBean.getSerial());
-            session.setAttribute(KEY_CARGO, tempBean.getCargo());
+            this.storeCargo(session, tempBean.getCargo());
         }
 
         Integer serial = (Integer) session.getAttribute(KEY_SERIAL);
-        byte[] cargo = (byte[]) session.getAttribute(KEY_CARGO);
+        byte[] cargo = this.loadCargo(session);
 
         resp.setContentType("text/plain");
 
@@ -69,6 +71,14 @@ public class CommonGranularHttpSessionServlet extends HttpServlet {
             log.log(Level.INFO, "Invalidating: {0}", session.getId());
             session.invalidate();
         }
+    }
+
+    public void storeCargo(HttpSession session, byte[] cargo) {
+        session.setAttribute(KEY_CARGO, cargo);
+    }
+
+    public byte[] loadCargo(HttpSession session) {
+        return (byte[]) session.getAttribute(KEY_CARGO);
     }
 
     @Override

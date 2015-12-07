@@ -103,6 +103,7 @@
                             </archive>
                         </configuration>
                     </execution>
+                    <!-- Build default configuration: session granularity and never passivates. -->
                     <execution>
                         <phase>package</phase>
                         <id>build-default-war</id>
@@ -112,6 +113,7 @@
                         <configuration>
                             <classifier>default</classifier>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                            <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
                                     <Dependencies>org.infinispan, org.jgroups</Dependencies>
@@ -119,7 +121,7 @@
                             </archive>
                         </configuration>
                     </execution>
-                    <!-- Build passivating modification with passivation-enabled configuration. -->
+                    <!-- Build passivating configuration: session granularity but passivation enabled. -->
                     <execution>
                         <phase>package</phase>
                         <id>build-passivating-war</id>
@@ -129,6 +131,25 @@
                         <configuration>
                             <classifier>passivating</classifier>
                             <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
+                            <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
+                            <archive>
+                                <manifestEntries>
+                                    <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </execution>
+                    <!-- Build granular configuration: attribute granularity but never passivates. -->
+                    <execution>
+                        <phase>package</phase>
+                        <id>build-granular-war</id>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>granular</classifier>
+                            <warSourceDirectory>${basedir}/src/main/webapp-granular</warSourceDirectory>
+                            <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
                                     <Dependencies>org.infinispan, org.jgroups</Dependencies>
