@@ -72,6 +72,12 @@
                             <classifier>passivating</classifier>
                             <contextRoot>/clusterbench-passivating</contextRoot>
                         </webModule>
+                        <webModule>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee7-web</artifactId>
+                            <classifier>granular</classifier>
+                            <contextRoot>/clusterbench-granular</contextRoot>
+                        </webModule>
                     </modules>
                 </configuration>
             </plugin>
@@ -97,6 +103,13 @@
             <artifactId>clusterbench-ee7-web</artifactId>
             <version>${project.version}</version>
             <classifier>passivating</classifier>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.test</groupId>
+            <artifactId>clusterbench-ee7-web</artifactId>
+            <version>${project.version}</version>
+            <classifier>granular</classifier>
             <type>war</type>
         </dependency>
     </dependencies>
