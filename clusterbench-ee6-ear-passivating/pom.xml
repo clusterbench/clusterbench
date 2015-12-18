@@ -16,9 +16,9 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
@@ -57,7 +57,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.jboss.test</groupId>
@@ -72,12 +72,6 @@
             <classifier>passivating</classifier>
             <type>war</type>
         </dependency>
-        <dependency>
-            <groupId>org.jboss.test</groupId>
-            <artifactId>clusterbench-ee6-web-granular</artifactId>
-            <version>${project.version}</version>
-            <type>war</type>
-        </dependency>
     </dependencies>
-    
+
 </project>

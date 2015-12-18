@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.jboss.test.clusterbench.web.session;
+package org.jboss.test.clusterbench.web.granular;
 
 import javax.servlet.annotation.WebServlet;
 import org.jboss.test.clusterbench.common.session.CommonGranularHttpSessionServlet;
