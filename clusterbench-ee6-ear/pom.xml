@@ -53,6 +53,24 @@
                 <configuration>
                     <version>6</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <ejbModule>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee6-ejb</artifactId>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee6-web</artifactId>
+                            <classifier>default</classifier>
+                            <contextRoot>/clusterbench</contextRoot>
+                        </webModule>
+                        <webModule>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee6-web</artifactId>
+                            <classifier>granular</classifier>
+                            <contextRoot>/clusterbench-granular</contextRoot>
+                        </webModule>
+                    </modules>
                 </configuration>
             </plugin>
         </plugins>
@@ -69,12 +87,14 @@
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee6-web</artifactId>
             <version>${project.version}</version>
+            <classifier>default</classifier>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
-            <artifactId>clusterbench-ee6-web-granular</artifactId>
+            <artifactId>clusterbench-ee6-web</artifactId>
             <version>${project.version}</version>
+            <classifier>granular</classifier>
             <type>war</type>
         </dependency>
     </dependencies>
