@@ -112,6 +112,7 @@
                         </goals>
                         <configuration>
                             <classifier>default</classifier>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                             <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
                             <archive>
@@ -130,6 +131,7 @@
                         </goals>
                         <configuration>
                             <classifier>passivating</classifier>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}-passivating</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
                             <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
                             <archive>
@@ -148,6 +150,7 @@
                         </goals>
                         <configuration>
                             <classifier>granular</classifier>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-granular</warSourceDirectory>
                             <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*]</packagingExcludes>
                             <archive>
