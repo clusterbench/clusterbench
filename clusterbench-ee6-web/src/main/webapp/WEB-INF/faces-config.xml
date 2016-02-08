@@ -19,9 +19,4 @@
               xmlns="http://java.sun.com/xml/ns/javaee" 
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
-    <managed-bean>
-        <managed-bean-name>managedSerialBean</managed-bean-name>
-        <managed-bean-class>org.jboss.test.clusterbench.web.jsf.JsfManagedBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
 </faces-config>
