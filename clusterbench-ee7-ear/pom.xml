@@ -32,7 +32,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <wildfly.version>10.0.0.CR4</wildfly.version>
     </properties>
 
     <build>
@@ -125,7 +124,7 @@
                     <plugin>
                         <groupId>org.wildfly.plugins</groupId>
                         <artifactId>wildfly-maven-plugin</artifactId>
-                        <version>1.1.0.Alpha4</version>
+                        <version>1.1.0.Alpha6</version>
                         <executions>
                             <execution>
                                 <id>integration-test-wildfly-deploy</id>
