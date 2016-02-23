@@ -34,6 +34,7 @@
 
     <properties>
         <linkXRef>false</linkXRef>
+        <wildfly.version>10.0.0.Final</wildfly.version>
     </properties>
 
     <profiles>
