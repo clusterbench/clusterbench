@@ -32,27 +32,17 @@ import org.jgroups.stack.IpAddress;
  * A simple debug Servlet. Feel free to add anything you should need.
  *
  * @author Radoslav Husar
+ * @version Mar 2016
  */
-@WebServlet(name = "DebugServlet", urlPatterns = {"/debug"})
+@WebServlet(name = "DebugServlet", urlPatterns = { "/debug" })
 public class DebugServlet extends AbstractCommonDebugServlet {
 
     @Resource(lookup = "java:jboss/infinispan/container/web")
     private EmbeddedCacheManager container;
 
     @Override
-    public String getDebugInfo(HttpServletRequest req) {
+    public String getContainerSpecificDebugInfo(HttpServletRequest req) {
         StringBuilder info = new StringBuilder();
-
-        // Display Server/Local ports
-        // @see https://issues.jboss.org/browse/UNDERTOW-122
-        info.append("ServletRequest.getServerPort(): ").append(req.getServerPort()).append(System.getProperty("line.separator"));
-        info.append("ServletRequest.getLocalPort(): ").append(req.getLocalPort()).append(System.getProperty("line.separator"));
-
-        // Fetch just the node name for now
-        info.append("Node name: ").append(System.getProperty("jboss.node.name")).append(System.getProperty("line.separator"));
-
-        // Get the ID and route
-        info.append("Session ID: ").append(req.getSession().getId()).append(System.getProperty("line.separator"));
 
         // Get current cache nodes
         info.append("Members: ").append(container.getMembers()).append(System.getProperty("line.separator"));

@@ -19,6 +19,7 @@ package org.jboss.test.clusterbench.web.debug;
 import javax.annotation.Resource;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
+
 import org.infinispan.manager.EmbeddedCacheManager;
 import org.infinispan.remoting.transport.Address;
 import org.infinispan.remoting.transport.jgroups.JGroupsAddress;
@@ -31,22 +32,17 @@ import org.jgroups.stack.IpAddress;
  * A simple debug Servlet. Feel free to add anything you should need.
  *
  * @author Radoslav Husar
+ * @version Mar 2016
  */
-@WebServlet(name = "DebugServlet", urlPatterns = {"/debug"})
+@WebServlet(name = "DebugServlet", urlPatterns = { "/debug" })
 public class DebugServlet extends AbstractCommonDebugServlet {
 
     @Resource(lookup = "java:jboss/infinispan/container/web")
     private EmbeddedCacheManager container;
 
     @Override
-    public String getDebugInfo(HttpServletRequest req) {
+    public String getContainerSpecificDebugInfo(HttpServletRequest req) {
         StringBuilder info = new StringBuilder();
-
-        // Fetch just the node name for now
-        info.append("Node name: ").append(System.getProperty("jboss.node.name")).append(System.getProperty("line.separator"));
-
-        // Get the ID and route
-        info.append("Session ID: ").append(req.getSession().getId()).append(System.getProperty("line.separator"));
 
         // Get current cache nodes
         info.append("Members: ").append(container.getMembers()).append(System.getProperty("line.separator"));
