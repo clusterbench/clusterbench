@@ -47,6 +47,12 @@ public class DebugServlet extends AbstractCommonDebugServlet {
         // Get current cache nodes
         info.append("Members: ").append(container.getMembers()).append(System.getProperty("line.separator"));
 
+        // This WILL OOM your server instance if you have hundreds of thousands of REPL values. Even sooner with DIST.
+        for (String cacheName : container.getCacheNames()) {
+            info.append("Cache: ").append(cacheName).append(", Size: ").append(container.getCache(cacheName).size()).append(System.getProperty("line.separator"));
+            info.append("\tKeys: ").append(container.getCache(cacheName).keySet()).append(System.getProperty("line.separator"));
+        }
+
         info.append("Physical addresses: ");
         JGroupsTransport transport = (JGroupsTransport) container.getTransport();
         for (Address infinispanWrapAddr : container.getMembers()) {
