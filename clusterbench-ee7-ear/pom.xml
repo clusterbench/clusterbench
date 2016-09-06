@@ -126,7 +126,6 @@
                     <plugin>
                         <groupId>org.wildfly.plugins</groupId>
                         <artifactId>wildfly-maven-plugin</artifactId>
-                        <version>1.1.0.Alpha7</version>
                         <executions>
                             <execution>
                                 <id>integration-test-wildfly-deploy</id>
@@ -136,7 +135,7 @@
                                     <goal>deploy</goal>
                                 </goals>
                                 <configuration>
-                                    <version>${wildfly.version}</version>
+                                    <version>${version.org.wildfly}</version>
                                     <server-args>
                                         <server-arg>--server-config=standalone-full-ha.xml</server-arg>
                                     </server-args>
