@@ -35,7 +35,13 @@ Deploying
 
 ### JBoss AS 7 / WildFly 8 and newer
 
-Copy `clusterbench-ee7.ear` (or `clusterbench-ee6.ear` for AS 7) to server's deployments directory
+You can use the `deploy` target of the [WildFly Maven Plugin](https://docs.jboss.org/wildfly/plugins/maven/latest/deploy-mojo.html) to deploy to your running instance by running:
+
+    $ mvn wildfly:deploy
+
+which will deploy the resulting EAR to the running server.
+
+To do this manually, copy `clusterbench-ee7.ear` (or `clusterbench-ee6.ear` for AS 7) to server's deployments directory
 and start the standalone server in the HA mode:
 
 	$ cd ~/wildfly-8.0.0.Final
