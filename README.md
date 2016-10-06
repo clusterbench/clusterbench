@@ -63,6 +63,15 @@ If you prefer GUI, you can start the server and navigate to [http://localhost:99
 and follow the instructions.
 
 
+### Tomcat
+
+To deploy the Tomcat variant of clusterbench, copy the following `war` file into Tomcat installation `webapps/` directory:
+
+    $ cp ~/clusterbench-ee7-web/target/clusterbench-ee7-web-tomcat.war webapps/
+
+Note that CDI, debug, EJB, granular, JSF servlets are unsupported on Tomcat and not bundled in the `war`.
+
+
 ### JBoss AS 5
 
 Copy `clusterbench-ee5.ear` to your server's deploy directory, e.g.:
