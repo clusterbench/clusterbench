@@ -77,7 +77,7 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
         resp.getWriter().println("Session ID: " + req.getSession().getId());
         // Current invocation time; useful for testing session timeouts
         resp.getWriter().println("Current time: " + new Date());
-        // Display Server/Local ports, see https://issues.jboss.org/browse/UNDERTOW-122
+        // Display Server/Local ports
         resp.getWriter().println("ServletRequest.getServerPort(): " + req.getServerPort());
         resp.getWriter().println("ServletRequest.getLocalPort(): " + req.getLocalPort());
         // Fetch just the node name for now
