@@ -26,4 +26,5 @@ import org.jboss.test.clusterbench.common.ejb.CommonStatelessSB;
  */
 @Remote
 public interface RemoteStatelessSB extends CommonStatelessSB {
+    // Inherit.
 }
