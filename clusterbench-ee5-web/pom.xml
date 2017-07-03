@@ -47,6 +47,13 @@
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
+	<dependency>
+            <groupId>org.jboss.test</groupId>
+            <artifactId>clusterbench-common</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+            <type>jar</type>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -77,6 +84,38 @@
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
+		<executions>
+		    <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                        <configuration>
+                            <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                            <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
+                            <archive>
+                                <manifestEntries>
+                                    <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </execution>
+                    <!-- Tomcat variant -->
+                    <execution>
+                        <phase>package</phase>
+                        <id>build-tomcat-war</id>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>tomcat</classifier>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}-tomcat</webappDirectory>
+                            <warSourceDirectory>${basedir}/src/main/webapp-tomcat</warSourceDirectory>
+                            <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]</packagingExcludes>
+                        </configuration>
+		    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

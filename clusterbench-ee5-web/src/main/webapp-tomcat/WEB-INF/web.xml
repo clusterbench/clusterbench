@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <!-- CONFIGURATION -->
+    <distributable />
+
+    <session-config>
+        <!-- in minutes -->
+        <session-timeout>5</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- SERVLETS -->
+
+    <!-- Session -->
+    <servlet>
+        <servlet-name>HttpSessionServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.session.HttpSessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HttpSessionServlet</servlet-name>
+        <url-pattern>/session</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HttpSessionServlet</servlet-name>
+        <url-pattern>/session/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- JvmRoute -->
+    <servlet>
+        <servlet-name>JvmRouteServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.jvmroute.JvmRouteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JvmRouteServlet</servlet-name>
+        <url-pattern>/jvmroute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JvmRouteServlet</servlet-name>
+        <url-pattern>/jvmroute/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- exit -->
+    <servlet>
+        <servlet-name>ExitServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.exit.ExitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExitServlet</servlet-name>
+        <url-pattern>/exit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExitServlet</servlet-name>
+        <url-pattern>/exit/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- HTTPCode -->
+    <servlet>
+        <servlet-name>HTTPCodeServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.jvmroute.HTTPCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HTTPCodeServlet</servlet-name>
+        <url-pattern>/httpcode</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HTTPCodeServlet</servlet-name>
+        <url-pattern>/httpcode/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- RequestInfo -->
+    <servlet>
+        <servlet-name>RequestInfoServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.jvmroute.RequestInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestInfoServlet</servlet-name>
+        <url-pattern>/requestinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequestInfoServlet</servlet-name>
+        <url-pattern>/requestinfo/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Load -->
+    <servlet>
+        <servlet-name>AverageSystemLoadServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.AverageSystemLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AverageSystemLoadServlet</servlet-name>
+        <url-pattern>/averagesystemload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageSystemLoadServlet</servlet-name>
+        <url-pattern>/averagesystemload/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>MemoryUsageServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.MemoryUsageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemoryUsageServlet</servlet-name>
+        <url-pattern>/memoryusage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemoryUsageServlet</servlet-name>
+        <url-pattern>/memoryusage/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>BusyConnectorsLoadServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.BusyConnectorsLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BusyConnectorsLoadServlet</servlet-name>
+        <url-pattern>/busyconnectorsload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BusyConnectorsLoadServlet</servlet-name>
+        <url-pattern>/busyconnectorsload/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SendTrafficLoadServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.SendTrafficLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendTrafficLoadServlet</servlet-name>
+        <url-pattern>/sendtrafficload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendTrafficLoadServlet</servlet-name>
+        <url-pattern>/sendtrafficload/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.ReceiveTrafficLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
+        <url-pattern>/receivetrafficload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
+        <url-pattern>/receivetrafficload/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
