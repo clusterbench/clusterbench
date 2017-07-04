@@ -15,12 +15,22 @@ public abstract class CommonHTTPCodeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int httpCode = Integer.parseInt(request.getParameter("http_code"));
+        int httpCode = 0;
+        HttpSession session = request.getSession();
+        StringBuilder responseText = new StringBuilder();
+
+        try {
+            httpCode = Integer.parseInt(request.getParameter("http_code"));
+        } catch (java.lang.NumberFormatException exception) {
+            responseText.append("Format exception!\n\n");
+            responseText.append(request.toString()+ "\n");
+            response.getWriter().print(responseText.toString());
+            response.setStatus(500);
+            return ;
+        }
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
         // Gives it a JSESSIONID
-        HttpSession session = request.getSession();
-        StringBuilder responseText = new StringBuilder();
         responseText.append("Done. ");
         responseText.append("\n");
         responseText.append("HTTP Code was: ");
@@ -42,6 +52,6 @@ public abstract class CommonHTTPCodeServlet extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "By invoking RequestInfoServlet, you get the various pieces of information importance of which can hardly be exaggerated :-)";
+        return "Returns a response with HTTP code from parameter e.g. \"?http_code=503\" returns \"503 Service Unavailable\"";
     }
 }
