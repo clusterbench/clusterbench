@@ -80,11 +80,11 @@ public class CommonJvmRoute {
             }
         }
         String jvmRoute = UNKNOWN;
-        if (jvmRoute4 != null && !jvmRoute1.equals(UNKNOWN)) {
+        if (jvmRoute1 != null && !jvmRoute1.equals(UNKNOWN)) {
             jvmRoute = jvmRoute1;
-        } else if (jvmRoute4 != null && !jvmRoute2.equals(UNKNOWN)) {
+        } else if (jvmRoute2 != null && !jvmRoute2.equals(UNKNOWN)) {
             jvmRoute = jvmRoute2;
-        } else if (jvmRoute4 != null && !jvmRoute3.equals(UNKNOWN)) {
+        } else if (jvmRoute3 != null && !jvmRoute3.equals(UNKNOWN)) {
             jvmRoute = jvmRoute3;
         } else if (jvmRoute4 != null && !jvmRoute4.equals(UNKNOWN)) {
             jvmRoute = jvmRoute4;
