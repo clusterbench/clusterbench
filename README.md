@@ -3,8 +3,8 @@ ClusterBench
 
 [![Build Status](https://travis-ci.org/clusterbench/clusterbench.svg?branch=master)](https://travis-ci.org/clusterbench/clusterbench)
 
-ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 5 (EAP 5), JBoss AS 7 (EAP 6), WildFly 8 and newer.
-Once deployed it is easy to stress (using JMeter, curl, etc) and monitor the performance of the cluster while
+ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 5 (EAP 5), JBoss AS 7 (EAP 6), WildFly 8, Tomcat 6
+and newer. Once deployed it is easy to stress (using JMeter, curl, etc) and monitor the performance of the cluster while
 at the same time it can be easily checked the correctness of replicated sessions.
 
 
@@ -29,6 +29,11 @@ Output files:
     ./clusterbench-ee6-ear-passivating/target/clusterbench-ee6-passivating.ear
     ./clusterbench-ee5-ear/target/clusterbench-ee5.ear
 
+Output files for Tomcat:
+
+    ./clusterbench-ee7-web/target/clusterbench-ee7-web-tomcat.war
+    ./clusterbench-ee6-web/target/clusterbench-ee6-web-tomcat.war
+    ./clusterbench-ee5-web/target/clusterbench-ee5-web-tomcat.war
 
 Deploying
 ---------
@@ -65,7 +70,7 @@ and follow the instructions.
 
 ### Tomcat
 
-To deploy the Tomcat variant of clusterbench, copy the following `war` file into Tomcat installation `webapps/` directory:
+To deploy the Tomcat variant of clusterbench, copy the `war` file into Tomcat installation `webapps/` directory, e.g.:
 
     $ cp ~/clusterbench-ee7-web/target/clusterbench-ee7-web-tomcat.war webapps/
 
@@ -125,12 +130,23 @@ Stores serial and data in `@Stateful` EJB Session bean (SFSB). The EJB is then i
 Stores serial number and data separately and are both directly put to `javax.servlet.http.HttpSession`.
 The byte array is never changed therefore this can be used to test effectiveness of using granular session replication.
 
+##### JvmRouteServlet
+
+[/clusterbench/jvmroute](http://localhost:8080/clusterbench/jvmroute)
+
+Returns worker's ID which proccessed the request (in case ModCluster is used).
+
+##### HttpCodeServlet
+
+[/clusterbench/httpcode](http://localhost:8080/clusterbench/jvmroute)
+
+Returns HTTP response with HTTP code from parameter. Parameter is `http_code` with default value 511.
 
 Load Servlets
 -------------
 
-There are also two oad generating Servlets for memory and CPU usage. These Servlets simulate load on the target system. These can be
-used to test the load-balancing mechanism of the reverse proxy.
+These Servlets simulate load on the target system (memory, CPU, traffic, busy connector).  These can be used to test 
+the load-balancing mechanism of the reverse proxy.
 
 
 ##### MemoryUsageServlet
@@ -146,6 +162,17 @@ Servlet simulating memory usage of the Java Virtual Machine (JVM). Parameters ar
 
 Servlet simulating CPU load of the cluster node. Parameters are `milliseconds` (duration) and `threads`.
 
+##### SendTrafficLoadServlet
+
+[clusterbench/sendtrafficload?kilobytes=100](http://localhost:8080/clusterbench/sendtrafficload?kilobytes=100)
+
+Servlet simulating traffic load on the cluster node. Parameter is `kilobytes` (amount of data).
+
+##### BusyConnectorsLoadServlet
+
+[clusterbench/busyconnectorsload?milliseconds=10000](http://localhost:8080/clusterbench-ee7-web-tomcat/busyconnectorsload?milliseconds=10000)
+
+Servlet simulating busy connector. Parameter is `milliseconds` (duration).
 
 Issues
 ------
