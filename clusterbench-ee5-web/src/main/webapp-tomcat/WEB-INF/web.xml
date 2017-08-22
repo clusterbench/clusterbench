@@ -47,16 +47,16 @@
 
     <!-- exit -->
     <servlet>
-        <servlet-name>ExitServlet</servlet-name>
-        <servlet-class>org.jboss.test.clusterbench.web.exit.ExitServlet</servlet-class>
+        <servlet-name>ExitJvmServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.exitjvm.ExitJvmServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ExitServlet</servlet-name>
-        <url-pattern>/exit</url-pattern>
+        <servlet-name>ExitJvmServlet</servlet-name>
+        <url-pattern>/exitjvm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ExitServlet</servlet-name>
-        <url-pattern>/exit/*</url-pattern>
+        <servlet-name>ExitJvmServlet</servlet-name>
+        <url-pattern>/exitjvm/*</url-pattern>
     </servlet-mapping>
 
     <!-- HTTPCode -->
