@@ -78,14 +78,6 @@ Copy `clusterbench-ee5.ear` to your server's deploy directory, e.g.:
 
 	$ cp clusterbench-ee5.ear ~/jboss-5.0.0/server/all/deploy/
 
-Live Demo
----------
-
-You can try a demo running for free on [OpenShift by Red Hat](https://www.openshift.com/):
-
-[http://clusterbench-rhv.rhcloud.com/clusterbench/](http://clusterbench-rhv.rhcloud.com/clusterbench/)
-
-_Please do not benchmark this instance!_
 
 
 Scenario Servlets
