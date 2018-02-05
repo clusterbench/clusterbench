@@ -17,3 +17,6 @@ nb-configuration.xml
 .idea/
 *.iml
 *.ipr
+
+# Red Hat OpenShift
+deployments/
