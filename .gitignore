@@ -17,3 +17,6 @@ nb-configuration.xml
 .idea/
 *.iml
 *.ipr
+
+# MacOS
+.DS_Store
