@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench</artifactId>
-    <version>2.0.1.Final-SNAPSHOT</version>
+    <version>3.0.0.Alpha1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>clusterbench</name>
 
@@ -122,7 +122,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
