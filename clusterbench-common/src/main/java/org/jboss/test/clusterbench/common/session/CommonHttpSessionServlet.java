@@ -38,8 +38,14 @@ public class CommonHttpSessionServlet extends HttpServlet {
         HttpSession session = req.getSession(true);
 
         if (session.isNew()) {
-            log.log(Level.INFO, "New session created: {0}", session.getId());
-            session.setAttribute(KEY, this.createSerialBean());
+            if (req.getParameter(ClusterBenchConstants.CARGOKB) != null && req.getParameter(ClusterBenchConstants.CARGOKB).matches("[0-9]+")) {
+                log.log(Level.INFO, "New session created: {0} with {1}kB cargo", new Object[]{session.getId(), req.getParameter(ClusterBenchConstants.CARGOKB)});
+                int kargokb = Integer.parseInt(req.getParameter(ClusterBenchConstants.CARGOKB));
+                session.setAttribute(KEY, this.createSerialBean(kargokb));
+            } else {
+                log.log(Level.INFO, "New session created: {0} with {1}kB cargo", new Object[]{session.getId(), SerialBean.DEFAULT_CARGOKB});
+                session.setAttribute(KEY, this.createSerialBean());
+            }
         } else if (session.getAttribute(KEY) == null) {
             log.log(Level.INFO, "Session is not new, creating SerialBean: {0}", session.getId());
             session.setAttribute(KEY, this.createSerialBean());
@@ -68,6 +74,10 @@ public class CommonHttpSessionServlet extends HttpServlet {
             log.log(Level.INFO, "Invalidating: {0}", session.getId());
             session.invalidate();
         }
+    }
+
+    private Object createSerialBean(int cargokbytes) {
+        return new SerialBean(cargokbytes);
     }
 
     protected Object createSerialBean() {
