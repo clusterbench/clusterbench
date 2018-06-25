@@ -18,5 +18,8 @@ nb-configuration.xml
 *.iml
 *.ipr
 
+# macOS
+.DS_Store
+
 # Red Hat OpenShift
 deployments/
