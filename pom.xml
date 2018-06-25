@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8"?><!--
   ~ Copyright 2013 Radoslav Husár
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +14,8 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench</artifactId>
@@ -25,8 +25,8 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:clusterbench/clusterbench.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <modules>
         <module>clusterbench-common</module>
@@ -34,20 +34,17 @@
 
     <properties>
         <linkXRef>false</linkXRef>
-        <version.org.wildfly>10.1.0.Final</version.org.wildfly>
-        <version.org.wildfly.maven.plugin>1.1.0.Alpha11</version.org.wildfly.maven.plugin>
+        <version.org.wildfly>13.0.0.Final</version.org.wildfly>
+        <version.org.wildfly.maven.plugin>1.2.2.Final</version.org.wildfly.maven.plugin>
     </properties>
 
     <profiles>
         <profile>
-            <id>ee7</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>ee5</id>
             <modules>
-                <module>clusterbench-ee7-ear</module>
-                <module>clusterbench-ee7-web</module>
-                <module>clusterbench-ee7-ejb</module>
+                <module>clusterbench-ee5-ear</module>
+                <module>clusterbench-ee5-web</module>
+                <module>clusterbench-ee5-ejb</module>
             </modules>
         </profile>
         <profile>
@@ -60,14 +57,34 @@
             </modules>
         </profile>
         <profile>
-            <id>ee5</id>
+            <id>ee7</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <modules>
-                <module>clusterbench-ee5-ear</module>
-                <module>clusterbench-ee5-web</module>
-                <module>clusterbench-ee5-ejb</module>
+                <module>clusterbench-ee7-ear</module>
+                <module>clusterbench-ee7-web</module>
+                <module>clusterbench-ee7-ejb</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>ee8</id>
+            <modules>
+                <module>clusterbench-ee8-ear</module>
+                <module>clusterbench-ee8-web</module>
+                <module>clusterbench-ee8-ejb</module>
             </modules>
         </profile>
     </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -108,21 +125,15 @@
                             <pluginExecutions>
                                 <pluginExecution>
                                     <pluginExecutionFilter>
-                                        <groupId>
-                                            org.apache.maven.plugins
-                                        </groupId>
-                                        <artifactId>
-                                            maven-dependency-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [2.1,)
-                                        </versionRange>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-dependency-plugin</artifactId>
+                                        <versionRange>[2.1,)</versionRange>
                                         <goals>
                                             <goal>copy</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -146,7 +157,7 @@
         </repository>
         <repository>
             <id>java-promoted</id>
-            <name>Java EE 7</name>
+            <name>Java EE 7 and 8</name>
             <url>https://maven.java.net/content/groups/promoted/</url>
         </repository>
     </repositories>
