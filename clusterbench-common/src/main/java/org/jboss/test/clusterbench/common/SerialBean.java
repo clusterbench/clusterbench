@@ -23,10 +23,15 @@ public class SerialBean implements Serializable {
 
     private int serial;
     private byte[] cargo;
+    public static final int DEFAULT_CARGOKB = 4;
 
     public SerialBean() {
+        this(DEFAULT_CARGOKB);
+    }
+
+    public SerialBean(int cargokb) {
         this.serial = 0;
-        this.cargo = new byte[4 * 1024];
+        this.cargo = new byte[cargokb * 1024];
         Random rand = new Random();
         rand.nextBytes(cargo);
     }

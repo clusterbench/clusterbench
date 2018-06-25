@@ -21,4 +21,6 @@ public interface ClusterBenchConstants {
     String READONLY = "readonly";
 
     String INVALIDATE = "invalidate";
+
+    String CARGOKB = "cargokb";
 }
