@@ -15,15 +15,17 @@ Clone the Git repository first and switch to the created directory:
 
 	$ git clone https://github.com/clusterbench/clusterbench.git
 
-It comes in 3 flavors for Java EE 5, 6 and 7:
+It comes in 3 flavors for Java EE 5, 6, 7 and 8:
 
+    $ mvn install -Pee8
     $ mvn install -Pee7 # default; requires JDK 7 or newer
-    $ mvn install -Pee5,ee6,ee7 # builds everything; requires JDK 7 or newer
+    $ mvn install -Pee5,ee6,ee7,ee8 # builds everything; requires JDK 7 or newer
     $ mvn install -Pee6
     $ mvn install -Pee5
 
 Output files:
 
+    ./clusterbench-ee8-ear/target/clusterbench-ee8.ear
     ./clusterbench-ee7-ear/target/clusterbench-ee7.ear
     ./clusterbench-ee6-ear/target/clusterbench-ee6.ear
     ./clusterbench-ee6-ear-passivating/target/clusterbench-ee6-passivating.ear
