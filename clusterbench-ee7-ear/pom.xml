@@ -186,6 +186,70 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <!-- mvn install -P ee7,offload -DskipTests -->
+            <id>offload</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>2.9</version>
+                        <configuration>
+                            <version>7</version>
+                            <defaultLibBundleDir>lib</defaultLibBundleDir>
+                            <fileNameMapping>no-version</fileNameMapping>
+                            <modules>
+                                <ejbModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-ejb</artifactId>
+                                </ejbModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>default</classifier>
+                                    <contextRoot>/clusterbench</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>passivating</classifier>
+                                    <contextRoot>/clusterbench-passivating</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>granular</classifier>
+                                    <contextRoot>/clusterbench-granular</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>offload</classifier>
+                                    <contextRoot>/clusterbench-offload</contextRoot>
+                                    <!--
+                                      - certain databases impose a severe limit on identifier length,
+                                      - and since the table name in the JDBC-based cache store is
+                                      - derived from the cache name, let's make the cache name short
+                                      -->
+                                    <!--<bundleFileName>d.war</bundleFileName>-->
+                                </webModule>
+                            </modules>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.test</groupId>
+                    <artifactId>clusterbench-ee7-web</artifactId>
+                    <version>${project.version}</version>
+                    <classifier>offload</classifier>
+                    <type>war</type>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
 
 </project>
