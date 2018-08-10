@@ -65,6 +65,8 @@
                 <module>clusterbench-ee7-ear</module>
                 <module>clusterbench-ee7-web</module>
                 <module>clusterbench-ee7-ejb</module>
+                <module>clusterbench-ee7-ejb-forwarding-ejbs</module>
+                <module>clusterbench-ee7-ejb-common</module>
             </modules>
         </profile>
         <profile>

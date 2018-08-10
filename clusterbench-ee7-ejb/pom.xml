@@ -38,7 +38,7 @@
     <dependencies>
         <dependency>
             <groupId>org.jboss.test</groupId>
-            <artifactId>clusterbench-common</artifactId>
+            <artifactId>clusterbench-ee7-ejb-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -119,4 +119,16 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>forwarding-ejbs</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.test</groupId>
+                    <artifactId>clusterbench-ee7-ejb-forwarding-ejbs</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
