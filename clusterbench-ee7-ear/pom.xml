@@ -191,7 +191,6 @@
             <id>offload</id>
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
@@ -249,6 +248,177 @@
                     <type>war</type>
                 </dependency>
             </dependencies>
+        </profile>
+        <profile>
+            <!-- mvn install -P ee7,offload -DskipTests -->
+            <id>offload-db</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>2.9</version>
+                        <configuration>
+                            <version>7</version>
+                            <defaultLibBundleDir>lib</defaultLibBundleDir>
+                            <fileNameMapping>no-version</fileNameMapping>
+                            <modules>
+                                <ejbModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-ejb</artifactId>
+                                </ejbModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>default</classifier>
+                                    <contextRoot>/clusterbench</contextRoot>
+                                    <bundleFileName>a.war</bundleFileName>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>passivating</classifier>
+                                    <contextRoot>/clusterbench-passivating</contextRoot>
+                                    <bundleFileName>b.war</bundleFileName>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>granular</classifier>
+                                    <contextRoot>/clusterbench-granularoffload</contextRoot>
+                                    <bundleFileName>c.war</bundleFileName>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>offload</classifier>
+                                    <contextRoot>/clusterbench-offload</contextRoot>
+                                    <!--
+                                      - certain databases impose a severe limit on identifier length,
+                                      - and since the table name in the JDBC-based cache store is
+                                      - derived from the cache name, let's make the cache name short
+                                      -->
+                                    <bundleFileName>d.war</bundleFileName>
+                                </webModule>
+                            </modules>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.test</groupId>
+                    <artifactId>clusterbench-ee7-web</artifactId>
+                    <version>${project.version}</version>
+                    <classifier>offload</classifier>
+                    <type>war</type>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>forwarding-ejbs</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.test</groupId>
+                    <artifactId>clusterbench-ee7-ejb</artifactId>
+                    <version>${project.version}</version>
+                    <type>ejb</type>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee7-ejb-standard-ejbs</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <!-- here the phase you need -->
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/clusterbench-ee7/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/forwarding-ejbs/application/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>shared-sessions</id>
+            <build>
+                <finalName>clusterbench-ee7-shared-sessions</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <!-- here the phase you need -->
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/clusterbench-ee7-shared-sessions/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/shared-sessions/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>2.9</version>
+                        <configuration>
+                            <version>7</version>
+                            <defaultLibBundleDir>lib</defaultLibBundleDir>
+                            <fileNameMapping>no-version</fileNameMapping>
+                            <modules>
+                                <ejbModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-ejb</artifactId>
+                                </ejbModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>default</classifier>
+                                    <bundleFileName>clusterbench-ee7-web-default-1.war</bundleFileName>
+                                    <contextRoot>/clusterbench1</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>default</classifier>
+                                    <bundleFileName>clusterbench-ee7-web-default-2.war</bundleFileName>
+                                    <contextRoot>/clusterbench2</contextRoot>
+                                </webModule>
+                            </modules>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 

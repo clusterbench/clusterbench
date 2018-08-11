@@ -141,6 +141,48 @@ Servlet simulating memory usage of the Java Virtual Machine (JVM). Parameters ar
 Servlet simulating CPU load of the cluster node. Parameters are `milliseconds` (duration) and `threads`.
 
 
+PROFILES
+-------------
+
+There a several profiles to test specific scenarios where the build needs to be customized.
+
+
+### offload
+
+This profile produces a build to tests session offloading to a remote cache named "web.offload":
+
+    $ mvn install -P ee7,offload -DskipTests
+
+NOTE: this build is currently available only in the ee7 profile!
+
+
+### offload-db
+
+This profile produces a build to tests session offloading to a remote cache named "web.offload"; the names of the modules are shortened to generate short database names:
+
+    $ mvn install -P ee7,offload-db -DskipTests
+
+NOTE: this build is currently available only in the ee7 profile!
+
+
+### forwarding-ejbs
+
+This profile produces a build to tests a 2 cluster scenario where the EJBs in the first cluster forward requests to EJBs in the second cluster:
+
+    $ mvn install -P ee7,forwarding-ejbs -DskipTests
+
+NOTE: this build is currently available only in the ee7 profile!
+
+
+### shared-sessions
+
+This profile produces a build to tests a shared sessions scenario where two WAR in the same EAR share HTTP sessions:
+
+    $ mvn install -P ee7,shared-sessions -DskipTests
+
+NOTE: this build is currently available only in the ee7 profile!
+
+
 Issues
 ------
 
