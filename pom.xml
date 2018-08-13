@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
   ~ Copyright 2013 Radoslav Husár
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,6 +35,7 @@
 
     <properties>
         <linkXRef>false</linkXRef>
+        <version.org.infinispan>9.2.5.Final</version.org.infinispan>
         <version.org.wildfly>14.0.0.Beta1</version.org.wildfly>
         <version.org.wildfly.maven.plugin>1.2.2.Final</version.org.wildfly.maven.plugin>
     </properties>

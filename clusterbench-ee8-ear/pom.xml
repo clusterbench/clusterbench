@@ -131,9 +131,13 @@
                                 <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>start</goal>
+                                    <goal>execute-commands</goal>
                                     <goal>deploy</goal>
                                 </goals>
                                 <configuration>
+                                    <scripts>
+                                        <script>remote-cache-container.cli</script>
+                                    </scripts>
                                     <version>${version.org.wildfly}</version>
                                     <server-args>
                                         <server-arg>--server-config=standalone-full-ha.xml</server-arg>

@@ -61,11 +61,25 @@
             <version>${version.org.wildfly}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- HotRod servlet -->
+        <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-client-hotrod</artifactId>
+            <version>${version.org.infinispan}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.wildfly</groupId>-->
+            <!--<artifactId>wildfly-clustering-infinispan-spi</artifactId>-->
+            <!--<version>13.0.0.Final</version>-->
+            <!--<type>jar</type>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <!-- debug servlet -->
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-core</artifactId>
-            <version>9.2.5.Final</version>
+            <version>${version.org.infinispan}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -101,7 +115,7 @@
                             <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                    <Dependencies>org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -134,7 +148,7 @@
                             <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                    <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -153,7 +167,7 @@
                             <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                    <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -172,7 +186,7 @@
                             <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                    <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
