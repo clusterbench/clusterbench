@@ -220,4 +220,247 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>offload</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.4</version>
+                        <executions>
+                            <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                            <!-- Tomcat variant -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-tomcat-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>tomcat</classifier>
+                                    <webappDirectory>${project.build.directory}/${project.build.finalName}-tomcat</webappDirectory>
+                                    <warSourceDirectory>${basedir}/src/main/webapp-tomcat</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]</packagingExcludes>
+                                </configuration>
+                            </execution>
+                            <!-- Build default configuration: session granularity and never passivates. -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-default-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>default</classifier>
+                                    <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
+                                    <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                            <!-- Build passivating configuration: session granularity but passivation enabled. -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-passivating-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>passivating</classifier>
+                                    <webappDirectory>${project.build.directory}/${project.build.finalName}-passivating</webappDirectory>
+                                    <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                            <!-- Build granular configuration: attribute granularity but never passivates. -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-granular-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>granular</classifier>
+                                    <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
+                                    <warSourceDirectory>${basedir}/src/main/webapp-granular-offload</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                            <!-- Build offload configuration: passivation enabled and a special offload cache. -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-offload-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>offload</classifier>
+                                    <warSourceDirectory>${basedir}/src/main/webapp-offload</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>offload-db</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.4</version>
+                        <executions>
+                            <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                            <!-- Tomcat variant -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-tomcat-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>tomcat</classifier>
+                                    <webappDirectory>${project.build.directory}/${project.build.finalName}-tomcat</webappDirectory>
+                                    <warSourceDirectory>${basedir}/src/main/webapp-tomcat</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]</packagingExcludes>
+                                </configuration>
+                            </execution>
+                            <!-- Build default configuration: session granularity and never passivates. -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-default-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>default</classifier>
+                                    <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
+                                    <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                            <!-- Build passivating configuration: session granularity but passivation enabled. -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-passivating-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>passivating</classifier>
+                                    <webappDirectory>${project.build.directory}/${project.build.finalName}-passivating</webappDirectory>
+                                    <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                            <!-- Build granular configuration: attribute granularity but never passivates. -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-granular-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>granular</classifier>
+                                    <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
+                                    <warSourceDirectory>${basedir}/src/main/webapp-granular-offload</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                            <!-- Build offload configuration: passivation enabled and a special offload cache. -->
+                            <execution>
+                                <phase>package</phase>
+                                <id>build-offload-war</id>
+                                <goals>
+                                    <goal>war</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>offload</classifier>
+                                    <warSourceDirectory>${basedir}/src/main/webapp-offload</warSourceDirectory>
+                                    <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
+                                    <archive>
+                                        <manifestEntries>
+                                            <Dependencies>org.infinispan, org.jgroups</Dependencies>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>

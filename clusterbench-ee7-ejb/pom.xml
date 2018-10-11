@@ -48,6 +48,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.22</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
@@ -68,6 +74,11 @@
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
+                    <excludes>
+                        <exclude>**/Forwarding*</exclude>
+                        <exclude>**/AbstractForwarding*</exclude>
+                        <exclude>**/NonTxForwarding*</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -119,4 +130,29 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>forwarding-ejbs</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>2.5.1</version>
+                        <configuration>
+                            <source>1.7</source>
+                            <target>1.7</target>
+                            <compilerArguments>
+                                <endorseddirs>${endorsed.dir}</endorseddirs>
+                            </compilerArguments>
+                            <excludes>
+                                <exclude>**/RemoteStatefulSBImpl.java</exclude>
+                                <exclude>**/RemoteStatelessSBImpl.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
