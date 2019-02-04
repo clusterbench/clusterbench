@@ -432,6 +432,68 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>singleton-deployment-v1</id>
+            <build>
+                <finalName>clusterbench-ee7-singleton-deployment-v1</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <!-- here the phase you need -->
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/clusterbench-ee7-singleton-deployment-v1/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/singleton-deployment-v1/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>singleton-deployment-v2</id>
+            <build>
+                <finalName>clusterbench-ee7-singleton-deployment-v2</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <!-- here the phase you need -->
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/clusterbench-ee7-singleton-deployment-v2/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/singleton-deployment-v2/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>

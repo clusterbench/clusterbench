@@ -183,6 +183,26 @@ This profile produces a build to tests a shared sessions scenario where two WAR 
 NOTE: this build is currently available only in the ee7 profile!
 
 
+### singleton-deployment-v1 (using singleton-deployment.xml):
+
+This profile produces a build to tests a singleton deployment scenario where one EAR guaranteed to be active on a single node at a time:
+
+    $ mvn install -P ee7,singleton-deployment-v1 -DskipTests
+
+NOTE: this version uses descriptor `singleton-deployment.xml` to achieve singleton-deployment functionality
+NOTE: this build is currently available only in the ee7 profile!
+
+
+### singleton-deployment-v2 (using jboss-all.xml):
+
+This profile produces a build to tests a singleton deployment scenario where one EAR guaranteed to be active on a single node at a time:
+
+    $ mvn install -P ee7,singleton-deployment-v2 -DskipTests
+
+NOTE: this version uses descriptor `jboss-all.xml` to achieve singleton-deployment functionality
+NOTE: this build is currently available only in the ee7 profile!
+
+
 Issues
 ------
 
