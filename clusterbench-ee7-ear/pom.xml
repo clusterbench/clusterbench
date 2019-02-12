@@ -414,6 +414,18 @@
                                     <bundleFileName>clusterbench-ee7-web-default-2.war</bundleFileName>
                                     <contextRoot>/clusterbench2</contextRoot>
                                 </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>passivating</classifier>
+                                    <excluded>true</excluded>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee7-web</artifactId>
+                                    <classifier>granular</classifier>
+                                    <excluded>true</excluded>
+                                </webModule>
                             </modules>
                         </configuration>
                     </plugin>
