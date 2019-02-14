@@ -432,6 +432,68 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>singleton-deployment-specific-descriptor</id>
+            <build>
+                <finalName>clusterbench-ee7-singleton-deployment-specific-descriptor</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <!-- here the phase you need -->
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/clusterbench-ee7-singleton-deployment-specific-descriptor/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/singleton-deployment-specific-descriptor/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>singleton-deployment-jboss-all</id>
+            <build>
+                <finalName>clusterbench-ee7-singleton-deployment-jboss-all</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <!-- here the phase you need -->
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/clusterbench-ee7-singleton-deployment-jboss-all/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/singleton-deployment-jboss-all/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
