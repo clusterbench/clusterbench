@@ -141,11 +141,10 @@ Servlet simulating memory usage of the Java Virtual Machine (JVM). Parameters ar
 Servlet simulating CPU load of the cluster node. Parameters are `milliseconds` (duration) and `threads`.
 
 
-PROFILES
+PROFILES EE7
 -------------
 
 There a several profiles to test specific scenarios where the build needs to be customized.
-
 
 ### offload
 
@@ -155,7 +154,6 @@ This profile produces a build to tests session offloading to a remote cache name
 
 NOTE: this build is currently available only in the ee7 profile!
 
-
 ### offload-db
 
 This profile produces a build to tests session offloading to a remote cache named "web.offload"; the names of the modules are shortened to generate short database names:
@@ -163,7 +161,6 @@ This profile produces a build to tests session offloading to a remote cache name
     $ mvn install -P ee7,offload-db -DskipTests
 
 NOTE: this build is currently available only in the ee7 profile!
-
 
 ### forwarding-ejbs
 
@@ -173,7 +170,6 @@ This profile produces a build to tests a 2 cluster scenario where the EJBs in th
 
 NOTE: this build is currently available only in the ee7 profile!
 
-
 ### shared-sessions
 
 This profile produces a build to tests a shared sessions scenario where two WAR in the same EAR share HTTP sessions:
@@ -181,7 +177,6 @@ This profile produces a build to tests a shared sessions scenario where two WAR 
     $ mvn install -P ee7,shared-sessions -DskipTests
 
 NOTE: this build is currently available only in the ee7 profile!
-
 
 ### singleton-deployment-specific-descriptor (using singleton-deployment.xml):
 
@@ -192,7 +187,6 @@ This profile produces a build to tests a singleton deployment scenario where one
 NOTE: this version uses descriptor `singleton-deployment.xml` to achieve singleton-deployment functionality
 NOTE: this build is currently available only in the ee7 profile!
 
-
 ### singleton-deployment-jboss-all (using jboss-all.xml):
 
 This profile produces a build to tests a singleton deployment scenario where one EAR guaranteed to be active on a single node at a time:
@@ -201,6 +195,47 @@ This profile produces a build to tests a singleton deployment scenario where one
 
 NOTE: this version uses descriptor `jboss-all.xml` to achieve singleton-deployment functionality
 NOTE: this build is currently available only in the ee7 profile!
+
+
+PROFILES EE8
+-------------
+
+### webapp-offload
+
+Uses distributable-web.xml inside WAR files, to define the WAR's profile to be used (EAP7-1072).
+
+    $ mvn clean install -P ee8,webapp-offload -DskipTests
+
+### webapp-offload-ref
+
+The distributable-web.xml inside WAR files, references existing "sm_offload" and "sm_offload_granular" profiles on the server;
+Those profiles must be created on the server e.g. with some cli script (EAP7-1072).
+
+    $ mvn clean install -P ee8,webapp-offload-ref -DskipTests
+
+### resources-offload
+
+Uses jboss-all.xml inside WAR files, to define the WAR's profile to be used (EAP7-1072).
+
+    $ mvn clean install -P ee8,resources-offload -DskipTests
+
+### resources-offload-ref
+
+The jboss-all.xml inside WAR files, references existing "sm_offload" and "sm_offload_granular" profiles on the server;
+Those profiles must be created on the server e.g. with some cli script (EAP7-1072).
+
+    $ mvn clean install -P ee8,resources-offload-ref -DskipTests
+
+### short-names
+
+Can be used with any of the former `webapp-offload`,`webapp-offload-ref`,`resources-offload`,`resources-offload-ref` profiles,
+in order to shortens name of bundled JARs and WARs within the final EAR file;
+Usually used in database tests to produce database tables with short names;  
+
+    $ mvn clean install -P ee8,webapp-offload,short-names -DskipTests
+    $ mvn clean install -P ee8,webapp-offload-ref,short-names -DskipTests
+    $ mvn clean install -P ee8,resources-offload,short-names -DskipTests
+    $ mvn clean install -P ee8,resources-offload-ref,short-names -DskipTests
 
 
 Issues
