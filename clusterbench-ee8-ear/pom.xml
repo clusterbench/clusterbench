@@ -157,6 +157,51 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <!-- shortens name of bundled JARs and WARs -->
+            <id>short-names</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <configuration>
+                            <version>8</version>
+                            <defaultLibBundleDir>lib</defaultLibBundleDir>
+                            <modules>
+                                <ejbModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-ejb</artifactId>
+                                    <bundleFileName>clusterbench-ejb.jar</bundleFileName>
+                                </ejbModule>
+                                <webModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-web</artifactId>
+                                    <classifier>default</classifier>
+                                    <contextRoot>/clusterbench</contextRoot>
+                                    <bundleFileName>a.war</bundleFileName>
+                                </webModule>
+                                <webModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-web</artifactId>
+                                    <classifier>passivating</classifier>
+                                    <contextRoot>/clusterbench-passivating</contextRoot>
+                                    <bundleFileName>b.war</bundleFileName>
+                                </webModule>
+                                <webModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-web</artifactId>
+                                    <classifier>granular</classifier>
+                                    <contextRoot>/clusterbench-granular</contextRoot>
+                                    <bundleFileName>c.war</bundleFileName>
+                                </webModule>
+                            </modules>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
