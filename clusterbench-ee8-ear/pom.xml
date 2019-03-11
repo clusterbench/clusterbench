@@ -49,7 +49,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.0.1</version>
                 <configuration>
                     <version>8</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
@@ -165,7 +165,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>3.0.0</version>
+                        <version>3.0.1</version>
                         <configuration>
                             <version>8</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
@@ -195,6 +195,147 @@
                                     <classifier>granular</classifier>
                                     <contextRoot>/clusterbench-granular</contextRoot>
                                     <bundleFileName>c.war</bundleFileName>
+                                </webModule>
+                            </modules>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- mvn clean install -P ee8,singleton-deployment-specific-descriptor -->
+            <id>singleton-deployment-specific-descriptor</id>
+            <build>
+                <finalName>clusterbench-ee8</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/${project.build.finalName}/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/singleton-deployment-specific-descriptor/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- mvn clean install -P ee8,singleton-deployment-jboss-all -->
+            <id>singleton-deployment-jboss-all</id>
+            <build>
+                <finalName>clusterbench-ee8</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/${project.build.finalName}/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/singleton-deployment-jboss-all/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- mvn clean install -P ee8,shared-sessions -->
+            <id>shared-sessions</id>
+            <build>
+                <finalName>clusterbench-ee8</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/${project.build.finalName}/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/shared-sessions/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <configuration>
+                            <version>8</version>
+                            <defaultLibBundleDir>lib</defaultLibBundleDir>
+                            <modules>
+                                <ejbModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-ejb</artifactId>
+                                </ejbModule>
+                                <webModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-web</artifactId>
+                                    <classifier>default</classifier>
+                                    <bundleFileName>clusterbench-ee8-web-default.war</bundleFileName>
+                                    <contextRoot>/clusterbench</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-web</artifactId>
+                                    <classifier>default</classifier>
+                                    <bundleFileName>clusterbench-ee8-web-default-1.war</bundleFileName>
+                                    <contextRoot>/clusterbench1</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-web</artifactId>
+                                    <classifier>default</classifier>
+                                    <bundleFileName>clusterbench-ee8-web-default-2.war</bundleFileName>
+                                    <contextRoot>/clusterbench2</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-web</artifactId>
+                                    <classifier>passivating</classifier>
+                                    <contextRoot>/clusterbench-passivating</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>clusterbench-ee8-web</artifactId>
+                                    <classifier>granular</classifier>
+                                    <contextRoot>/clusterbench-granular</contextRoot>
                                 </webModule>
                             </modules>
                         </configuration>
