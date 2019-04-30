@@ -146,22 +146,4 @@
         </pluginManagement>
     </build>
 
-    <repositories>
-        <repository>
-            <id>jboss-public-nexus</id>
-            <name>JBoss Public Nexus Repository</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>jboss-deprecated</id>
-            <name>JBoss Deprecated</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/deprecated</url>
-        </repository>
-        <repository>
-            <id>java-promoted</id>
-            <name>Java EE 7 and 8</name>
-            <url>https://maven.java.net/content/groups/promoted/</url>
-        </repository>
-    </repositories>
-
 </project>
