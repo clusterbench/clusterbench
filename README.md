@@ -237,6 +237,13 @@ Usually used in database tests to produce database tables with short names;
     $ mvn clean install -P ee8,resources-offload,short-names -DskipTests
     $ mvn clean install -P ee8,resources-offload-ref,short-names -DskipTests
 
+### sso-form
+
+This profile enables form authentication:
+
+    $ mvn install -P ee8,sso-form -DskipTests
+
+
 
 Issues
 ------

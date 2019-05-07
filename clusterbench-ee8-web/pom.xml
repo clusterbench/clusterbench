@@ -32,6 +32,9 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdg.packagingExcludes>,WEB-INF/classes/org/jboss/test/clusterbench/web/remote/HotRodServlet.class</jdg.packagingExcludes>
+        <!-- Used to comment out security in web.xml -->
+        <enable.security.start>&lt;!--</enable.security.start>
+        <enable.security.end>--&gt;</enable.security.end>
     </properties>
 
     <dependencies>
@@ -103,7 +106,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.2.2</version>
                 <executions>
                     <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                     <execution>
@@ -112,6 +115,15 @@
                             <goal>war</goal>
                         </goals>
                         <configuration>
+                            <webResources>
+                                <resource>
+                                    <filtering>true</filtering>
+                                    <directory>src/main/webapp</directory>
+                                    <includes>
+                                        <include>**/web.xml</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                             <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                             <archive>
@@ -130,6 +142,15 @@
                         </goals>
                         <configuration>
                             <classifier>tomcat</classifier>
+                            <webResources>
+                                <resource>
+                                    <filtering>true</filtering>
+                                    <directory>src/main/webapp-tomcat</directory>
+                                    <includes>
+                                        <include>**/web.xml</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-tomcat</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-tomcat</warSourceDirectory>
                             <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]${jdg.packagingExcludes}</packagingExcludes>
@@ -144,6 +165,15 @@
                         </goals>
                         <configuration>
                             <classifier>default</classifier>
+                            <webResources>
+                                <resource>
+                                    <filtering>true</filtering>
+                                    <directory>src/main/webapp</directory>
+                                    <includes>
+                                        <include>**/web.xml</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                             <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -163,6 +193,15 @@
                         </goals>
                         <configuration>
                             <classifier>passivating</classifier>
+                            <webResources>
+                                <resource>
+                                    <filtering>true</filtering>
+                                    <directory>src/main/webapp-passivating</directory>
+                                    <includes>
+                                        <include>**/web.xml</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-passivating</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
                             <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -182,6 +221,15 @@
                         </goals>
                         <configuration>
                             <classifier>granular</classifier>
+                            <webResources>
+                                <resource>
+                                    <filtering>true</filtering>
+                                    <directory>src/main/webapp-granular</directory>
+                                    <includes>
+                                        <include>**/web.xml</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-granular</warSourceDirectory>
                             <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -246,7 +294,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>2.4</version>
+                        <version>3.2.2</version>
                         <executions>
                             <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                             <execution>
@@ -255,6 +303,15 @@
                                     <goal>war</goal>
                                 </goals>
                                 <configuration>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp-offload</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </webResources>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload</warSourceDirectory>
                                     <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
@@ -273,6 +330,15 @@
                                 </goals>
                                 <configuration>
                                     <classifier>default</classifier>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp-offload</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload</warSourceDirectory>
                                     <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -292,6 +358,15 @@
                                 </goals>
                                 <configuration>
                                     <classifier>granular</classifier>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp-offload-granular</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload-granular</warSourceDirectory>
                                     <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -316,7 +391,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>2.4</version>
+                        <version>3.2.2</version>
                         <executions>
                             <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                             <execution>
@@ -325,6 +400,15 @@
                                     <goal>war</goal>
                                 </goals>
                                 <configuration>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp-offload-ref</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </webResources>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload-ref</warSourceDirectory>
                                     <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
@@ -343,6 +427,15 @@
                                 </goals>
                                 <configuration>
                                     <classifier>default</classifier>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp-offload-ref</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload-ref</warSourceDirectory>
                                     <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -362,6 +455,15 @@
                                 </goals>
                                 <configuration>
                                     <classifier>granular</classifier>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp-offload-ref-granular</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload-ref-granular</warSourceDirectory>
                                     <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -386,7 +488,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>2.4</version>
+                        <version>3.2.2</version>
                         <executions>
                             <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                             <execution>
@@ -395,6 +497,19 @@
                                     <goal>war</goal>
                                 </goals>
                                 <configuration>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <filtering>false</filtering>
+                                            <directory>src/main/resources-offload/</directory>
+                                        </resource>
+                                    </webResources>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                                     <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
@@ -402,11 +517,6 @@
                                             <Dependencies>org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
-                                    <webResources>
-                                        <resource>
-                                            <directory>src/main/resources-offload/</directory>
-                                        </resource>
-                                    </webResources>
                                 </configuration>
                             </execution>
                             <!-- Build default configuration: SESSION granularity and never passivates. -->
@@ -418,6 +528,19 @@
                                 </goals>
                                 <configuration>
                                     <classifier>default</classifier>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <filtering>false</filtering>
+                                            <directory>src/main/resources-offload/</directory>
+                                        </resource>
+                                    </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                                     <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -426,11 +549,6 @@
                                             <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
-                                    <webResources>
-                                        <resource>
-                                            <directory>src/main/resources-offload/</directory>
-                                        </resource>
-                                    </webResources>
                                 </configuration>
                             </execution>
                             <!-- Build granular configuration: ATTRIBUTE granularity but never passivates. -->
@@ -442,6 +560,19 @@
                                 </goals>
                                 <configuration>
                                     <classifier>granular</classifier>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <filtering>false</filtering>
+                                            <directory>src/main/resources-offload-granular/</directory>
+                                        </resource>
+                                    </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                                     <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -450,11 +581,6 @@
                                             <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
-                                    <webResources>
-                                        <resource>
-                                            <directory>src/main/resources-offload-granular/</directory>
-                                        </resource>
-                                    </webResources>
                                 </configuration>
                             </execution>
                         </executions>
@@ -471,7 +597,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>2.4</version>
+                        <version>3.2.2</version>
                         <executions>
                             <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                             <execution>
@@ -480,6 +606,19 @@
                                     <goal>war</goal>
                                 </goals>
                                 <configuration>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <filtering>false</filtering>
+                                            <directory>src/main/resources-offload-ref/</directory>
+                                        </resource>
+                                    </webResources>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                                     <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
@@ -487,11 +626,6 @@
                                             <Dependencies>org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
-                                    <webResources>
-                                        <resource>
-                                            <directory>src/main/resources-offload-ref/</directory>
-                                        </resource>
-                                    </webResources>
                                 </configuration>
                             </execution>
                             <!-- Build default configuration: SESSION granularity and never passivates. -->
@@ -503,6 +637,19 @@
                                 </goals>
                                 <configuration>
                                     <classifier>default</classifier>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <filtering>false</filtering>
+                                            <directory>src/main/resources-offload-ref/</directory>
+                                        </resource>
+                                    </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                                     <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -511,11 +658,6 @@
                                             <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
-                                    <webResources>
-                                        <resource>
-                                            <directory>src/main/resources-offload-ref/</directory>
-                                        </resource>
-                                    </webResources>
                                 </configuration>
                             </execution>
                             <!-- Build granular configuration: ATTRIBUTE granularity but never passivates. -->
@@ -527,6 +669,19 @@
                                 </goals>
                                 <configuration>
                                     <classifier>granular</classifier>
+                                    <webResources>
+                                        <resource>
+                                            <filtering>true</filtering>
+                                            <directory>src/main/webapp</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <filtering>false</filtering>
+                                            <directory>src/main/resources-offload-ref-granular/</directory>
+                                        </resource>
+                                    </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                                     <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
@@ -535,17 +690,19 @@
                                             <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
-                                    <webResources>
-                                        <resource>
-                                            <directory>src/main/resources-offload-ref-granular/</directory>
-                                        </resource>
-                                    </webResources>
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>sso-form</id>
+            <properties>
+                <enable.security.start></enable.security.start>
+                <enable.security.end></enable.security.end>
+            </properties>
         </profile>
     </profiles>
 
