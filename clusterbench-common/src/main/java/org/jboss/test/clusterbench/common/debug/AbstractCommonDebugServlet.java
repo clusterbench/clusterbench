@@ -17,7 +17,9 @@
 package org.jboss.test.clusterbench.common.debug;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,6 +46,7 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(true);
+        PrintWriter out = resp.getWriter();
 
         if (session.isNew()) {
             log.log(Level.INFO, "New session created: {0}", session.getId());
@@ -59,8 +62,8 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
 
         // Readonly?
         if (req.getParameter(ClusterBenchConstants.READONLY) != null) {
-            resp.getWriter().print(bean.getSerial());
-            resp.getWriter().println(this.getContainerSpecificDebugInfo(req));
+            out.print(bean.getSerial());
+            out.println(this.getContainerSpecificDebugInfo(req));
             return;
         }
 
@@ -70,21 +73,27 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
         // Now store bean in the session
         session.setAttribute(KEY, bean);
 
-        resp.getWriter().println("Serial: " + serial);
+        // Write out request headers
+        Enumeration<String> headers = req.getHeaderNames();
+        while (headers.hasMoreElements()) {
+            String header = headers.nextElement();
+            out.println("Request header: " + header + "=" + req.getHeader(header));
+        }
 
         // Common debug info
+        out.println("Serial: " + serial);
         // Get the session ID with the route (if present)
-        resp.getWriter().println("Session ID: " + req.getSession().getId());
+        out.println("Session ID: " + req.getSession().getId());
         // Current invocation time; useful for testing session timeouts
-        resp.getWriter().println("Current time: " + new Date());
+        out.println("Current time: " + new Date());
         // Display Server/Local ports
-        resp.getWriter().println("ServletRequest.getServerPort(): " + req.getServerPort());
-        resp.getWriter().println("ServletRequest.getLocalPort(): " + req.getLocalPort());
+        out.println("ServletRequest.getServerPort(): " + req.getServerPort());
+        out.println("ServletRequest.getLocalPort(): " + req.getLocalPort());
         // Fetch just the node name for now
-        resp.getWriter().println("Node name: " + System.getProperty("jboss.node.name"));
+        out.println("Node name: " + System.getProperty("jboss.node.name"));
 
         // Container/EE-specific debug info
-        resp.getWriter().println(this.getContainerSpecificDebugInfo(req));
+        out.println(this.getContainerSpecificDebugInfo(req));
 
         // Invalidate?
         if (req.getParameter(ClusterBenchConstants.INVALIDATE) != null) {

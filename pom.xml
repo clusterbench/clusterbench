@@ -90,6 +90,28 @@
 
     <build>
         <plugins>
+            <!-- Bans insecure non-https maven repositories -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+                <executions>
+                    <execution>
+                        <id>enforce-java-version</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedRepositories>
+                                    <bannedRepositories>http://*</bannedRepositories>
+                                    <bannedPluginRepositories>http://*</bannedPluginRepositories>
+                                </bannedRepositories>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
@@ -145,23 +167,5 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <repositories>
-        <repository>
-            <id>jboss-public-nexus</id>
-            <name>JBoss Public Nexus Repository</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>jboss-deprecated</id>
-            <name>JBoss Deprecated</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/deprecated</url>
-        </repository>
-        <repository>
-            <id>java-promoted</id>
-            <name>Java EE 7 and 8</name>
-            <url>https://maven.java.net/content/groups/promoted/</url>
-        </repository>
-    </repositories>
 
 </project>
