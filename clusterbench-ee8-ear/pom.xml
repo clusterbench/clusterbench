@@ -57,24 +57,28 @@
                         <ejbModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>clusterbench-ee8-ejb</artifactId>
+                            <bundleFileName>clusterbench-ee8-ejb.jar</bundleFileName>
                         </ejbModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>clusterbench-ee8-web</artifactId>
                             <classifier>default</classifier>
                             <contextRoot>/clusterbench</contextRoot>
+                            <bundleFileName>clusterbench-ee8-web.war</bundleFileName>
                         </webModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>clusterbench-ee8-web</artifactId>
                             <classifier>passivating</classifier>
                             <contextRoot>/clusterbench-passivating</contextRoot>
+                            <bundleFileName>clusterbench-ee8-web-passivating.war</bundleFileName>
                         </webModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>clusterbench-ee8-web</artifactId>
                             <classifier>granular</classifier>
                             <contextRoot>/clusterbench-granular</contextRoot>
+                            <bundleFileName>clusterbench-ee8-web-granular.war</bundleFileName>
                         </webModule>
                     </modules>
                 </configuration>
