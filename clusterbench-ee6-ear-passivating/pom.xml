@@ -54,6 +54,13 @@
                     <version>6</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.plexus</groupId>
+                        <artifactId>plexus-archiver</artifactId>
+                        <version>1.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
