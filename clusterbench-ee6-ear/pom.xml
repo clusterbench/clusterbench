@@ -22,11 +22,11 @@
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>3.0.0.Final</version>
+        <version>3.0.1.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-ee6-ear</artifactId>
-    <version>3.0.0.Final</version>
+    <version>3.0.1.Final-SNAPSHOT</version>
     <packaging>ear</packaging>
     <name>${project.artifactId}</name>
 

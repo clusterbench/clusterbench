@@ -21,11 +21,11 @@
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>3.0.0.Final</version>
+        <version>3.0.1.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-ee8-ejb</artifactId>
-    <version>3.0.0.Final</version>
+    <version>3.0.1.Final-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
     <properties>
