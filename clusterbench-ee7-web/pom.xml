@@ -20,11 +20,11 @@
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>3.0.0.Alpha1-SNAPSHOT</version>
+        <version>3.0.0.Final</version>
     </parent>
 
     <artifactId>clusterbench-ee7-web</artifactId>
-    <version>3.0.0.Alpha1-SNAPSHOT</version>
+    <version>3.0.0.Final</version>
     <packaging>war</packaging>
 
     <name>${project.artifactId}</name>
