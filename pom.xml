@@ -48,14 +48,6 @@
 
     <profiles>
         <profile>
-            <id>ee5</id>
-            <modules>
-                <module>clusterbench-ee5-ear</module>
-                <module>clusterbench-ee5-web</module>
-                <module>clusterbench-ee5-ejb</module>
-            </modules>
-        </profile>
-        <profile>
             <id>ee6</id>
             <modules>
                 <module>clusterbench-ee6-ear</module>
