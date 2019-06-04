@@ -1,5 +1,5 @@
-ClusterBench
-============
+ClusterBench 4.0
+================
 
 [![Build Status](https://travis-ci.org/clusterbench/clusterbench.svg?branch=master)](https://travis-ci.org/clusterbench/clusterbench)
 
