@@ -6,4 +6,6 @@ matrix:
       script: mvn verify -s .travis.maven.settings.xml -Pee6,ee7,ee8
     - jdk: oraclejdk9
       script: mvn verify -s .travis.maven.settings.xml -Pee6,ee7,ee8
+    - jdk: oraclejdk11
+      script: mvn verify -s .travis.maven.settings.xml -Pee6,ee7,ee8
 sudo: false
