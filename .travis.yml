@@ -3,8 +3,9 @@ install: rm $HOME/.m2/settings.xml && mvn install -DskipTests=true -Dmaven.javad
 script: ./mvnw verify -B
 matrix:
   include:
-    - jdk: oraclejdk8
-    - jdk: oraclejdk9
+    - jdk: openjdk8
+    - jdk: openjdk10
+    - jdk: openjdk11
     - jdk: oraclejdk11
 sudo: false
 notifications:
