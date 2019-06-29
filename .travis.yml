@@ -6,7 +6,6 @@ matrix:
     - jdk: openjdk8
     - jdk: openjdk10
     - jdk: openjdk11
-    - jdk: oraclejdk11
 sudo: false
 notifications:
   email: false
