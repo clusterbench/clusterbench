@@ -53,10 +53,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>3.7.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
@@ -65,7 +65,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
+                <version>3.0.1</version>
                 <configuration>
                     <ejbVersion>3.2</ejbVersion>
                     <generateClient>true</generateClient>
@@ -73,6 +73,10 @@
                         <clientExclude>**/**Impl.class</clientExclude>
                         <clientExclude>**/Local**.class</clientExclude>
                     </clientExcludes>
+                    <excludes>
+                        <exclude>**/org/jboss/test/clusterbench/ejb/stateful/*Forwarding*.class</exclude>
+                        <exclude>**/org/jboss/test/clusterbench/ejb/stateless/*Forwarding*.class</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -110,5 +114,34 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <!-- just contains the interfaces for acting as an EJB client -->
+            <id>2clusters</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ejb-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <configuration>
+                            <ejbVersion>3.2</ejbVersion>
+                            <generateClient>true</generateClient>
+                            <clientExcludes>
+                                <clientExclude>**/**Impl.class</clientExclude>
+                                <clientExclude>**/Local**.class</clientExclude>
+                            </clientExcludes>
+                            <excludes>
+                                <!-- otherwise the local implementation is picked up first -->
+                                <exclude>**/org/jboss/test/clusterbench/ejb/stateful/RemoteStatefulSBImpl.class</exclude>
+                                <exclude>**/org/jboss/test/clusterbench/ejb/stateless/RemoteStatelessSBImpl.class</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

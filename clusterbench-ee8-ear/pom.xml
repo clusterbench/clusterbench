@@ -481,6 +481,36 @@
                 </plugins>
             </build>
         </profile>
+            <profile>
+            <!-- just contains the interfaces for acting as an EJB client -->
+            <id>2clusters</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/${project.build.finalName}/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/2clusters/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>

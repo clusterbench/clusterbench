@@ -233,7 +233,11 @@ This profile enables form authentication:
 
     $ mvn install -P ee8,sso-form -DskipTests
 
+### 2clusters
 
+This profile adds the necessary EJBs to perform call forwarding to a second EJB cluster:
+
+    $ mvn install -P ee8,2clusters -DskipTests
 
 Issues
 ------
