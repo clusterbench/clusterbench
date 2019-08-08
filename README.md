@@ -18,9 +18,8 @@ Clone the Git repository first and switch to the created directory:
 It comes in 3 flavors for Java EE 6, 7 and 8:
 
     $ mvn install -Pee8
-    $ mvn install -Pee7 # default; requires JDK 7 or newer
-    $ mvn install -Pee6,ee7,ee8 # builds everything; requires JDK 7 or newer
-    $ mvn install -Pee6
+    $ mvn install -Pee7
+    $ mvn install -Pee6 # supported in branch 3.x (or older)
 
 Output files:
 

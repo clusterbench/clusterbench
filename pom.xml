@@ -48,18 +48,6 @@
 
     <profiles>
         <profile>
-            <id>ee6</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>clusterbench-ee6-ear</module>
-                <module>clusterbench-ee6-ear-passivating</module>
-                <module>clusterbench-ee6-web</module>
-                <module>clusterbench-ee6-ejb</module>
-            </modules>
-        </profile>
-        <profile>
             <id>ee7</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
