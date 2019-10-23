@@ -50,7 +50,7 @@
         <profile>
             <id>ee7</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
                 <module>clusterbench-ee7-ear</module>
