@@ -105,7 +105,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>3.2.3</version>
                 <executions>
                     <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                     <execution>
@@ -293,7 +293,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>3.2.2</version>
+                        <version>3.2.3</version>
                         <executions>
                             <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                             <execution>
@@ -390,7 +390,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>3.2.2</version>
+                        <version>3.2.3</version>
                         <executions>
                             <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                             <execution>
@@ -487,7 +487,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>3.2.2</version>
+                        <version>3.2.3</version>
                         <executions>
                             <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                             <execution>
@@ -596,7 +596,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>3.2.2</version>
+                        <version>3.2.3</version>
                         <executions>
                             <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
                             <execution>
