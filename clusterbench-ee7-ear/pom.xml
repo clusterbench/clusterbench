@@ -49,11 +49,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
-                <version>2.9</version>
+                <version>3.0.2</version>
                 <configuration>
                     <version>7</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
-                    <fileNameMapping>no-version</fileNameMapping>
                     <modules>
                         <ejbModule>
                             <groupId>org.jboss.test</groupId>
@@ -194,11 +193,10 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>2.9</version>
+                        <version>3.0.2</version>
                         <configuration>
                             <version>7</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
-                            <fileNameMapping>no-version</fileNameMapping>
                             <modules>
                                 <ejbModule>
                                     <groupId>org.jboss.test</groupId>
@@ -257,11 +255,10 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>2.9</version>
+                        <version>3.0.2</version>
                         <configuration>
                             <version>7</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
-                            <fileNameMapping>no-version</fileNameMapping>
                             <modules>
                                 <ejbModule>
                                     <groupId>org.jboss.test</groupId>
@@ -390,11 +387,10 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>2.9</version>
+                        <version>3.0.2</version>
                         <configuration>
                             <version>7</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
-                            <fileNameMapping>no-version</fileNameMapping>
                             <modules>
                                 <ejbModule>
                                     <groupId>org.jboss.test</groupId>
