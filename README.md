@@ -1,9 +1,7 @@
-ClusterBench
-============
+ClusterBench 4.0 [![Build Status](https://travis-ci.org/clusterbench/clusterbench.svg?branch=master)](https://travis-ci.org/clusterbench/clusterbench) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=clusterbench/clusterbench)](https://dependabot.com)
+================
 
-[![Build Status](https://travis-ci.org/clusterbench/clusterbench.svg?branch=master)](https://travis-ci.org/clusterbench/clusterbench)
-
-ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 5 (EAP 5), JBoss AS 7 (EAP 6), WildFly 8 and newer.
+ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 7 (EAP 6), WildFly 8 and newer.
 Once deployed it is easy to stress (using JMeter, curl, etc) and monitor the performance of the cluster while
 at the same time it can be easily checked the correctness of replicated sessions.
 
@@ -15,13 +13,11 @@ Clone the Git repository first and switch to the created directory:
 
 	$ git clone https://github.com/clusterbench/clusterbench.git
 
-It comes in 3 flavors for Java EE 5, 6, 7 and 8:
+It comes in 3 flavors for Java EE 6, 7 and 8:
 
     $ mvn install -Pee8
-    $ mvn install -Pee7 # default; requires JDK 7 or newer
-    $ mvn install -Pee5,ee6,ee7,ee8 # builds everything; requires JDK 7 or newer
-    $ mvn install -Pee6
-    $ mvn install -Pee5
+    $ mvn install -Pee7
+    $ mvn install -Pee6 # supported in branch 3.x (or older)
 
 Output files:
 
@@ -29,7 +25,6 @@ Output files:
     ./clusterbench-ee7-ear/target/clusterbench-ee7.ear
     ./clusterbench-ee6-ear/target/clusterbench-ee6.ear
     ./clusterbench-ee6-ear-passivating/target/clusterbench-ee6-passivating.ear
-    ./clusterbench-ee5-ear/target/clusterbench-ee5.ear
 
 
 Deploying
@@ -72,14 +67,6 @@ To deploy the Tomcat variant of clusterbench, copy the following `war` file into
     $ cp ~/clusterbench-ee7-web/target/clusterbench-ee7-web-tomcat.war webapps/
 
 Note that CDI, debug, EJB, granular, JSF servlets are unsupported on Tomcat and not bundled in the `war`.
-
-
-### JBoss AS 5
-
-Copy `clusterbench-ee5.ear` to your server's deploy directory, e.g.:
-
-	$ cp clusterbench-ee5.ear ~/jboss-5.0.0/server/all/deploy/
-
 
 
 Scenario Servlets
@@ -243,7 +230,11 @@ This profile enables form authentication:
 
     $ mvn install -P ee8,sso-form -DskipTests
 
+### 2clusters
 
+This profile adds the necessary EJBs to perform call forwarding to a second EJB cluster:
+
+    $ mvn install -P ee8,2clusters -DskipTests
 
 Issues
 ------

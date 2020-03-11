@@ -20,11 +20,11 @@
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>3.0.0.Alpha1-SNAPSHOT</version>
+        <version>4.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-common</artifactId>
-    <version>3.0.0.Alpha1-SNAPSHOT</version>
+    <version>4.0.0.Final-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>clusterbench-common</name>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>4.13</version>
             <scope>test</scope>
         </dependency>
         <dependency>

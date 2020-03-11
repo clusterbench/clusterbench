@@ -15,19 +15,18 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>3.0.0.Alpha1-SNAPSHOT</version>
+        <version>4.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-ee8-ear</artifactId>
-    <version>3.0.0.Alpha1-SNAPSHOT</version>
+    <version>4.0.0.Final-SNAPSHOT</version>
     <packaging>ear</packaging>
 
     <properties>
@@ -41,6 +40,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
+                <!-- Define executions since 'ear' packaging skips test compilation -->
+                <executions>
+                    <execution>
+                        <id>testCompile</id>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -83,6 +91,27 @@
                     </modules>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit4</artifactId>
+                        <version>3.0.0-M4</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -113,6 +142,17 @@
             <version>${project.version}</version>
             <classifier>granular</classifier>
             <type>war</type>
+        </dependency>
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.10</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -145,6 +185,7 @@
                                     <version>${version.org.wildfly}</version>
                                     <server-args>
                                         <server-arg>--server-config=standalone-full-ha.xml</server-arg>
+                                        <server-arg>-Djboss.node.name=clusterbench-1</server-arg>
                                     </server-args>
                                 </configuration>
                             </execution>
@@ -433,6 +474,36 @@
                                             <contextRoot>/clusterbench-granular2</contextRoot>
                                         </webModule>
                                     </modules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+            <profile>
+            <!-- just contains the interfaces for acting as an EJB client -->
+            <id>2clusters</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/target/${project.build.finalName}/META-INF</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/2clusters/META-INF</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
                                 </configuration>
                             </execution>
                         </executions>

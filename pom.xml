@@ -15,12 +15,18 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>36</version>
+    </parent>
+
     <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench</artifactId>
-    <version>3.0.0.Alpha1-SNAPSHOT</version>
+    <version>4.0.0.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>clusterbench</name>
 
@@ -35,29 +41,12 @@
 
     <properties>
         <linkXRef>false</linkXRef>
-        <version.org.infinispan>9.2.5.Final</version.org.infinispan>
-        <version.org.wildfly>14.0.0.Beta1</version.org.wildfly>
+        <version.org.infinispan>9.4.14.Final</version.org.infinispan>
+        <version.org.wildfly>17.0.0.Beta1</version.org.wildfly>
         <version.org.wildfly.maven.plugin>1.2.2.Final</version.org.wildfly.maven.plugin>
     </properties>
 
     <profiles>
-        <profile>
-            <id>ee5</id>
-            <modules>
-                <module>clusterbench-ee5-ear</module>
-                <module>clusterbench-ee5-web</module>
-                <module>clusterbench-ee5-ejb</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>ee6</id>
-            <modules>
-                <module>clusterbench-ee6-ear</module>
-                <module>clusterbench-ee6-ear-passivating</module>
-                <module>clusterbench-ee6-web</module>
-                <module>clusterbench-ee6-ejb</module>
-            </modules>
-        </profile>
         <profile>
             <id>ee7</id>
             <activation>
@@ -71,6 +60,9 @@
         </profile>
         <profile>
             <id>ee8</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <modules>
                 <module>clusterbench-ee8-ear</module>
                 <module>clusterbench-ee8-web</module>
@@ -79,14 +71,16 @@
         </profile>
     </profiles>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -94,7 +88,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M2</version>
+                <version>3.0.0-M3</version>
                 <executions>
                     <execution>
                         <id>enforce-java-version</id>
@@ -125,7 +119,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
+                <version>3.1.1</version>
                 <configuration>
                     <!-- JDK8 has become extremely strict with JavaDoc problems -->
                     <failOnError>false</failOnError>
@@ -157,7 +151,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
