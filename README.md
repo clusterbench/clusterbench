@@ -1,4 +1,4 @@
-ClusterBench 4.0 [![Build Status](https://travis-ci.org/clusterbench/clusterbench.svg?branch=master)](https://travis-ci.org/clusterbench/clusterbench)
+ClusterBench 4.0 [![Build Status](https://travis-ci.org/clusterbench/clusterbench.svg?branch=master)](https://travis-ci.org/clusterbench/clusterbench) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=clusterbench/clusterbench)](https://dependabot.com)
 ================
 
 ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 7 (EAP 6), WildFly 8 and newer.
