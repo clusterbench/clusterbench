@@ -53,7 +53,6 @@
                 <configuration>
                     <version>7</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
-                    <fileNameMapping>no-version</fileNameMapping>
                     <modules>
                         <ejbModule>
                             <groupId>org.jboss.test</groupId>
@@ -198,7 +197,6 @@
                         <configuration>
                             <version>7</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
-                            <fileNameMapping>no-version</fileNameMapping>
                             <modules>
                                 <ejbModule>
                                     <groupId>org.jboss.test</groupId>
@@ -261,7 +259,6 @@
                         <configuration>
                             <version>7</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
-                            <fileNameMapping>no-version</fileNameMapping>
                             <modules>
                                 <ejbModule>
                                     <groupId>org.jboss.test</groupId>
@@ -394,7 +391,6 @@
                         <configuration>
                             <version>7</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
-                            <fileNameMapping>no-version</fileNameMapping>
                             <modules>
                                 <ejbModule>
                                     <groupId>org.jboss.test</groupId>
