@@ -1,7 +1,5 @@
-ClusterBench 4.0
+ClusterBench 4.0 [![Build Status](https://travis-ci.org/clusterbench/clusterbench.svg?branch=master)](https://travis-ci.org/clusterbench/clusterbench)
 ================
-
-[![Build Status](https://travis-ci.org/clusterbench/clusterbench.svg?branch=master)](https://travis-ci.org/clusterbench/clusterbench)
 
 ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 7 (EAP 6), WildFly 8 and newer.
 Once deployed it is easy to stress (using JMeter, curl, etc) and monitor the performance of the cluster while
