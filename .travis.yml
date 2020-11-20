@@ -1,9 +1,0 @@
-language: java
-matrix:
-  include:
-    - jdk: openjdk8
-    - jdk: openjdk10
-    - jdk: openjdk11
-sudo: false
-notifications:
-  email: false
