@@ -1,9 +1,0 @@
-language: java
-install: mvn -s .travis.maven.settings.xml install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-matrix:
-  include:
-    - jdk: oraclejdk8
-      script: mvn verify -s .travis.maven.settings.xml -Pee5,ee6,ee7,ee8
-    - jdk: oraclejdk9
-      script: mvn verify -s .travis.maven.settings.xml -Pee6,ee7,ee8
-sudo: false
