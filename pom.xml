@@ -49,6 +49,9 @@
     <profiles>
         <profile>
             <id>ee5</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <modules>
                 <module>clusterbench-ee5-ear</module>
                 <module>clusterbench-ee5-web</module>
@@ -57,6 +60,9 @@
         </profile>
         <profile>
             <id>ee6</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <modules>
                 <module>clusterbench-ee6-ear</module>
                 <module>clusterbench-ee6-ear-passivating</module>
@@ -77,6 +83,9 @@
         </profile>
         <profile>
             <id>ee8</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <modules>
                 <module>clusterbench-ee8-ear</module>
                 <module>clusterbench-ee8-web</module>
