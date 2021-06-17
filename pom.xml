@@ -42,7 +42,7 @@
     <properties>
         <linkXRef>false</linkXRef>
         <version.org.infinispan>11.0.1.Final</version.org.infinispan>
-        <version.org.wildfly>23.0.1.Final</version.org.wildfly>
+        <version.org.wildfly>24.0.0.Final</version.org.wildfly>
         <version.org.wildfly.maven.plugin>2.0.2.Final</version.org.wildfly.maven.plugin>
     </properties>
 
