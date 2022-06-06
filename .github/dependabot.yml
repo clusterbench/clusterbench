@@ -1,27 +1,12 @@
 version: 2
 updates:
-- package-ecosystem: maven
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: org.infinispan:infinispan-client-hotrod
-    versions:
-    - 12.0.0.Dev07
-    - 12.0.0.Final
-    - 12.0.1.Final
-    - 12.0.2.Final
-    - 12.1.0.Dev01
-    - 12.1.0.Final
-  - dependency-name: org.infinispan:infinispan-core
-    versions:
-    - 12.0.0.Dev07
-    - 12.0.0.Final
-    - 12.0.1.Final
-    - 12.0.2.Final
-    - 12.1.0.Dev01
-    - 12.1.0.Final
-  - dependency-name: org.wildfly:wildfly-clustering-web-api
-    versions:
-    - 22.0.0.Final
+  - package-ecosystem: maven
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
