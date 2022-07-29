@@ -53,6 +53,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
+                <module>clusterbench-common</module>
                 <module>clusterbench-ee7-ear</module>
                 <module>clusterbench-ee7-web</module>
                 <module>clusterbench-ee7-ejb</module>
@@ -64,9 +65,22 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
+                <module>clusterbench-common</module>
                 <module>clusterbench-ee8-ear</module>
                 <module>clusterbench-ee8-web</module>
                 <module>clusterbench-ee8-ejb</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>jakarta10</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>clusterbench-common-jakarta</module>
+                <module>clusterbench-jakarta10-ear</module>
+                <module>clusterbench-jakarta10-web</module>
+                <module>clusterbench-jakarta10-ejb</module>
             </modules>
         </profile>
     </profiles>

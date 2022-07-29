@@ -23,11 +23,11 @@
         <version>4.0.0.Final-SNAPSHOT</version>
     </parent>
 
-    <artifactId>clusterbench-common</artifactId>
+    <artifactId>clusterbench-common-jakarta</artifactId>
     <version>4.0.0.Final-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>clusterbench-common</name>
+    <name>clusterbench-common-jakarta</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -42,10 +42,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>javaee</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>5</version>
-            <type>jar</type>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>9.1.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
