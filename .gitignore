@@ -23,3 +23,6 @@ nb-configuration.xml
 
 # Red Hat OpenShift
 deployments/
+
+remote-copy.sh
+build-all.sh
