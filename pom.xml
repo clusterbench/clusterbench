@@ -107,6 +107,10 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.0</version>
+                </plugin>
+                <plugin>
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-maven-plugin</artifactId>
                     <version>${version.org.wildfly.maven.plugin}</version>
