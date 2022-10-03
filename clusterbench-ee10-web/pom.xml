@@ -23,7 +23,7 @@
         <version>4.0.0.Final-SNAPSHOT</version>
     </parent>
 
-    <artifactId>clusterbench-jakarta10-web</artifactId>
+    <artifactId>clusterbench-ee10-web</artifactId>
     <version>4.0.0.Final-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -39,7 +39,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-jakarta10-ejb</artifactId>
+            <artifactId>clusterbench-ee10-ejb</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>

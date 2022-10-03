@@ -25,7 +25,7 @@
         <version>4.0.0.Final-SNAPSHOT</version>
     </parent>
 
-    <artifactId>clusterbench-jakarta10-ear</artifactId>
+    <artifactId>clusterbench-ee10-ear</artifactId>
     <version>4.0.0.Final-SNAPSHOT</version>
     <packaging>ear</packaging>
 
@@ -34,7 +34,7 @@
     </properties>
 
     <build>
-        <finalName>clusterbench-jakarta10</finalName>
+        <finalName>clusterbench-ee10</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -64,29 +64,29 @@
                     <modules>
                         <ejbModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>clusterbench-jakarta10-ejb</artifactId>
-                            <bundleFileName>clusterbench-jakarta10-ejb.jar</bundleFileName>
+                            <artifactId>clusterbench-ee10-ejb</artifactId>
+                            <bundleFileName>clusterbench-ee10-ejb.jar</bundleFileName>
                         </ejbModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                            <artifactId>clusterbench-ee10-web</artifactId>
                             <classifier>default</classifier>
                             <contextRoot>/clusterbench</contextRoot>
-                            <bundleFileName>clusterbench-jakarta10-web.war</bundleFileName>
+                            <bundleFileName>clusterbench-ee10-web.war</bundleFileName>
                         </webModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                            <artifactId>clusterbench-ee10-web</artifactId>
                             <classifier>passivating</classifier>
                             <contextRoot>/clusterbench-passivating</contextRoot>
-                            <bundleFileName>clusterbench-jakarta10-web-passivating.war</bundleFileName>
+                            <bundleFileName>clusterbench-ee10-web-passivating.war</bundleFileName>
                         </webModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                            <artifactId>clusterbench-ee10-web</artifactId>
                             <classifier>granular</classifier>
                             <contextRoot>/clusterbench-granular</contextRoot>
-                            <bundleFileName>clusterbench-jakarta10-web-granular.war</bundleFileName>
+                            <bundleFileName>clusterbench-ee10-web-granular.war</bundleFileName>
                         </webModule>
                     </modules>
                 </configuration>
@@ -118,27 +118,27 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-jakarta10-ejb</artifactId>
+            <artifactId>clusterbench-ee10-ejb</artifactId>
             <version>${project.version}</version>
             <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-jakarta10-web</artifactId>
+            <artifactId>clusterbench-ee10-web</artifactId>
             <version>${project.version}</version>
             <classifier>default</classifier>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-jakarta10-web</artifactId>
+            <artifactId>clusterbench-ee10-web</artifactId>
             <version>${project.version}</version>
             <classifier>passivating</classifier>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-jakarta10-web</artifactId>
+            <artifactId>clusterbench-ee10-web</artifactId>
             <version>${project.version}</version>
             <classifier>granular</classifier>
             <type>war</type>
@@ -218,26 +218,26 @@
                             <modules>
                                 <ejbModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-ejb</artifactId>
+                                    <artifactId>clusterbench-ee10-ejb</artifactId>
                                     <bundleFileName>clusterbench-ejb.jar</bundleFileName>
                                 </ejbModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>default</classifier>
                                     <contextRoot>/clusterbench</contextRoot>
                                     <bundleFileName>a.war</bundleFileName>
                                 </webModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>passivating</classifier>
                                     <contextRoot>/clusterbench-passivating</contextRoot>
                                     <bundleFileName>b.war</bundleFileName>
                                 </webModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>granular</classifier>
                                     <contextRoot>/clusterbench-granular</contextRoot>
                                     <bundleFileName>c.war</bundleFileName>
@@ -252,7 +252,7 @@
             <!-- mvn clean install -P ee8,singleton-deployment-specific-descriptor -->
             <id>singleton-deployment-specific-descriptor</id>
             <build>
-                <finalName>clusterbench-jakarta10</finalName>
+                <finalName>clusterbench-ee10</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -283,7 +283,7 @@
             <!-- mvn clean install -P ee8,singleton-deployment-jboss-all -->
             <id>singleton-deployment-jboss-all</id>
             <build>
-                <finalName>clusterbench-jakarta10</finalName>
+                <finalName>clusterbench-ee10</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -314,7 +314,7 @@
             <!-- mvn clean install -P ee8,shared-sessions -->
             <id>shared-sessions</id>
             <build>
-                <finalName>clusterbench-jakarta10</finalName>
+                <finalName>clusterbench-ee10</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -348,38 +348,38 @@
                             <modules>
                                 <ejbModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-ejb</artifactId>
+                                    <artifactId>clusterbench-ee10-ejb</artifactId>
                                 </ejbModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>default</classifier>
-                                    <bundleFileName>clusterbench-jakarta10-web-default.war</bundleFileName>
+                                    <bundleFileName>clusterbench-ee10-web-default.war</bundleFileName>
                                     <contextRoot>/clusterbench</contextRoot>
                                 </webModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>default</classifier>
-                                    <bundleFileName>clusterbench-jakarta10-web-default-1.war</bundleFileName>
+                                    <bundleFileName>clusterbench-ee10-web-default-1.war</bundleFileName>
                                     <contextRoot>/clusterbench-shared-sessions-1</contextRoot>
                                 </webModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>default</classifier>
-                                    <bundleFileName>clusterbench-jakarta10-web-default-2.war</bundleFileName>
+                                    <bundleFileName>clusterbench-ee10-web-default-2.war</bundleFileName>
                                     <contextRoot>/clusterbench-shared-sessions-2</contextRoot>
                                 </webModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>passivating</classifier>
                                     <contextRoot>/clusterbench-passivating</contextRoot>
                                 </webModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>granular</classifier>
                                     <contextRoot>/clusterbench-granular</contextRoot>
                                 </webModule>
@@ -415,23 +415,23 @@
                                     <modules>
                                         <ejbModule>
                                             <groupId>${project.groupId}</groupId>
-                                            <artifactId>clusterbench-jakarta10-ejb</artifactId>
+                                            <artifactId>clusterbench-ee10-ejb</artifactId>
                                         </ejbModule>
                                         <webModule>
                                             <groupId>${project.groupId}</groupId>
-                                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                                            <artifactId>clusterbench-ee10-web</artifactId>
                                             <classifier>default</classifier>
                                             <contextRoot>/clusterbench-sso-1</contextRoot>
                                         </webModule>
                                         <webModule>
                                             <groupId>${project.groupId}</groupId>
-                                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                                            <artifactId>clusterbench-ee10-web</artifactId>
                                             <classifier>passivating</classifier>
                                             <contextRoot>/clusterbench-passivating1</contextRoot>
                                         </webModule>
                                         <webModule>
                                             <groupId>${project.groupId}</groupId>
-                                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                                            <artifactId>clusterbench-ee10-web</artifactId>
                                             <classifier>granular</classifier>
                                             <contextRoot>/clusterbench-granular1</contextRoot>
                                         </webModule>
@@ -454,23 +454,23 @@
                                     <modules>
                                         <ejbModule>
                                             <groupId>${project.groupId}</groupId>
-                                            <artifactId>clusterbench-jakarta10-ejb</artifactId>
+                                            <artifactId>clusterbench-ee10-ejb</artifactId>
                                         </ejbModule>
                                         <webModule>
                                             <groupId>${project.groupId}</groupId>
-                                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                                            <artifactId>clusterbench-ee10-web</artifactId>
                                             <classifier>default</classifier>
                                             <contextRoot>/clusterbench-sso-2</contextRoot>
                                         </webModule>
                                         <webModule>
                                             <groupId>${project.groupId}</groupId>
-                                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                                            <artifactId>clusterbench-ee10-web</artifactId>
                                             <classifier>passivating</classifier>
                                             <contextRoot>/clusterbench-passivating2</contextRoot>
                                         </webModule>
                                         <webModule>
                                             <groupId>${project.groupId}</groupId>
-                                            <artifactId>clusterbench-jakarta10-web</artifactId>
+                                            <artifactId>clusterbench-ee10-web</artifactId>
                                             <classifier>granular</classifier>
                                             <contextRoot>/clusterbench-granular2</contextRoot>
                                         </webModule>
@@ -527,25 +527,25 @@
                             <modules>
                                 <ejbModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-ejb</artifactId>
-                                    <bundleFileName>clusterbench-jakarta10-ejb.jar</bundleFileName>
+                                    <artifactId>clusterbench-ee10-ejb</artifactId>
+                                    <bundleFileName>clusterbench-ee10-ejb.jar</bundleFileName>
                                 </ejbModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>default</classifier>
                                     <contextRoot>/clusterbench</contextRoot>
-                                    <bundleFileName>clusterbench-jakarta10-web.war</bundleFileName>
+                                    <bundleFileName>clusterbench-ee10-web.war</bundleFileName>
                                 </webModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>passivating</classifier>
                                     <excluded>true</excluded>
                                 </webModule>
                                 <webModule>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>clusterbench-jakarta10-web</artifactId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
                                     <classifier>granular</classifier>
                                     <excluded>true</excluded>
                                 </webModule>

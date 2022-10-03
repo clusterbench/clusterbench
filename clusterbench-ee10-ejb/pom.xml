@@ -24,7 +24,7 @@
         <version>4.0.0.Final-SNAPSHOT</version>
     </parent>
 
-    <artifactId>clusterbench-jakarta10-ejb</artifactId>
+    <artifactId>clusterbench-ee10-ejb</artifactId>
     <version>4.0.0.Final-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
