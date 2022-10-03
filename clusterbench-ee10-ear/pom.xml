@@ -57,7 +57,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
-                <version>3.0.2</version>
                 <configuration>
                     <version>8</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
@@ -211,7 +210,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>3.0.2</version>
                         <configuration>
                             <version>8</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
@@ -338,7 +336,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>3.0.2</version>
                         <configuration>
                             <version>8</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
@@ -394,7 +391,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>3.0.2</version>
                         <executions>
                             <execution>
                                 <id>clusterbench-sso-1</id>
@@ -516,7 +512,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>3.0.2</version>
                         <configuration>
                             <version>8</version>
                             <defaultLibBundleDir>lib</defaultLibBundleDir>
