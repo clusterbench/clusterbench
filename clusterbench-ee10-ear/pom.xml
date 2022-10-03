@@ -31,6 +31,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.org.wildfly>27.0.0.Beta1</version.org.wildfly>
     </properties>
 
     <build>
