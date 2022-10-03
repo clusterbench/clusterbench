@@ -18,8 +18,8 @@ package org.jboss.test.clusterbench.common.ejb;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.ejb.Remove;
+import jakarta.annotation.PostConstruct;
+import jakarta.ejb.Remove;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 public class CommonStatefulSBImpl implements CommonStatefulSB {

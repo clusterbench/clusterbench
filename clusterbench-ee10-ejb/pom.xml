@@ -36,7 +36,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-common-jakarta</artifactId>
+            <artifactId>clusterbench-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

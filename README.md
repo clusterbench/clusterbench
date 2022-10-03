@@ -5,6 +5,14 @@ ClusterBench is a simple application that can be deployed in a cluster of JBoss 
 Once deployed it is easy to stress (using JMeter, curl, etc) and monitor the performance of the cluster while
 at the same time it can be easily checked the correctness of replicated sessions.
 
+Support Matrix
+--------------
+
+| Branch         | EE Versions            | Base JDK |
+|----------------|------------------------|----------|
+| `main` / `4.x` | Jakarta EE 10          | 11       |
+| `3.x`          | EE 5, EE 6, EE 7, EE 8 | 8        |
+
 
 Building
 --------
