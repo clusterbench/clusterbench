@@ -72,15 +72,15 @@
             </modules>
         </profile>
         <profile>
-            <id>jakarta10</id>
+            <id>ee10</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
                 <module>clusterbench-common-jakarta</module>
-                <module>clusterbench-jakarta10-ear</module>
-                <module>clusterbench-jakarta10-web</module>
-                <module>clusterbench-jakarta10-ejb</module>
+                <module>clusterbench-ee10-ear</module>
+                <module>clusterbench-ee10-web</module>
+                <module>clusterbench-ee10-ejb</module>
             </modules>
         </profile>
     </profiles>

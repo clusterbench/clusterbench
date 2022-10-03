@@ -13,7 +13,7 @@ public class AbstractForwardingStatelessSBImpl {
             props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
             Context context = new InitialContext(props);
             return (RemoteStatelessSB) context.lookup(
-                    "ejb:clusterbench-jakarta10/clusterbench-jakarta10-ejb/RemoteStatelessSBImpl!org.jboss.test.clusterbench.ejb.stateless.RemoteStatelessSB"
+                    "ejb:clusterbench-ee10/clusterbench-ee10-ejb/RemoteStatelessSBImpl!org.jboss.test.clusterbench.ejb.stateless.RemoteStatelessSB"
             );
         } catch (Exception e) {
             throw new RuntimeException(e);
