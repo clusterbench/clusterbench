@@ -37,53 +37,17 @@
 
     <modules>
         <module>clusterbench-common</module>
+        <module>clusterbench-ee10-ejb</module>
+        <module>clusterbench-ee10-web</module>
+        <module>clusterbench-ee10-ear</module>
     </modules>
 
     <properties>
         <linkXRef>false</linkXRef>
         <version.org.infinispan>11.0.1.Final</version.org.infinispan>
-        <version.org.wildfly>26.1.1.Final</version.org.wildfly>
+        <version.org.wildfly>27.0.0.Beta1</version.org.wildfly>
         <version.org.wildfly.maven.plugin>2.1.0.Final</version.org.wildfly.maven.plugin>
     </properties>
-
-    <profiles>
-        <profile>
-            <id>ee7</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <modules>
-                <module>clusterbench-common</module>
-                <module>clusterbench-ee7-ear</module>
-                <module>clusterbench-ee7-web</module>
-                <module>clusterbench-ee7-ejb</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>ee8</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>clusterbench-common</module>
-                <module>clusterbench-ee8-ear</module>
-                <module>clusterbench-ee8-web</module>
-                <module>clusterbench-ee8-ejb</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>ee10</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>clusterbench-common-jakarta</module>
-                <module>clusterbench-ee10-ear</module>
-                <module>clusterbench-ee10-web</module>
-                <module>clusterbench-ee10-ejb</module>
-            </modules>
-        </profile>
-    </profiles>
 
     <dependencyManagement>
         <dependencies>
