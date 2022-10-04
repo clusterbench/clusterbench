@@ -28,7 +28,6 @@
     <packaging>war</packaging>
 
     <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdg.packagingExcludes>,WEB-INF/classes/org/jboss/test/clusterbench/web/remote/HotRodServlet.class</jdg.packagingExcludes>
         <!-- Used to comment out security in web.xml -->
@@ -97,9 +96,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
                 </configuration>
             </plugin>
             <plugin>
@@ -237,31 +233,6 @@
                                     <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-api</artifactId>
-                                    <version>8.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
