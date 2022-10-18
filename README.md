@@ -8,10 +8,10 @@ at the same time it can be easily checked the correctness of replicated sessions
 Support Matrix
 --------------
 
-| Branch         | EE Versions            | Base JDK |
-|----------------|------------------------|----------|
-| `main` / `4.x` | Jakarta EE 10          | 11       |
-| `3.x`          | EE 5, EE 6, EE 7, EE 8 | 8        |
+| Branch         | EE Versions                 | Base JDK |
+|----------------|-----------------------------|----------|
+| `main` / `4.x` | Jakarta EE 10               | 11       |
+| `3.x`          | Java EE 5, EE 6, EE 7, EE 8 | 8        |
 
 
 Building
