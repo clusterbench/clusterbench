@@ -44,13 +44,13 @@ which will deploy the resulting EAR to the running server.
 To do this manually, copy `clusterbench-ee10.ear` to server's deployments directory
 and start the standalone server in the HA mode:
 
-	$ cd ~/wildfly-27.0.0.Beta1
+	$ cd ~/wildfly-27.0.0.Final
 	$ cp ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear standalone/deployments/
 	$ ./bin/standalone.sh -c standalone-ha.xml
 
 You can also use the CLI to do so by starting the server, connecting with CLI and using `deploy` command:
 
-	$ cd ~/wildfly-27.0.0.Beta1
+	$ cd ~/wildfly-27.0.0.Final
 	$ ./bin/standalone.sh -c standalone-ha.xml
 
 Then connect with the CLI:
