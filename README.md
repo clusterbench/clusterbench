@@ -35,7 +35,7 @@ Deploying
 
 ### WildFly 27 and newer
 
-You can use the `deploy` goal of the [WildFly Maven Plugin](https://docs.jboss.org/wildfly/plugins/maven/latest/deploy-mojo.html) to deploy to your running instance by running:
+You can use the `deploy` goal of the [WildFly Maven Plugin](https://docs.wildfly.org/wildfly-maven-plugin/) to deploy to your running instance by running:
 
     $ mvn wildfly:deploy
 
