@@ -44,9 +44,9 @@
 
     <properties>
         <linkXRef>false</linkXRef>
-        <version.org.infinispan>14.0.0.Final</version.org.infinispan>
-        <version.org.wildfly>27.0.0.Beta1</version.org.wildfly>
-        <version.org.wildfly.maven.plugin>4.0.0.Beta4</version.org.wildfly.maven.plugin>
+        <version.org.infinispan>14.0.2.Final</version.org.infinispan>
+        <version.org.wildfly>27.0.0.Final</version.org.wildfly>
+        <version.org.wildfly.maven.plugin>4.0.0.Final</version.org.wildfly.maven.plugin>
         <!-- Workaround https://github.com/jboss/jboss-parent-pom/pull/131#pullrequestreview-1129876725 -->
         <version.plexus.archiver>4.5.0</version.plexus.archiver>
     </properties>
