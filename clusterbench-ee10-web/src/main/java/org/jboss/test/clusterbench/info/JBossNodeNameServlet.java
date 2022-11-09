@@ -10,6 +10,7 @@ import java.io.IOException;
 public class JBossNodeNameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        req.getSession(); //just to create a session and get JSESSIONID cookie
         String jbossNodeName = System.getProperty("jboss.node.name");
         resp.getWriter().print(jbossNodeName);
     }
