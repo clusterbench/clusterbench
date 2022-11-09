@@ -209,7 +209,7 @@ This profile adds the necessary JEBs to perform call forwarding to a second JEB 
 Issues
 ------
 
-Create them on GitHub Issues:
+File new issues using GitHub Issues:
 
 [https://github.com/clusterbench/clusterbench/issues](https://github.com/clusterbench/clusterbench/issues)
 
