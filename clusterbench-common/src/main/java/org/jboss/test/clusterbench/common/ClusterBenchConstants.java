@@ -18,6 +18,8 @@ package org.jboss.test.clusterbench.common;
 
 public interface ClusterBenchConstants {
 
+    String CREATE = "create";
+
     String READONLY = "readonly";
 
     String INVALIDATE = "invalidate";
