@@ -1,4 +1,4 @@
-package org.jboss.test.clusterbench.info;
+package org.jboss.test.clusterbench.web.debug;
 
 import java.io.IOException;
 
