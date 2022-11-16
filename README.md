@@ -206,6 +206,17 @@ This profile adds the necessary JEBs to perform call forwarding to a second JEB 
 
     $ mvn clean install -P 2clusters -DskipTests
 
+
+Configuration
+-------------
+
+The default payload size can be overridden by a system property specifying integer number of bytes to use in a payload:
+
+    $ ./bin/standalone.sh -c standalone-ha.xml -Dorg.jboss.test.clusterbench.cargokb=5
+
+> NOTE: Ensure identical value is specified for all containers in the cluster!
+
+
 Issues
 ------
 

@@ -19,14 +19,32 @@ package org.jboss.test.clusterbench.common;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * @author Radoslav Husar
+ */
 public class SerialBean implements Serializable {
 
     private int serial;
     private byte[] cargo;
+    public static final String CARGOKB_SYSTEM_PROPERTY = "org.jboss.test.clusterbench.cargokb";
+    public static final int CARGOKB;
     public static final int DEFAULT_CARGOKB = 4;
 
+    static {
+        int cargokb;
+
+        String property = System.getProperty(CARGOKB_SYSTEM_PROPERTY);
+        if (property != null) {
+            cargokb = Integer.parseInt(property);
+        } else {
+            cargokb = DEFAULT_CARGOKB;
+        }
+
+        CARGOKB = cargokb;
+    }
+
     public SerialBean() {
-        this(DEFAULT_CARGOKB);
+        this(CARGOKB);
     }
 
     public SerialBean(int cargokb) {
