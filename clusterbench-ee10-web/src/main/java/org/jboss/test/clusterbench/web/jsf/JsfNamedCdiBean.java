@@ -26,6 +26,6 @@ import org.jboss.test.clusterbench.common.SerialBean;
  */
 @Named("jsfNamedCdiBean")
 @SessionScoped
-@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+@FacesConfig
 public class JsfNamedCdiBean extends SerialBean {
 }
