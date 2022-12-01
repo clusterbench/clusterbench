@@ -163,6 +163,13 @@
                     <plugin>
                         <groupId>org.wildfly.plugins</groupId>
                         <artifactId>wildfly-maven-plugin</artifactId>
+                        <configuration>
+                            <skip>false</skip>
+                            <server-args>
+                                <server-arg>--server-config=standalone-full-ha.xml</server-arg>
+                                <server-arg>-Djboss.node.name=clusterbench-1</server-arg>
+                            </server-args>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>integration-test-wildfly-deploy</id>
@@ -177,10 +184,6 @@
                                         <script>remote-cache-container.cli</script>
                                     </scripts>
                                     <version>${version.org.wildfly}</version>
-                                    <server-args>
-                                        <server-arg>--server-config=standalone-full-ha.xml</server-arg>
-                                        <server-arg>-Djboss.node.name=clusterbench-1</server-arg>
-                                    </server-args>
                                 </configuration>
                             </execution>
                             <execution>
