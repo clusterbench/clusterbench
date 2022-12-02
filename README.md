@@ -1,5 +1,8 @@
-ClusterBench 4.0 [![CI](https://github.com/clusterbench/clusterbench/workflows/CI/badge.svg)](https://github.com/clusterbench/clusterbench/actions)
+ClusterBench 4.0
 ================
+
+[![CI](https://github.com/clusterbench/clusterbench/workflows/CI/badge.svg)](https://github.com/clusterbench/clusterbench/actions)
+[![Version](https://img.shields.io/maven-central/v/org.jboss.test/clusterbench?logo=apache-maven)](https://search.maven.org/artifact/org.jboss.test/clusterbench)
 
 ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 7 (EAP 6), WildFly 8 and newer.
 Once deployed it is easy to stress (using JMeter, curl, etc) and monitor the performance of the cluster while
