@@ -251,7 +251,7 @@
         </profile>
         <profile>
             <!-- Uses distributable-web.xml to define the WAR's profile to be used (EAP7-1072) -->
-            <!-- mvn clean install -P ee8,webapp-offload -DskipTests -->
+            <!-- mvn clean install -P webapp-offload -DskipTests -->
             <id>webapp-offload</id>
             <build>
                 <plugins>
@@ -348,7 +348,7 @@
         </profile>
         <profile>
             <!-- distributable-web.xml references existing "sm_offload" and "sm_offload_granular" profiles on the server created with cli script (EAP7-1072) -->
-            <!-- mvn clean install -P ee8,webapp-offload-ref -DskipTests -->
+            <!-- mvn clean install -P webapp-offload-ref -DskipTests -->
             <id>webapp-offload-ref</id>
             <build>
                 <plugins>
@@ -445,7 +445,7 @@
         </profile>
         <profile>
             <!-- Uses jboss-all.xml to define the WAR's profile to be used (EAP7-1072) -->
-            <!-- mvn clean install -P ee8,resources-offload -DskipTests -->
+            <!-- mvn clean install -P resources-offload -DskipTests -->
             <id>resources-offload</id>
             <build>
                 <plugins>
@@ -554,7 +554,7 @@
         </profile>
         <profile>
             <!-- jboss-all.xml references existing "sm_offload" and "sm_offload_granular" profiles on the server created with cli script (EAP7-1072) -->
-            <!-- mvn clean install -P ee8,resources-offload-ref -DskipTests -->
+            <!-- mvn clean install -P resources-offload-ref -DskipTests -->
             <id>resources-offload-ref</id>
             <build>
                 <plugins>
