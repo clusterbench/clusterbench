@@ -198,7 +198,7 @@
         </profile>
         <profile>
             <!-- shortens name of bundled JARs and WARs -->
-            <!-- mvn clean install -P ee8,short-names -->
+            <!-- mvn clean install -P short-names -->
             <id>short-names</id>
             <build>
                 <plugins>
@@ -242,7 +242,7 @@
             </build>
         </profile>
         <profile>
-            <!-- mvn clean install -P ee8,singleton-deployment-specific-descriptor -->
+            <!-- mvn clean install -P singleton-deployment-specific-descriptor -->
             <id>singleton-deployment-specific-descriptor</id>
             <build>
                 <finalName>clusterbench-ee10</finalName>
@@ -272,7 +272,7 @@
             </build>
         </profile>
         <profile>
-            <!-- mvn clean install -P ee8,singleton-deployment-jboss-all -->
+            <!-- mvn clean install -P singleton-deployment-jboss-all -->
             <id>singleton-deployment-jboss-all</id>
             <build>
                 <finalName>clusterbench-ee10</finalName>
@@ -302,7 +302,7 @@
             </build>
         </profile>
         <profile>
-            <!-- mvn clean install -P ee8,shared-sessions -->
+            <!-- mvn clean install -P shared-sessions -->
             <id>shared-sessions</id>
             <build>
                 <finalName>clusterbench-ee10</finalName>
@@ -379,7 +379,7 @@
             </build>
         </profile>
         <profile>
-            <!-- mvn clean install -P ee8,sso-form -->
+            <!-- mvn clean install -P sso-form -->
             <id>sso-form</id>
             <build>
                 <plugins>
@@ -500,7 +500,7 @@
             </build>
         </profile>
         <profile>
-            <!-- mvn clean install -P ee8,core -->
+            <!-- mvn clean install -P core -->
             <id>core</id>
             <build>
                 <plugins>
