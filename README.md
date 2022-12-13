@@ -32,6 +32,16 @@ Output files:
 
     ./clusterbench-ee10-ear/target/clusterbench-ee10.ear
 
+Running
+-------
+
+You can also use `wildfly-maven-plugin` to run a container with the project already deployed.
+It will also provision the server without having to download anything manually.
+
+    $ mvn clean wildfly:run
+
+and navigate your browser to http://localhost:8080/clusterbench/.
+
 
 Deploying
 ---------
