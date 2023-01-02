@@ -126,7 +126,7 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
             responseText.append("]");
             if (i.hasNext()) responseText.append(" ");
         }
-        responseText.append("}\n");
+        responseText.append("}");
 
         return responseText.toString();
     }
