@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,7 +46,7 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
     public static final String KEY = AbstractCommonDebugServlet.class.getName();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession(true);
         PrintWriter out = resp.getWriter();
 
@@ -80,6 +82,8 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
             out.println("Request header: " + header + "=" + req.getHeader(header));
         }
 
+        // Request URI
+        out.println("Request URI: " + req.getRequestURI());
         // Common debug info
         out.println("Serial: " + serial);
         // Get the session ID with the route (if present)
@@ -91,6 +95,8 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
         out.println("ServletRequest.getLocalPort(): " + req.getLocalPort());
         // Fetch just the node name for now
         out.println("Node name: " + System.getProperty("jboss.node.name"));
+        // All parameters from current request
+        out.println(printRequestParameters(req));
 
         // Container/EE-specific debug info
         out.println(this.getContainerSpecificDebugInfo(req));
@@ -100,6 +106,29 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
             log.log(Level.INFO, "Invalidating: {0}", session.getId());
             session.invalidate();
         }
+    }
+
+    private String printRequestParameters(HttpServletRequest request) {
+        final StringBuilder responseText = new StringBuilder();
+
+        responseText.append("Parameters [key=value]: {");
+
+        final Map<String, String[]> params = request.getParameterMap();
+
+        final Iterator<String> i = params.keySet().iterator();
+        while (i.hasNext()) {
+            String key = i.next();
+            String value = (params.get(key))[0];
+            responseText.append("[");
+            responseText.append(key);
+            responseText.append("=");
+            responseText.append(value);
+            responseText.append("]");
+            if (i.hasNext()) responseText.append(" ");
+        }
+        responseText.append("}\n");
+
+        return responseText.toString();
     }
 
     @Override
