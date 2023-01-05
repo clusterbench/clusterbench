@@ -31,7 +31,7 @@ import org.jgroups.stack.IpAddress;
 /**
  * @author Radoslav Husar
  */
-@WebServlet(name = "DebugServlet", urlPatterns = { "/debug" })
+@WebServlet(name = "DebugServlet", urlPatterns = { "/debug", "/debug/*" })
 public class DebugServlet extends AbstractCommonDebugServlet {
 
     @Resource(lookup = "java:jboss/infinispan/container/web")

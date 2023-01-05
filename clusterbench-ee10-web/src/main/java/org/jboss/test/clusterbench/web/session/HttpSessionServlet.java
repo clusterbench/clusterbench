@@ -23,7 +23,7 @@ import jakarta.servlet.annotation.WebServlet;
 /**
  * @author Radoslav Husar
  */
-@WebServlet(name = "HttpSessionServlet", urlPatterns = { "/session" })
+@WebServlet(name = "HttpSessionServlet", urlPatterns = { "/session", "/session/*" })
 public class HttpSessionServlet extends CommonHttpSessionServlet {
 
     @Override
