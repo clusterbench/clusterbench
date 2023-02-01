@@ -181,6 +181,7 @@
                                 </goals>
                                 <configuration>
                                     <scripts>
+                                        <script>jgroups.cli</script>
                                         <script>remote-cache-container.cli</script>
                                     </scripts>
                                     <version>${version.org.wildfly}</version>
