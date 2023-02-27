@@ -1,5 +1,5 @@
-ClusterBench 4.0
-================
+ClusterBench
+============
 
 [![CI](https://github.com/clusterbench/clusterbench/workflows/CI/badge.svg)](https://github.com/clusterbench/clusterbench/actions)
 [![Version](https://img.shields.io/maven-central/v/org.jboss.test/clusterbench?logo=apache-maven)](https://search.maven.org/artifact/org.jboss.test/clusterbench)
