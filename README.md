@@ -11,10 +11,11 @@ at the same time it can be easily checked the correctness of replicated sessions
 Support Matrix
 --------------
 
-| Branch         | EE Versions                 | Base JDK |
-|----------------|-----------------------------|----------|
-| `main` / `4.x` | Jakarta EE 10               | 11       |
-| `3.x`          | Java EE 5, EE 6, EE 7, EE 8 | 8        |
+| Branch | WildFly Version   | EE Version(s)               | Base JDK |
+|--------|-------------------|-----------------------------|----------|
+| `main` | 28                | Jakarta EE 10               | 11       |
+| `4.x`  | 27                | Jakarta EE 10               | 11       |
+| `3.x`  | 26 (and previous) | Java EE 5, EE 6, EE 7, EE 8 | 8        |
 
 
 Building
