@@ -18,6 +18,8 @@ package org.jboss.test.clusterbench.common.debug;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -25,7 +27,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -48,6 +49,8 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession(true);
+        resp.setContentType("text/plain");
+        resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
         PrintWriter out = resp.getWriter();
 
         if (session.isNew()) {
@@ -84,6 +87,13 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
 
         // Request URI
         out.println("Request URI: " + req.getRequestURI());
+        // Query path of the URL
+        out.println("Query string: " + req.getQueryString());
+        // Query path of the URL decoded
+        out.println("Query string UTF-8 decoded: " + ((req.getQueryString() == null) ? "null" :
+                                                    URLDecoder.decode(req.getQueryString(), StandardCharsets.UTF_8)));
+        // Extra path information
+        out.println("Path info: " + req.getPathInfo());
         // Common debug info
         out.println("Serial: " + serial);
         // Get the session ID with the route (if present)
