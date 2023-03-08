@@ -42,6 +42,8 @@ public class DebugServlet extends AbstractCommonDebugServlet {
         StringBuilder info = new StringBuilder();
 
         // Get current cache nodes
+        info.append("Address: ").append(container.getAddress()).append(System.getProperty("line.separator"));
+        info.append("Coordinator: ").append(container.getCoordinator()).append(System.getProperty("line.separator"));
         info.append("Members: ").append(container.getMembers()).append(System.getProperty("line.separator"));
 
         info.append("Physical addresses: ");
