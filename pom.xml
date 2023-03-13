@@ -58,6 +58,7 @@
         <version.org.wildfly.maven.plugin>4.0.0.Final</version.org.wildfly.maven.plugin>
         <!-- Workaround https://github.com/jboss/jboss-parent-pom/pull/131#pullrequestreview-1129876725 -->
         <version.plexus.archiver>4.5.0</version.plexus.archiver>
+        <wildfly.skip>true</wildfly.skip>
     </properties>
 
     <dependencyManagement>
@@ -147,12 +148,29 @@
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-maven-plugin</artifactId>
                     <version>${version.org.wildfly.maven.plugin}</version>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>build-quickly</id>
+            <activation>
+                <property>
+                    <name>quickly</name>
+                </property>
+            </activation>
+            <properties>
+                <skipTests>true</skipTests>
+                <skipITs>true</skipITs>
+                <maven.javadoc.skip>true</maven.javadoc.skip>
+                <checkstyle.skip>true</checkstyle.skip>
+                <enforcer.skip>true</enforcer.skip>
+                <license.skip>true</license.skip>
+                <wildfly.skip>true</wildfly.skip>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
