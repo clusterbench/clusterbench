@@ -85,6 +85,40 @@ To deploy the Tomcat variant of clusterbench, copy the following `war` file into
 
 Note that CDI, debug, EJB, granular, JSF servlets are unsupported on Tomcat and not bundled in the `war`.
 
+Deploying to OpenShift
+----------------------
+
+### Using Helm Charts
+
+First, make sure you have `oc` and [`helm`]([https://helm.sh/]) installed. Now, log into OpenShift using the following
+replacing with your token and server address:
+
+    oc login --token=sha256~<your_token> --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443
+
+Now install the `helm` chart:
+
+    helm install clusterbench-from-chart -f charts/helm.yaml wildfly/wildfly
+
+You can watch the build using `oc`:
+
+    oc get build -w
+
+Once built, watch the deployment using:
+
+    oc get deployment clusterbench-from-chart -w
+
+Once deployed, you can access the application for example the debug servlet using `curl`:
+
+    [rhusar@ribera clusterbench]$ curl https://$(oc get route clusterbench-from-chart --template='{{ .spec.host }}')/clusterbench/debug
+    ...
+    Serial: 0
+    Session ID: nPw9NzEmPaZHlj0eYoCapZfBBOnNk_5HXNpq2Qi_
+    Current time: Wed Mar 22 14:36:52 GMT 2023
+
+Once finished, remove everything using:
+
+    helm uninstall clusterbench-from-chart
+
 
 Scenario Servlets
 -----------------

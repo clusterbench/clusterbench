@@ -1,0 +1,5 @@
+build:
+  uri: https://github.com/clusterbench/clusterbench.git
+  ref: main
+deploy:
+  replicas: 2
