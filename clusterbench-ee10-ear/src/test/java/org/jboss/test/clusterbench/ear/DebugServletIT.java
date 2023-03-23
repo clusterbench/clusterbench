@@ -26,7 +26,7 @@ public class DebugServletIT {
     @Test
     public void test() throws Exception {
         CloseableHttpClient hc = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("http://localhost:8080/clusterbench/debug");
+        HttpGet httpGet = new HttpGet("http://localhost:8080/cluster FAIL bench/debug");
 
         try (CloseableHttpResponse response = hc.execute(httpGet)) {
             Assert.assertEquals(200, response.getStatusLine().getStatusCode());
