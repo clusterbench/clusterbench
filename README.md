@@ -95,6 +95,10 @@ replacing with your token and server address:
 
     oc login --token=sha256~<your_token> --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443
 
+First add the WildFly helm repo:
+
+    helm repo add wildfly https://docs.wildfly.org/wildfly-charts/
+
 Now install the `helm` chart:
 
     helm install clusterbench-from-chart -f charts/helm.yaml wildfly/wildfly
