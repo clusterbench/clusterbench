@@ -19,10 +19,10 @@ public class NodeNameServletIT {
 
     @Test
     public void test() throws Exception {
-        try (CloseableHttpClient hc = HttpClients.createDefault()) {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpGet httpGet = new HttpGet("http://localhost:8080/clusterbench/jboss-node-name");
 
-            try (CloseableHttpResponse response = hc.execute(httpGet)) {
+            try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
                 Assert.assertEquals(200, response.getStatusLine().getStatusCode());
 
                 String responseBody = EntityUtils.toString(response.getEntity());
@@ -35,7 +35,7 @@ public class NodeNameServletIT {
 
             httpGet = new HttpGet("http://localhost:8080/clusterbench/jboss-node-name?create=true");
 
-            try (CloseableHttpResponse response = hc.execute(httpGet)) {
+            try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
                 Assert.assertEquals(200, response.getStatusLine().getStatusCode());
 
                 String responseBody = EntityUtils.toString(response.getEntity());
