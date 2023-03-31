@@ -32,5 +32,7 @@ jobs:
             ${{ runner.os }}-maven-
       - name: Build with Maven
         run: mvn -B verify
-      - name: Build with Maven (OpenShift-like build)
+      - name: Build with Maven (-Dquickly)
+        run: mvn -B clean verify -Dquickly
+      - name: Build with Maven (-Popenshift)
         run: mvn -B -e -Popenshift -DskipTests clean package
