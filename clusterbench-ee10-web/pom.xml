@@ -36,6 +36,7 @@
     </properties>
 
     <dependencies>
+        <!-- Project dependencies -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>clusterbench-ee10-ejb</artifactId>
@@ -49,11 +50,25 @@
             <scope>compile</scope>
             <type>jar</type>
         </dependency>
-        <!-- EE API -->
+        <!-- Jakarta dependencies -->
         <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>10.0.0</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.faces</groupId>
+            <artifactId>jakarta.faces-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- @org.wildfly.clustering.web.annotation.Immutable -->
@@ -67,22 +82,21 @@
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-client-hotrod</artifactId>
+            <!-- TODO this is not managed by the bom? -->
             <version>${version.org.infinispan}</version>
             <scope>provided</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.wildfly</groupId>-->
-            <!--<artifactId>wildfly-clustering-infinispan-spi</artifactId>-->
-            <!--<version>13.0.0.Final</version>-->
-            <!--<type>jar</type>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!-- debug servlet -->
+        <!-- /debug servlet servlet -->
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-core</artifactId>
-            <version>${version.org.infinispan}</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- Unit tests -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
