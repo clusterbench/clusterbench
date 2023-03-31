@@ -5,7 +5,7 @@ ClusterBench
 [![Version](https://img.shields.io/maven-central/v/org.jboss.test/clusterbench?logo=apache-maven)](https://search.maven.org/artifact/org.jboss.test/clusterbench)
 
 ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 7 (EAP 6), WildFly 8 and newer.
-Once deployed it is easy to stress (using JMeter, curl, etc) and monitor the performance of the cluster while
+Once deployed it is easy to stress (using JMeter, curl, etc.) and monitor the performance of the cluster while
 at the same time it can be easily checked the correctness of replicated sessions.
 
 Support Matrix
@@ -47,7 +47,7 @@ and navigate your browser to http://localhost:8080/clusterbench/.
 Deploying
 ---------
 
-### WildFly 27 and newer
+### WildFly
 
 You can use the `deploy` goal of the [WildFly Maven Plugin](https://docs.wildfly.org/wildfly-maven-plugin/) to deploy to your running instance by running:
 
@@ -58,13 +58,13 @@ which will deploy the resulting EAR to the running server.
 To do this manually, copy `clusterbench-ee10.ear` to server's deployments directory
 and start the standalone server in the HA mode:
 
-	$ cd ~/wildfly-27.0.0.Final
+	$ cd ~/wildfly-28.0.0.Beta1
 	$ cp ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear standalone/deployments/
 	$ ./bin/standalone.sh -c standalone-ha.xml
 
 You can also use the CLI to do so by starting the server, connecting with CLI and using `deploy` command:
 
-	$ cd ~/wildfly-27.0.0.Final
+	$ cd ~/wildfly-28.0.0.Beta1
 	$ ./bin/standalone.sh -c standalone-ha.xml
 
 Then connect with the CLI:
