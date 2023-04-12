@@ -55,7 +55,7 @@
         <version.org.infinispan>14.0.2.Final</version.org.infinispan>
         <version.org.wildfly>28.0.0.Beta1</version.org.wildfly>
         <!-- TODO The release of the bom lags behind so we have to decouple these temporarily until the bom is actually released -->
-        <version.org.wildfly.bom>27.0.0.Final</version.org.wildfly.bom>
+        <version.org.wildfly.bom>27.0.1.Final</version.org.wildfly.bom>
         <version.org.wildfly.cloud-feature-pack>2.0.0.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>4.0.0.Final</version.org.wildfly.maven.plugin>
         <!-- TODO workaround for https://github.com/jboss/jboss-parent-pom/pull/131#pullrequestreview-1129876725 -->
