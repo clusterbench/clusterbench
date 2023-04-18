@@ -71,11 +71,10 @@
             <artifactId>jakarta.faces-api</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- @org.wildfly.clustering.web.annotation.Immutable -->
+        <!-- @net.jcip.annotations.Immutable -->
         <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-clustering-web-api</artifactId>
-            <version>${version.org.wildfly}</version>
+            <groupId>net.jcip</groupId>
+            <artifactId>jcip-annotations</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- HotRod servlet -->
