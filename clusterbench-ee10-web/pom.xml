@@ -81,14 +81,12 @@
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-client-hotrod</artifactId>
-            <!-- TODO this is not managed by the bom? -->
-            <version>${version.org.infinispan}</version>
             <scope>provided</scope>
         </dependency>
         <!-- /debug servlet servlet -->
         <dependency>
             <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-core</artifactId>
+            <artifactId>infinispan-core-jakarta</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Unit tests -->
