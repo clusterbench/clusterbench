@@ -21,8 +21,8 @@ import java.io.Serializable;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpSession;
 
+import net.jcip.annotations.Immutable;
 import org.jboss.test.clusterbench.common.session.CommonGranularHttpSessionServlet;
-import org.wildfly.clustering.web.annotation.Immutable;
 
 /**
  * @author Radoslav Husar
