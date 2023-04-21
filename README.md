@@ -23,11 +23,11 @@ Building
 
 Clone the Git repository first and switch to its directory:
 
-    $ git clone https://github.com/clusterbench/clusterbench.git
+    git clone https://github.com/clusterbench/clusterbench.git
 
 Build the default `main` branch to build the latest Jakarta EE 10 version:
 
-    $ mvn clean install
+    mvn clean install
 
 Output files:
 
@@ -39,7 +39,7 @@ Running
 You can also use `wildfly-maven-plugin` to run a container with the project already deployed.
 It will also provision the server without having to download anything manually.
 
-    $ mvn clean wildfly:run
+    mvn clean wildfly:run
 
 and navigate your browser to http://localhost:8080/clusterbench/.
 
@@ -51,25 +51,25 @@ Deploying
 
 You can use the `deploy` goal of the [WildFly Maven Plugin](https://docs.wildfly.org/wildfly-maven-plugin/) to deploy to your running instance by running:
 
-    $ mvn wildfly:deploy
+    mvn wildfly:deploy
 
 which will deploy the resulting EAR to the running server.
 
 To do this manually, copy `clusterbench-ee10.ear` to server's deployments directory
 and start the standalone server in the HA mode:
 
-	$ cd ~/wildfly-28.0.0.Final
-	$ cp ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear standalone/deployments/
-	$ ./bin/standalone.sh -c standalone-ha.xml
+	cd ~/wildfly-28.0.0.Final
+	cp ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear standalone/deployments/
+	./bin/standalone.sh -c standalone-ha.xml
 
 You can also use the CLI to do so by starting the server, connecting with CLI and using `deploy` command:
 
-	$ cd ~/wildfly-28.0.0.Final
-	$ ./bin/standalone.sh -c standalone-ha.xml
+	cd ~/wildfly-28.0.0.Final
+	./bin/standalone.sh -c standalone-ha.xml
 
 Then connect with the CLI:
 
-	$ ./bin/jboss-cli.sh -c
+	./bin/jboss-cli.sh -c
 	[standalone@localhost:9990 /] deploy ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear
 
 
@@ -81,7 +81,7 @@ and follow the instructions.
 
 To deploy the Tomcat variant of clusterbench, copy the following `war` file into Tomcat installation `webapps/` directory:
 
-    $ cp ~/clusterbench-ee10-web/target/clusterbench-ee10-web-tomcat.war webapps/
+    cp ~/clusterbench-ee10-web/target/clusterbench-ee10-web-tomcat.war webapps/
 
 Note that CDI, debug, EJB, granular, JSF servlets are unsupported on Tomcat and not bundled in the `war`.
 
@@ -183,14 +183,14 @@ There a several profiles to test specific scenarios where the standard build nee
 
 This profile produces a build to tests a shared sessions scenario where two WARs in the same EAR share HTTP sessions:
 
-    $ mvn install -P shared-sessions -DskipTests
+    mvn install -P shared-sessions -DskipTests
 
 
 ### singleton-deployment-specific-descriptor (using singleton-deployment.xml):
 
 This profile produces a build to tests a singleton deployment scenario where one EAR guaranteed to be active on a single node at a time:
 
-    $ mvn install -P singleton-deployment-specific-descriptor -DskipTests
+    mvn install -P singleton-deployment-specific-descriptor -DskipTests
 
 NOTE: this version uses descriptor `singleton-deployment.xml` to achieve singleton-deployment functionality
 
@@ -199,7 +199,7 @@ NOTE: this version uses descriptor `singleton-deployment.xml` to achieve singlet
 
 This profile produces a build to tests a singleton deployment scenario where one EAR guaranteed to be active on a single node at a time:
 
-    $ mvn install -P singleton-deployment-jboss-all -DskipTests
+    mvn install -P singleton-deployment-jboss-all -DskipTests
 
 NOTE: this version uses descriptor `jboss-all.xml` to achieve singleton-deployment functionality
 
@@ -208,7 +208,7 @@ NOTE: this version uses descriptor `jboss-all.xml` to achieve singleton-deployme
 
 Uses `distributable-web.xml` inside WAR files, to define the WAR's profile to be used (EAP7-1072).
 
-    $ mvn clean install -P webapp-offload -DskipTests
+    mvn clean install -P webapp-offload -DskipTests
 
 
 ### webapp-offload-ref
@@ -216,14 +216,14 @@ Uses `distributable-web.xml` inside WAR files, to define the WAR's profile to be
 The `distributable-web.xml` inside WAR files, references existing "sm_offload" and "sm_offload_granular" profiles on the server;
 Those profiles must be created on the server e.g. with some cli script (EAP7-1072).
 
-    $ mvn clean install -P webapp-offload-ref -DskipTests
+    mvn clean install -P webapp-offload-ref -DskipTests
 
 
 ### resources-offload
 
 Uses `jboss-all.xml` inside WAR files, to define the WAR's profile to be used (EAP7-1072).
 
-    $ mvn clean install -P resources-offload -DskipTests
+    mvn clean install -P resources-offload -DskipTests
 
 
 ### resources-offload-ref
@@ -231,7 +231,7 @@ Uses `jboss-all.xml` inside WAR files, to define the WAR's profile to be used (E
 The `jboss-all.xml` inside WAR files, references existing "sm_offload" and "sm_offload_granular" profiles on the server;
 Those profiles must be created on the server e.g. with some cli script (EAP7-1072).
 
-    $ mvn clean install -P resources-offload-ref -DskipTests
+    mvn clean install -P resources-offload-ref -DskipTests
 
 
 ### short-names
@@ -240,23 +240,23 @@ Used in order to shorten name of bundled JARs and WARs within the final EAR file
 Usually used in database tests to produce database tables with short names.
 Can be used in conjunction with any of the above `webapp-offload`, `webapp-offload-ref`, `resources-offload`, `resources-offload-ref` profiles.
 
-    $ mvn clean install -P webapp-offload,short-names -DskipTests
-    $ mvn clean install -P webapp-offload-ref,short-names -DskipTests
-    $ mvn clean install -P resources-offload,short-names -DskipTests
-    $ mvn clean install -P resources-offload-ref,short-names -DskipTests
+    mvn clean install -P webapp-offload,short-names -DskipTests
+    mvn clean install -P webapp-offload-ref,short-names -DskipTests
+    mvn clean install -P resources-offload,short-names -DskipTests
+    mvn clean install -P resources-offload-ref,short-names -DskipTests
 
 
 ### sso-form
 
 This profile enables form authentication:
 
-    $ mvn clean install -P sso-form -DskipTests
+    mvn clean install -P sso-form -DskipTests
 
 ### 2clusters
 
 This profile adds the necessary JEBs to perform call forwarding to a second JEB cluster:
 
-    $ mvn clean install -P 2clusters -DskipTests
+    mvn clean install -P 2clusters -DskipTests
 
 
 Configuration
@@ -264,7 +264,7 @@ Configuration
 
 The default payload size can be overridden by a system property specifying integer number of bytes to use in a payload:
 
-    $ ./bin/standalone.sh -c standalone-ha.xml -Dorg.jboss.test.clusterbench.cargokb=5
+    ./bin/standalone.sh -c standalone-ha.xml -Dorg.jboss.test.clusterbench.cargokb=5
 
 > NOTE: Ensure identical value is specified for all containers in the cluster!
 
