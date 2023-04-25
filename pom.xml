@@ -58,7 +58,7 @@
         <!-- TODO This needs to be updated manually for dependencies that are not managed by the BOM but should be. -->
         <version.org.infinispan>14.0.8.Final</version.org.infinispan>
         <version.org.wildfly.cloud-feature-pack>3.0.0.Final</version.org.wildfly.cloud-feature-pack>
-        <version.org.wildfly.maven.plugin>4.1.0.Beta6</version.org.wildfly.maven.plugin>
+        <version.org.wildfly.maven.plugin>4.1.0.Final</version.org.wildfly.maven.plugin>
         <!-- TODO workaround for https://github.com/jboss/jboss-parent-pom/pull/131#pullrequestreview-1129876725 -->
         <version.plexus.archiver>4.5.0</version.plexus.archiver>
         <wildfly.skip>true</wildfly.skip>
