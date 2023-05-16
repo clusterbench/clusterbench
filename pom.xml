@@ -74,10 +74,11 @@
                 <version>${version.org.wildfly.bom}</version>
             </dependency>
             <dependency>
-                <groupId>net.jcip</groupId>
-                <artifactId>jcip-annotations</artifactId>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-clustering-web-api</artifactId>
                 <!-- TODO this should be managed by the BOM! -->
-                <version>1.0</version>
+                <version>${version.org.wildfly}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.infinispan</groupId>
