@@ -62,7 +62,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>
-                <version>3.2.1</version>
                 <configuration>
                     <ejbVersion>3.2</ejbVersion>
                     <generateClient>true</generateClient>
@@ -88,7 +87,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ejb-plugin</artifactId>
-                        <version>3.2.1</version>
                         <configuration>
                             <ejbVersion>3.2</ejbVersion>
                             <generateClient>true</generateClient>
