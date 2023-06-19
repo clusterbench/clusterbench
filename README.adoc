@@ -88,15 +88,17 @@ Then connect with the CLI:
 If you prefer GUI, you can start the server and navigate to http://localhost:9990/
 and follow the instructions.
 
-=== Tomcat
+=== Tomcat 10 (and newer)
 
-To deploy the Tomcat variant of clusterbench, copy the following `war` file into Tomcat installation `webapps/` directory:
+To deploy the Tomcat variant of ClusterBench, copy the following `war` file into Tomcat installation `webapps/` directory
+renaming it accordingly to the desired context, typically to `clusterbench.war` to correspond with the context path on WildFly.
 
 ----
-cp ~/clusterbench-ee10-web/target/clusterbench-ee10-web-tomcat.war webapps/
+cp ~/git/clusterbench/clusterbench-ee10-web/target/clusterbench-ee10-web-tomcat.war webapps/clusterbench.war
 ----
 
 Note that CDI, debug, EJB, granular, JSF servlets are unsupported on Tomcat and not bundled in the `war`.
+That makes the session servlet the only one available for benchmarking.
 
 === Deploying to OpenShift
 
