@@ -104,7 +104,7 @@ That makes the session servlet the only one available for benchmarking.
 
 ==== Using Helm Charts
 
-First, make sure you have `oc` and [https://helm.sh/][`helm`] installed. Now, log into OpenShift using the following
+First, make sure you have `oc` and https://helm.sh/[`helm`] installed. Now, log into OpenShift using the following
 replacing with your token and server address:
 
 ----
