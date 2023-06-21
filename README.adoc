@@ -198,6 +198,14 @@ http://localhost:8080/clusterbench/averagesystemload?milliseconds=10000&threads=
 
 Servlet simulating CPU load of the cluster node. Parameters are `milliseconds` (duration) and `threads`.
 
+=== Debug Servlets
+
+==== HTTPCodeServlet
+
+http://localhost:8080/clusterbench/httpcode?http_code=200[/clusterbench/httpcode?http_code=200]
+
+Servlet which allows to customize response code. Requires integer `http_code` parameter.
+
 == Custom Build Profiles
 
 There a several profiles to test specific scenarios where the standard build needs to be modified.
