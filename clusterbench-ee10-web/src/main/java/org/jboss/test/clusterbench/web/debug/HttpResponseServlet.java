@@ -14,10 +14,10 @@ import java.util.logging.Logger;
  * @author Michal Karm Babacek
  * @author Radoslav Husar
  */
-@WebServlet(name = "HTTPCodeServlet", urlPatterns = { "/httpcode", "/httpcode/*" })
-public class HTTPCodeServlet extends HttpServlet {
+@WebServlet(name = "HttpResponseServlet", urlPatterns = { "/httpcode", "/httpcode/*" })
+public class HttpResponseServlet extends HttpServlet {
 
-    private static final Logger log = Logger.getLogger(HTTPCodeServlet.class.getName());
+    private static final Logger log = Logger.getLogger(HttpResponseServlet.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -15,7 +15,7 @@ import org.junit.Test;
 /**
  * @author Radoslav Husar
  */
-public class HTTPCodeServletIT {
+public class HttpResponseServletIT {
 
     @Test
     public void test() throws Exception {
