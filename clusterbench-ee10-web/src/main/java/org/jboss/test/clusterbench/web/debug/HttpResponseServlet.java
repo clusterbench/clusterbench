@@ -14,14 +14,16 @@ import java.util.logging.Logger;
  * @author Michal Karm Babacek
  * @author Radoslav Husar
  */
-@WebServlet(name = "HttpResponseServlet", urlPatterns = { "/httpcode", "/httpcode/*" })
+@WebServlet(name = "HttpResponseServlet", urlPatterns = { "/http-response", "/http-response/*" })
 public class HttpResponseServlet extends HttpServlet {
+
+    public static final String CODE_PARAM = "code";
 
     private static final Logger log = Logger.getLogger(HttpResponseServlet.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int httpCode = Integer.parseInt(request.getParameter("http_code"));
+        int httpCode = Integer.parseInt(request.getParameter(CODE_PARAM));
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
         // Gives it a JSESSIONID

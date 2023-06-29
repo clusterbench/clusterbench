@@ -13,6 +13,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
+ * Test for {@link org.jboss.test.clusterbench.web.debug.HttpResponseServlet}.
+ *
  * @author Radoslav Husar
  */
 public class HttpResponseServletIT {
@@ -20,7 +22,7 @@ public class HttpResponseServletIT {
     @Test
     public void test() throws Exception {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            HttpGet httpGet = new HttpGet("http://localhost:8080/clusterbench/httpcode?http_code=200");
+            HttpGet httpGet = new HttpGet("http://localhost:8080/clusterbench/http-response?code=200");
 
             try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
                 Assert.assertEquals(200, response.getStatusLine().getStatusCode());
@@ -35,7 +37,7 @@ public class HttpResponseServletIT {
                 Assert.assertTrue(header.isPresent());
             }
 
-            httpGet = new HttpGet("http://localhost:8080/clusterbench/httpcode?http_code=503");
+            httpGet = new HttpGet("http://localhost:8080/clusterbench/http-response?code=503");
 
             try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
                 Assert.assertEquals(503, response.getStatusLine().getStatusCode());

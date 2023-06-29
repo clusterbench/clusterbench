@@ -200,11 +200,11 @@ Servlet simulating CPU load of the cluster node. Parameters are `milliseconds` (
 
 === Debug Servlets
 
-==== HTTPCodeServlet
+==== HttpResponseServlet
 
-http://localhost:8080/clusterbench/httpcode?http_code=200[/clusterbench/httpcode?http_code=200]
+http://localhost:8080/clusterbench/http-response?code=200[/clusterbench/http-response?code=200]
 
-Servlet which allows to customize response code. Requires integer `http_code` parameter.
+Servlet which allows to customize the HTTP status response code. Requires mandatory integer `code` parameter.
 
 == Custom Build Profiles
 
