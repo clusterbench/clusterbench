@@ -20,11 +20,11 @@
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>5.0.1.Final</version>
+        <version>5.0.2.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-ee10-web</artifactId>
-    <version>5.0.1.Final</version>
+    <version>5.0.2.Final-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
