@@ -14,7 +14,8 @@ at the same time it can be easily checked the correctness of replicated sessions
 |===
 |Branch |WildFly Version |EE Version(s) |Base JDK 
 
-|`main` |29 |Jakarta EE 10 |11 
+|`main` |30 |Jakarta EE 10 |11 
+|`6.x` |29 |Jakarta EE 10 |11 
 |`5.x` |28 |Jakarta EE 10 |11 
 |`4.x` |27 |Jakarta EE 10 |11 
 |`3.x` |26 (and previous) |Java EE 5, EE 6, EE 7, EE 8 |8 
