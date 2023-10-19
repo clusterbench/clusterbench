@@ -42,8 +42,6 @@
     <properties>
         <linkXRef>false</linkXRef>
         <version.org.wildfly>30.0.0.Beta1</version.org.wildfly>
-        <!-- N.B. Sometimes the release of the BOM lags behind WildFly release, so we sometimes have to decouple these temporarily until the actual release. -->
-        <version.org.wildfly.bom>${version.org.wildfly}</version.org.wildfly.bom>
         <!-- TODO This needs to be updated manually for dependencies that are not managed by the BOM but should be. -->
         <version.org.infinispan>14.0.8.Final</version.org.infinispan>
         <version.org.wildfly.cloud-feature-pack>3.0.0.Final</version.org.wildfly.cloud-feature-pack>
@@ -60,7 +58,7 @@
                 <artifactId>wildfly-ee-with-tools</artifactId>
                 <scope>import</scope>
                 <type>pom</type>
-                <version>${version.org.wildfly.bom}</version>
+                <version>${version.org.wildfly}</version>
             </dependency>
             <dependency>
                 <groupId>org.wildfly</groupId>
