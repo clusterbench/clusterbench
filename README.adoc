@@ -173,7 +173,7 @@ The 'default' servlet. Stores serial number and data in `SerialBean` object (POJ
 
 http://localhost:8080/clusterbench/cdi[/clusterbench/cdi]
 
-Stores a serial number in `@SessionScoped` bean.
+Stores a serial number in `@jakarta.enterprise.context.SessionScoped` bean.
 
 ==== LocalEjbServlet
 
@@ -201,11 +201,24 @@ Servlet simulating CPU load of the cluster node. Parameters are `milliseconds` (
 
 === Debug Servlets
 
+==== DebugServlet
+
+http://localhost:8080/clusterbench/debug[/clusterbench/debug]
+
+Servlet that prints out useful information such as: the request headers, URI, query string, path info, serial (does create a session),
+session ID, time, server and local ports, node name, parameters, and cluster address/coordinator/members/physical addresses.
+
 ==== HttpResponseServlet
 
 http://localhost:8080/clusterbench/http-response?code=200[/clusterbench/http-response?code=200]
 
 Servlet which allows to customize the HTTP status response code. Requires mandatory integer `code` parameter.
+
+==== JBossNodeNameServlet
+
+http://localhost:8080/clusterbench/jboss-node-name[/clusterbench/jboss-node-name]
+
+Servlet which prints out the node name as a value of the `jboss.node.name` system property.
 
 == Custom Build Profiles
 
