@@ -113,7 +113,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.6.2</version>
+                <version>3.6.3</version>
                 <configuration>
                     <!-- JDK8 has become extremely strict with JavaDoc problems -->
                     <failOnError>false</failOnError>
