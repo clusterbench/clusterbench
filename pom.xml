@@ -43,7 +43,7 @@
         <linkXRef>false</linkXRef>
         <version.org.wildfly>30.0.1.Final</version.org.wildfly>
         <!-- TODO This needs to be updated manually for dependencies that are not managed by the BOM but should be. -->
-        <version.org.infinispan>14.0.17.Final</version.org.infinispan>
+        <version.org.infinispan>14.0.21.Final</version.org.infinispan>
         <version.org.wildfly.cloud-feature-pack>3.0.0.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>4.2.1.Final</version.org.wildfly.maven.plugin>
         <!-- TODO workaround for https://github.com/jboss/jboss-parent-pom/pull/131#pullrequestreview-1129876725 -->
