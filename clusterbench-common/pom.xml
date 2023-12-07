@@ -9,11 +9,11 @@
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
-        <version>7.0.0.Final-SNAPSHOT</version>
+        <version>7.0.0.Final</version>
     </parent>
 
     <artifactId>clusterbench-common</artifactId>
-    <version>7.0.0.Final-SNAPSHOT</version>
+    <version>7.0.0.Final</version>
     <packaging>jar</packaging>
 
     <name>clusterbench-common</name>
