@@ -41,7 +41,7 @@
 
     <properties>
         <linkXRef>false</linkXRef>
-        <version.org.wildfly>30.0.0.Final</version.org.wildfly>
+        <version.org.wildfly>30.0.1.Final</version.org.wildfly>
         <!-- TODO This needs to be updated manually for dependencies that are not managed by the BOM but should be. -->
         <version.org.infinispan>14.0.17.Final</version.org.infinispan>
         <version.org.wildfly.cloud-feature-pack>3.0.0.Final</version.org.wildfly.cloud-feature-pack>
