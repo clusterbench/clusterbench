@@ -3,8 +3,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-batch
 /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=jdg1:add(port=11322,host=localhost)
 /subsystem=infinispan/remote-cache-container=web-sessions:add(default-remote-cluster=jdg-cluster1)
 /subsystem=infinispan/remote-cache-container=web-sessions/remote-cluster=jdg-cluster1:add(socket-bindings=[jdg1])
-run-batch --headers={allow-resource-service-restart=true}

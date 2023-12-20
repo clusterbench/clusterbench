@@ -3,8 +3,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-batch
-
 # Increase the port range on CI to avoid the following issues:
 
 #ERROR [org.jboss.msc.service.fail] (ServerService Thread Pool -- 17) MSC000001: Failed to start service org.wildfly.clustering.jgroups.channel.ee: org.jboss.msc.service.StartException in service org.wildfly.clustering.jgroups.channel.ee: java.lang.IllegalStateException: java.lang.Exception: failed to open a port in range 55200-55200 (last exception: java.net.BindException: Address already in use: bind)
@@ -39,5 +37,3 @@ batch
 # java.lang.IllegalStateException: java.lang.IllegalStateException: clusterbench-1: failed to find an available port in ports [54200, 54201, 54202, 54203]
 
 /subsystem=jgroups/stack=udp/protocol=FD_SOCK2:write-attribute(name=properties,value={port_range=100})
-
-run-batch --headers={allow-resource-service-restart=true}
