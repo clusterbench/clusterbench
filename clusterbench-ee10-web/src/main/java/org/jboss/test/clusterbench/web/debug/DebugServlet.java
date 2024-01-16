@@ -10,11 +10,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.infinispan.manager.EmbeddedCacheManager;
-import org.infinispan.remoting.transport.Address;
-import org.infinispan.remoting.transport.jgroups.JGroupsAddress;
-import org.infinispan.remoting.transport.jgroups.JGroupsTransport;
 import org.jboss.test.clusterbench.common.debug.AbstractCommonDebugServlet;
+import org.jgroups.Address;
 import org.jgroups.Event;
+import org.jgroups.JChannel;
 import org.jgroups.stack.IpAddress;
 
 /**
@@ -22,6 +21,9 @@ import org.jgroups.stack.IpAddress;
  */
 @WebServlet(name = "DebugServlet", urlPatterns = { "/debug", "/debug/*" })
 public class DebugServlet extends AbstractCommonDebugServlet {
+
+    @Resource(lookup = "java:jboss/jgroups/channel/default")
+    private JChannel channel;
 
     @Resource(lookup = "java:jboss/infinispan/container/web")
     private EmbeddedCacheManager container;
@@ -31,17 +33,17 @@ public class DebugServlet extends AbstractCommonDebugServlet {
         StringBuilder info = new StringBuilder();
 
         // Get current cache nodes
-        info.append("Address: ").append(container.getAddress()).append(System.getProperty("line.separator"));
-        info.append("Coordinator: ").append(container.getCoordinator()).append(System.getProperty("line.separator"));
-        info.append("Members: ").append(container.getMembers()).append(System.getProperty("line.separator"));
+        info.append("Address: ").append(container.getAddress()).append(System.lineSeparator());
+        info.append("Coordinator: ").append(container.getCoordinator()).append(System.lineSeparator());
+        info.append("Members: ").append(container.getMembers()).append(System.lineSeparator());
 
+        // This makes assumption about the web cache container and the default channel usage
+        // since the public Infinispan API doesn't expose this information
         info.append("Physical addresses: ");
-        JGroupsTransport transport = (JGroupsTransport) container.getTransport();
-        for (Address infinispanWrapAddr : container.getMembers()) {
-            JGroupsAddress jgroupsWrapAddr = (JGroupsAddress) infinispanWrapAddr;
-            org.jgroups.Address physAddr = (org.jgroups.Address) transport.getChannel().down(new Event(Event.GET_PHYSICAL_ADDRESS, jgroupsWrapAddr.getJGroupsAddress()));
-            IpAddress ipAddr = (IpAddress) physAddr;
-            info.append(ipAddr.getIpAddress().getHostAddress()).append(":").append(((IpAddress) physAddr).getPort()).append("; ");
+        for (Address address : channel.getView().getMembers()) {
+            Address physicalAddress = (Address) channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
+            IpAddress ipAddress = (IpAddress) physicalAddress;
+            info.append(ipAddress.printIpAddress()).append("; ");
         }
 
         return info.toString();
