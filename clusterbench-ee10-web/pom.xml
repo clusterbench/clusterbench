@@ -117,7 +117,7 @@
                             <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                    <Dependencies>org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -168,7 +168,7 @@
                             <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                    <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -196,7 +196,7 @@
                             <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                    <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -224,7 +224,7 @@
                             <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                    <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -271,7 +271,7 @@
                                     <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -299,7 +299,7 @@
                                     <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -327,7 +327,7 @@
                                     <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -367,7 +367,7 @@
                                     <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -395,7 +395,7 @@
                                     <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -423,7 +423,7 @@
                                     <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -467,7 +467,7 @@
                                     <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -499,7 +499,7 @@
                                     <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -531,7 +531,7 @@
                                     <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -575,7 +575,7 @@
                                     <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -607,7 +607,7 @@
                                     <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -639,7 +639,7 @@
                                     <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.infinispan.commons, org.infinispan, org.infinispan.client.hotrod, org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
