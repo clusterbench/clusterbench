@@ -18,7 +18,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdg.packagingExcludes>,WEB-INF/classes/org/jboss/test/clusterbench/web/remote/HotRodServlet.class</jdg.packagingExcludes>
         <!-- Used to comment out security in web.xml -->
         <enable.security.start>&lt;!--</enable.security.start>
         <enable.security.end>--&gt;</enable.security.end>
@@ -66,16 +65,10 @@
             <artifactId>wildfly-clustering-web-api</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- HotRod servlet -->
+        <!-- /debug servlet -->
         <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-client-hotrod</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!-- /debug servlet servlet -->
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-core-jakarta</artifactId>
+            <groupId>org.jgroups</groupId>
+            <artifactId>jgroups</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Unit tests -->
@@ -114,10 +107,10 @@
                                 </resource>
                             </webResources>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                            <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                            <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                    <Dependencies>org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -142,7 +135,7 @@
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-tomcat</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-tomcat</warSourceDirectory>
-                            <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]${jdg.packagingExcludes}</packagingExcludes>
+                            <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]</packagingExcludes>
                         </configuration>
                     </execution>
                     <!-- Build default configuration: session granularity and never passivates. -->
@@ -165,10 +158,10 @@
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                            <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                            <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                    <Dependencies>org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -193,10 +186,10 @@
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-passivating</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
-                            <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                            <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                    <Dependencies>org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -221,10 +214,10 @@
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-granular</warSourceDirectory>
-                            <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                            <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
-                                    <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                    <Dependencies>org.jgroups</Dependencies>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -235,12 +228,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>jdg</id>
-            <properties>
-                <jdg.packagingExcludes />
-            </properties>
-        </profile>
         <profile>
             <!-- Uses distributable-web.xml to define the WAR's profile to be used (EAP7-1072) -->
             <!-- mvn clean install -P webapp-offload -DskipTests -->
@@ -268,10 +255,10 @@
                                         </resource>
                                     </webResources>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -296,10 +283,10 @@
                                     </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -324,10 +311,10 @@
                                     </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload-granular</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -364,10 +351,10 @@
                                         </resource>
                                     </webResources>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload-ref</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -392,10 +379,10 @@
                                     </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload-ref</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -420,10 +407,10 @@
                                     </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp-offload-ref-granular</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -464,10 +451,10 @@
                                         </resource>
                                     </webResources>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -496,10 +483,10 @@
                                     </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -528,10 +515,10 @@
                                     </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -572,10 +559,10 @@
                                         </resource>
                                     </webResources>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -604,10 +591,10 @@
                                     </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
@@ -636,10 +623,10 @@
                                     </webResources>
                                     <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
                                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]${jdg.packagingExcludes}</packagingExcludes>
+                                    <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
                                     <archive>
                                         <manifestEntries>
-                                            <Dependencies>org.infinispan.commons, org.infinispan.core, org.infinispan.client.hotrod, org.jgroups</Dependencies>
+                                            <Dependencies>org.jgroups</Dependencies>
                                         </manifestEntries>
                                     </archive>
                                 </configuration>
