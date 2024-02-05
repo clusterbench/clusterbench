@@ -152,6 +152,27 @@
                     <plugin>
                         <groupId>org.wildfly.plugins</groupId>
                         <artifactId>wildfly-maven-plugin</artifactId>
+                        <!-- Shared configuration to be picked up by e.g. manual 'mvn wildfly:run' -->
+                        <configuration>
+                            <!--
+                            FIXME workaround for FD_SOCK2 failing on resource service restart on Windows platform - switch to ha profile from full-ha which starts the channel on demand
+
+                            One solutions is to provision the server and reconfigure it in the offline mode - ideal time to fix this is when adding tests against a 2 node cluster.
+
+                            2023-07-25T08:21:28.7711991Z Caused by: java.lang.IllegalStateException: clusterbench-1: failed to find an available port in ports [54200, 54201, 54202, 54203]
+                            ...
+                            2023-07-25T08:21:29.3791333Z [INFO] [standalone@embedded /] batch
+                            2023-07-25T08:21:30.0202882Z [INFO] [standalone@embedded / #] /subsystem=jgroups/stack=udp/protocol=FD_SOCK2:write-attribute(name=properties,value={port_range=100})
+                            2023-07-25T08:21:30.0266081Z [INFO] [standalone@embedded / #] run-batch &#45;&#45;headers={allow-resource-service-restart=true}
+                            ...
+                            2023-07-25T08:21:31.1781113Z Caused by: java.lang.Exception: failed to open a port in range 55200-55200 (last exception: java.net.BindException: Address already in use: Cannot bind)
+                            -->
+                            <serverConfig>standalone-ha.xml</serverConfig>
+                            <serverArgs>
+                                <serverArg>-Djboss.node.name=clusterbench-1</serverArg>
+                            </serverArgs>
+                            <version>${version.org.wildfly}</version>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>integration-test-wildfly-deploy</id>
@@ -165,26 +186,7 @@
                                     <batch>true</batch>
                                     <scripts>
                                         <script>jgroups.cli</script>
-                                        <script>remote-cache-container.cli</script>
                                     </scripts>
-                                    <!--
-                                    FIXME workaround for FD_SOCK2 failing on resource service restart on Windows platform - switch to ha profile from full-ha which starts the channel on demand
-
-                                    One solutions is to provision the server and reconfigure it in the offline mode - ideal time to fix this is when adding tests against a 2 node cluster.
-
-                                    2023-07-25T08:21:28.7711991Z Caused by: java.lang.IllegalStateException: clusterbench-1: failed to find an available port in ports [54200, 54201, 54202, 54203]
-                                    ...
-                                    2023-07-25T08:21:29.3791333Z [INFO] [standalone@embedded /] batch
-                                    2023-07-25T08:21:30.0202882Z [INFO] [standalone@embedded / #] /subsystem=jgroups/stack=udp/protocol=FD_SOCK2:write-attribute(name=properties,value={port_range=100})
-                                    2023-07-25T08:21:30.0266081Z [INFO] [standalone@embedded / #] run-batch &#45;&#45;headers={allow-resource-service-restart=true}
-                                    ...
-                                    2023-07-25T08:21:31.1781113Z Caused by: java.lang.Exception: failed to open a port in range 55200-55200 (last exception: java.net.BindException: Address already in use: Cannot bind)
-                                    -->
-                                    <serverConfig>standalone-ha.xml</serverConfig>
-                                    <serverArgs>
-                                        <serverArg>-Djboss.node.name=clusterbench-1</serverArg>
-                                    </serverArgs>
-                                    <version>${version.org.wildfly}</version>
                                 </configuration>
                             </execution>
                             <execution>
