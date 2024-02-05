@@ -42,7 +42,7 @@
     <properties>
         <linkXRef>false</linkXRef>
         <version.org.wildfly>31.0.0.Final</version.org.wildfly>
-        <version.org.wildfly.cloud-feature-pack>3.0.0.Final</version.org.wildfly.cloud-feature-pack>
+        <version.org.wildfly.cloud-feature-pack>6.0.0.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>4.2.2.Final</version.org.wildfly.maven.plugin>
         <!-- TODO workaround for https://github.com/jboss/jboss-parent-pom/pull/131#pullrequestreview-1129876725 -->
         <version.plexus.archiver>4.5.0</version.plexus.archiver>
