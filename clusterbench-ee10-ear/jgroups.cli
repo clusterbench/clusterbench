@@ -3,37 +3,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Increase the port range on CI to avoid the following issues:
+# Workaround GitHub Actions Windows runners having reserved random group of ports in the range about 40000 and higher.
 
-#ERROR [org.jboss.msc.service.fail] (ServerService Thread Pool -- 17) MSC000001: Failed to start service org.wildfly.clustering.jgroups.channel.ee: org.jboss.msc.service.StartException in service org.wildfly.clustering.jgroups.channel.ee: java.lang.IllegalStateException: java.lang.Exception: failed to open a port in range 55200-55200 (last exception: java.net.BindException: Address already in use: bind)
-#	at org.wildfly.clustering.service@30.0.0.Final//org.wildfly.clustering.service.FunctionalService.start(FunctionalService.java:49)
-#	at org.wildfly.clustering.service@30.0.0.Final//org.wildfly.clustering.service.AsyncServiceConfigurator$AsyncService.lambda$start$0(AsyncServiceConfigurator.java:100)
-#	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
-#	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
-#	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
-#	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
-#	at java.base/java.lang.Thread.run(Thread.java:840)
-#	at org.jboss.threads@2.4.0.Final//org.jboss.threads.JBossThread.run(JBossThread.java:513)
-#Caused by: java.lang.IllegalStateException: java.lang.Exception: failed to open a port in range 55200-55200 (last exception: java.net.BindException: Address already in use: bind)
-#	at org.jboss.as.clustering.jgroups@30.0.0.Final//org.jboss.as.clustering.jgroups.subsystem.ChannelServiceConfigurator.get(ChannelServiceConfigurator.java:105)
-#	at org.jboss.as.clustering.jgroups@30.0.0.Final//org.jboss.as.clustering.jgroups.subsystem.ChannelServiceConfigurator.get(ChannelServiceConfigurator.java:43)
-#	at org.wildfly.clustering.service@30.0.0.Final//org.wildfly.clustering.service.FunctionalService.start(FunctionalService.java:46)
-#	... 7 more
-#Caused by: java.lang.Exception: failed to open a port in range 55200-55200 (last exception: java.net.BindException: Address already in use: bind)
-#	at org.jgroups@5.2.19.Final//org.jgroups.protocols.UDP.createMulticastSocketWithBindPort(UDP.java:578)
-#	at org.jgroups@5.2.19.Final//org.jgroups.protocols.UDP.createSockets(UDP.java:405)
-#	at org.jgroups@5.2.19.Final//org.jgroups.protocols.UDP.start(UDP.java:337)
-#	at org.jgroups@5.2.19.Final//org.jgroups.stack.ProtocolStack.startStack(ProtocolStack.java:905)
-#	at org.jgroups@5.2.19.Final//org.jgroups.JChannel.startStack(JChannel.java:921)
-#	at org.jgroups@5.2.19.Final//org.jgroups.JChannel._preConnect(JChannel.java:799)
-#	at org.jgroups@5.2.19.Final//org.jgroups.JChannel.connect(JChannel.java:322)
-#	at org.jgroups@5.2.19.Final//org.jgroups.JChannel.connect(JChannel.java:316)
-#	at org.jboss.as.clustering.jgroups@30.0.0.Final//org.jboss.as.clustering.jgroups.subsystem.ChannelServiceConfigurator.get(ChannelServiceConfigurator.java:100)
-#	... 9 more
+# /subsystem=jgroups/stack=udp/transport=UDP
+/socket-binding-group=standard-sockets/socket-binding=jgroups-udp:write-attribute(name=port,value=35200)
 
-/subsystem=jgroups/stack=udp/transport=UDP:write-attribute(name=properties,value={port_range=100})
-
-# MSC000001: Failed to start service org.wildfly.clustering.jgroups.channel.ee: org.jboss.msc.service.StartException in service org.wildfly.clustering.jgroups.channel.ee:
-# java.lang.IllegalStateException: java.lang.IllegalStateException: clusterbench-1: failed to find an available port in ports [54200, 54201, 54202, 54203]
-
-/subsystem=jgroups/stack=udp/protocol=FD_SOCK2:write-attribute(name=properties,value={port_range=100})
+# /subsystem=jgroups/stack=udp/protocol=FD_SOCK2
+/socket-binding-group=standard-sockets/socket-binding=jgroups-udp-fd:write-attribute(name=port,value=34200)
