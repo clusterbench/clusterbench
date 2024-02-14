@@ -1,9 +1,6 @@
-= ClusterBench
+= ClusterBench image:https://github.com/clusterbench/clusterbench/workflows/CI/badge.svg[CI,link=https://github.com/clusterbench/clusterbench/actions] image:https://img.shields.io/maven-central/v/org.jboss.test/clusterbench?logo=apache-maven[Version,link=https://search.maven.org/artifact/org.jboss.test/clusterbench]
 :toc:
 :toclevels: 1
-
-image:https://github.com/clusterbench/clusterbench/workflows/CI/badge.svg[CI,link=https://github.com/clusterbench/clusterbench/actions]
-image:https://img.shields.io/maven-central/v/org.jboss.test/clusterbench?logo=apache-maven[Version,link=https://search.maven.org/artifact/org.jboss.test/clusterbench]
 
 ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 7 (EAP 6), WildFly 8 and newer.
 Once deployed it is easy to stress (using JMeter, curl, etc.) and monitor the performance of the cluster while
@@ -14,7 +11,8 @@ at the same time it can be easily checked the correctness of replicated sessions
 |===
 |Branch |WildFly Version |EE Version(s) |Base JDK
 
-|`main`|31 |Jakarta EE 10 |11
+|`main`|32 |Jakarta EE 10 |11
+|`8.x` |31 |Jakarta EE 10 |11
 |`7.x` |30 |Jakarta EE 10 |11
 |`6.x` |29 |Jakarta EE 10 |11
 |`5.x` |28 |Jakarta EE 10 |11
@@ -69,7 +67,7 @@ To do this manually, copy `clusterbench-ee10.ear` to server's deployments direct
 and start the standalone server in the HA mode:
 
 ----
-cd ~/wildfly-28.0.0.Final
+cd ~/wildfly-32.0.0.Final
 cp ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear standalone/deployments/
 ./bin/standalone.sh -c standalone-ha.xml
 ----
