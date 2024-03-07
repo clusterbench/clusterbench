@@ -75,7 +75,7 @@ cp ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear standalone/
 You can also use the CLI to do so by starting the server, connecting with CLI and using `deploy` command:
 
 ----
-cd ~/wildfly-28.0.0.Final
+cd ~/wildfly-32.0.0.Final
 ./bin/standalone.sh -c standalone-ha.xml
 ----
 
