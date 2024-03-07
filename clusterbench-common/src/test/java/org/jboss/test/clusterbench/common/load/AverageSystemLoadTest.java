@@ -5,9 +5,9 @@
 
 package org.jboss.test.clusterbench.common.load;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Michal Babacek
@@ -23,8 +23,8 @@ public class AverageSystemLoadTest {
         String result = averageSystemLoad.spawnLoadThreads(threads, duration);
         long ended = System.currentTimeMillis();
         String infoMessage = "DONE, I was stressing CPU with " + threads + " evil threads for ";
-        assertTrue("This message [" + infoMessage + "] has to be a substring of [" + result + "].", result.contains(infoMessage));
+        assertTrue(result.contains(infoMessage), "This message [" + infoMessage + "] has to be a substring of [" + result + "].");
         long took = ended - started;
-        assertTrue("CPU stressing took less time than it should have. Was:" + took + ", expected at least:" + duration, took >= duration);
+        assertTrue(took >= duration, "CPU stressing took less time than it should have. Was:" + took + ", expected at least:" + duration);
     }
 }

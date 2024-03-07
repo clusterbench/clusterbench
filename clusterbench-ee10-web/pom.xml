@@ -71,12 +71,6 @@
             <artifactId>jgroups</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- Unit tests -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
