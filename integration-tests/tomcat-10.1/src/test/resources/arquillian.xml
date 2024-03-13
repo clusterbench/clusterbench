@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  ~ Copyright The ClusterBench Authors
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+    <group qualifier="tomcat" default="true">
+        <container qualifier="tomcat-1">
+            <configuration>
+                <property name="catalinaHome">${project.build.directory}/tomcat-1</property>
+                <property name="jmxPort">8089</property>
+                <property name="bindHttpPort">8080</property>
+                <property name="javaVmArguments">--add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED</property>
+                <property name="user">admin</property>
+                <property name="pass">admin</property>
+            </configuration>
+        </container>
+    </group>
+</arquillian>

@@ -37,6 +37,7 @@
         <module>clusterbench-ee10-ejb</module>
         <module>clusterbench-ee10-web</module>
         <module>clusterbench-ee10-ear</module>
+        <module>integration-tests</module>
     </modules>
 
     <properties>
@@ -44,7 +45,12 @@
         <version.org.wildfly>31.0.1.Final</version.org.wildfly>
         <version.org.wildfly.cloud-feature-pack>6.0.0.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>4.2.2.Final</version.org.wildfly.maven.plugin>
+
+        <!-- Test dependencies -->
+        <version.org.apache.tomcat>10.1.15</version.org.apache.tomcat>
         <version.org.junit.jupiter>5.10.0</version.org.junit.jupiter>
+        <version.org.jboss.arquillian>1.8.0.Final</version.org.jboss.arquillian>
+
         <wildfly.skip>true</wildfly.skip>
     </properties>
 

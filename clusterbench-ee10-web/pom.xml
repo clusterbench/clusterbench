@@ -91,6 +91,8 @@
                             <goal>war</goal>
                         </goals>
                         <configuration>
+                            <!-- This makes classes testable and can be depended upon -->
+                            <attachClasses>true</attachClasses>
                             <webResources>
                                 <resource>
                                     <filtering>true</filtering>
