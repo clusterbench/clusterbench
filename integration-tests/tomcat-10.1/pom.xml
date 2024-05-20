@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.jboss.test</groupId>
         <artifactId>clusterbench-it-parent</artifactId>
-        <version>9.0.0.Final</version>
+        <version>9.0.1.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-it-tomcat-10.1</artifactId>
