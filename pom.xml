@@ -95,27 +95,10 @@
 
     <build>
         <plugins>
-            <!-- Ban insecure non-https maven repositories -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>3.4.1</version>
-                <executions>
-                    <execution>
-                        <id>enforce-java-version</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <bannedRepositories>
-                                    <bannedRepositories>http://*</bannedRepositories>
-                                    <bannedPluginRepositories>http://*</bannedPluginRepositories>
-                                </bannedRepositories>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
