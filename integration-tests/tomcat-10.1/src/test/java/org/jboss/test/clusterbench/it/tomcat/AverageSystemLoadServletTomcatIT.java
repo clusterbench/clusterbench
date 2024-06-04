@@ -6,13 +6,9 @@
 package org.jboss.test.clusterbench.it.tomcat;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Optional;
 
-import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -26,34 +22,25 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
+ * Tomcat version of the smoke test for {@link org.jboss.test.clusterbench.web.load.AverageSystemLoadServlet}.
+ *
  * @author Radoslav Husar
  */
 @RunWith(Arquillian.class)
 @RunAsClient
-public class HttpSessionServletTomcatIT extends AbstractTomcatIT {
+public class AverageSystemLoadServletTomcatIT extends AbstractTomcatIT {
 
     @Test
     public void test(@ArquillianResource(HttpSessionServlet.class) URL baseURL) throws Exception {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            HttpGet httpGet = new HttpGet(baseURL.toURI() + "/session");
+            HttpGet httpGet = new HttpGet(baseURL.toURI() + "/averagesystemload?milliseconds=1000&threads=4");
             System.out.println(httpGet);
 
             try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
                 assertEquals(200, response.getStatusLine().getStatusCode());
 
                 String responseBody = EntityUtils.toString(response.getEntity());
-                assertEquals("0", responseBody);
-
-                // Also ensure session is created
-                Optional<Header> header = Arrays.stream(response.getAllHeaders()).filter(h -> Arrays.stream(h.getElements()).anyMatch(e -> e.getName().equals("JSESSIONID"))).findAny();
-                assertTrue(header.isPresent());
-            }
-
-            try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
-                assertEquals(200, response.getStatusLine().getStatusCode());
-
-                String responseBody = EntityUtils.toString(response.getEntity());
-                assertEquals("1", responseBody);
+                assertEquals("DONE", responseBody);
             }
         }
     }
