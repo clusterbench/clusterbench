@@ -47,7 +47,7 @@
         <version.org.wildfly.maven.plugin>5.0.0.Final</version.org.wildfly.maven.plugin>
 
         <!-- Test dependencies -->
-        <version.org.apache.tomcat>10.1.24</version.org.apache.tomcat>
+        <version.org.apache.tomcat>10.1.25</version.org.apache.tomcat>
         <version.org.junit.jupiter>5.10.2</version.org.junit.jupiter>
         <version.org.jboss.arquillian>1.8.0.Final</version.org.jboss.arquillian>
 
