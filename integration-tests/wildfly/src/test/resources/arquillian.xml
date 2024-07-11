@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright The ClusterBench Authors
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jboss.org/schema/arquillian https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <group qualifier="manual-mode-group" default="true">
+        <container qualifier="wildfly" default="true" mode="class">
+            <configuration>
+                <property name="javaVmArguments">-Djboss.node.name=clusterbench-1</property>
+                <property name="jbossHome">${jboss.home}</property>
+            </configuration>
+        </container>
+    </group>
+
+</arquillian>
