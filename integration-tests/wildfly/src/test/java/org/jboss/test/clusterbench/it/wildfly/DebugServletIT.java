@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.jboss.test.clusterbench.ear;
+package org.jboss.test.clusterbench.it.wildfly;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -17,12 +17,17 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.jboss.arquillian.junit5.ArquillianExtension;
 
 /**
  * @author Radoslav Husar
  */
-public class DebugServletIT {
+@ExtendWith(ArquillianExtension.class)
+@RunAsClient
+public class DebugServletIT extends AbstractWildFlyIT {
 
     public static final String JBOSS_NODE_NAME = "clusterbench-1";
 

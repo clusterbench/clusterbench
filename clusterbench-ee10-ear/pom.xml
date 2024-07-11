@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
   ~ Copyright The ClusterBench Authors
   ~ SPDX-License-Identifier: Apache-2.0
@@ -29,15 +30,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!-- Define executions since 'ear' packaging skips test compilation -->
-                <executions>
-                    <execution>
-                        <id>testCompile</id>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -75,26 +67,6 @@
                     </modules>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>failsafe-integration-test</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>integration-test</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>failsafe-verify</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -126,85 +98,9 @@
             <classifier>granular</classifier>
             <type>war</type>
         </dependency>
-        <!-- Test dependencies -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <profiles>
-        <profile>
-            <id>integration</id>
-            <activation>
-                <property>
-                    <name>!skipTests</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.wildfly.plugins</groupId>
-                        <artifactId>wildfly-maven-plugin</artifactId>
-                        <!-- Shared configuration to be picked up by e.g. manual 'mvn wildfly:run' -->
-                        <configuration>
-                            <serverConfig>standalone-ha.xml</serverConfig>
-                            <serverArgs>
-                                <serverArg>-Djboss.node.name=clusterbench-1</serverArg>
-                            </serverArgs>
-                            <version>${version.org.wildfly}</version>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>integration-test-wildfly-deploy</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>start</goal>
-                                    <goal>execute-commands</goal>
-                                    <goal>deploy</goal>
-                                </goals>
-                                <configuration>
-                                    <batch>true</batch>
-                                    <scripts>
-                                        <script>jgroups.cli</script>
-                                    </scripts>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>integration-test-wildfly-undeploy</id>
-                                <phase>post-integration-test</phase>
-                                <goals>
-                                    <goal>undeploy</goal>
-                                    <goal>shutdown</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>integration-quickly</id>
-            <activation>
-                <property>
-                    <name>quickly</name>
-                </property>
-            </activation>
-            <properties>
-                <wildfly.skip>true</wildfly.skip>
-            </properties>
-        </profile>
         <profile>
             <!-- OpenShift will run the following with extra properties: "mvn -e -Popenshift -DskipTests -B package" -->
             <!-- See https://github.com/wildfly/wildfly-charts/blob/main/charts/wildfly/README.md -->
@@ -240,23 +136,6 @@
                                     </layers>
                                     <filename>ROOT.ear</filename>
                                 </configuration>
-                            </execution>
-                            <execution>
-                                <id>integration-test-wildfly-deploy</id>
-                                <phase>none</phase>
-                            </execution>
-                            <execution>
-                                <id>integration-test-wildfly-undeploy</id>
-                                <phase>none</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>none</phase>
                             </execution>
                         </executions>
                     </plugin>
