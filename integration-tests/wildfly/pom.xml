@@ -145,12 +145,20 @@
                         <layer>ejb</layer>
                         <layer>web-clustering</layer>
                     </layers>
+                    <packaging-scripts>
+                        <packaging-script>
+                            <scripts>
+                                <script>jgroups.cli</script>
+                            </scripts>
+                        </packaging-script>
+                    </packaging-scripts>
                 </configuration>
                 <executions>
                     <execution>
                         <id>provision-server-for-testing</id>
                         <goals>
-                            <goal>provision</goal>
+                            <!-- Reference: https://docs.wildfly.org/wildfly-maven-plugin/releases/5.0/package-mojo.html -->
+                            <goal>package</goal>
                         </goals>
                         <phase>process-test-classes</phase>
                     </execution>
