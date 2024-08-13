@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright The ClusterBench Authors
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>46</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>org.jboss.test</groupId>
+    <artifactId>clusterbench-bom</artifactId>
+    <version>10.0.0.Final-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>ClusterBench: BOM</name>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Common -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- EAR -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee10-ear</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- EJB -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee10-ejb</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee10-ejb</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <!-- WEB -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee10-web</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee10-web</artifactId>
+                <version>${project.version}</version>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee10-web</artifactId>
+                <version>${project.version}</version>
+                <classifier>default</classifier>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee10-web</artifactId>
+                <version>${project.version}</version>
+                <classifier>passivating</classifier>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee10-web</artifactId>
+                <version>${project.version}</version>
+                <classifier>granular</classifier>
+                <type>war</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

@@ -24,7 +24,6 @@
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>clusterbench-ee10-web</artifactId>
-            <version>${project.version}</version>
             <classifier>classes</classifier>
             <scope>test</scope>
         </dependency>
@@ -99,7 +98,6 @@
                                 <artifactItem>
                                     <groupId>org.jboss.test</groupId>
                                     <artifactId>clusterbench-ee10-web</artifactId>
-                                    <version>${project.version}</version>
                                     <type>war</type>
                                     <overWrite>true</overWrite>
                                     <classifier>tomcat</classifier>

@@ -28,15 +28,12 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>clusterbench-ee10-ejb</artifactId>
-            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>clusterbench-common</artifactId>
-            <version>${project.version}</version>
             <scope>compile</scope>
-            <type>jar</type>
         </dependency>
         <!-- Jakarta dependencies -->
         <dependency>
