@@ -8,12 +8,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.jboss</groupId>
-        <artifactId>jboss-parent</artifactId>
-        <version>46</version>
+        <groupId>org.jboss.test</groupId>
+        <artifactId>clusterbench-bom</artifactId>
+        <version>10.0.0.Final-SNAPSHOT</version>
+        <relativePath>bom</relativePath>
     </parent>
 
-    <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench</artifactId>
     <version>10.0.0.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -33,6 +33,7 @@
     </scm>
 
     <modules>
+        <module>bom</module>
         <module>clusterbench-common</module>
         <module>clusterbench-ee10-ejb</module>
         <module>clusterbench-ee10-web</module>
