@@ -16,6 +16,8 @@
     <artifactId>clusterbench-it-tomcat-10.1</artifactId>
     <packaging>jar</packaging>
 
+    <name>ClusterBench ITs: Tomcat 10.1</name>
+
     <properties>
         <catalina.home>${project.build.directory}/apache-tomcat-${version.org.apache.tomcat}</catalina.home>
     </properties>

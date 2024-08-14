@@ -17,6 +17,8 @@
     <version>10.0.0.Final-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
+    <name>ClusterBench: EE 10 - EJB</name>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

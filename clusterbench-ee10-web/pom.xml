@@ -16,6 +16,8 @@
     <version>10.0.0.Final-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <name>ClusterBench: EE 10 - WEB</name>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Used to comment out security in web.xml -->
