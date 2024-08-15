@@ -10,12 +10,12 @@
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
         <version>46</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench-bom</artifactId>
-    <version>10.0.0.Final-SNAPSHOT</version>
+    <version>10.0.0.Final</version>
     <packaging>pom</packaging>
 
     <name>ClusterBench: BOM</name>
@@ -82,4 +82,8 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+  <scm>
+    <tag>10.0.0.Final</tag>
+  </scm>
 </project>
