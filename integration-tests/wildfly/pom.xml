@@ -17,6 +17,8 @@
     <artifactId>clusterbench-it-wildfly</artifactId>
     <packaging>jar</packaging>
 
+    <name>ClusterBench ITs: WildFly</name>
+
     <properties>
         <jboss.home>${project.build.directory}/wildfly</jboss.home>
     </properties>

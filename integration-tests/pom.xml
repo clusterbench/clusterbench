@@ -16,6 +16,8 @@
     <artifactId>clusterbench-it-parent</artifactId>
     <packaging>pom</packaging>
 
+    <name>ClusterBench ITs (parent)</name>
+
     <dependencyManagement>
         <dependencies>
             <dependency>

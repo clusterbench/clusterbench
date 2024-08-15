@@ -16,7 +16,7 @@
     <version>10.0.0.Final-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>clusterbench-common</name>
+    <name>ClusterBench: Common</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
