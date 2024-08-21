@@ -3,12 +3,11 @@
   ~ Copyright The ClusterBench Authors
   ~ SPDX-License-Identifier: Apache-2.0
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
+        <artifactId>clusterbench</artifactId>
         <version>10.0.1.Final-SNAPSHOT</version>
     </parent>
 
@@ -112,8 +111,8 @@
                     </execution>
                     <!-- Tomcat variant -->
                     <execution>
-                        <phase>package</phase>
                         <id>build-tomcat-war</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>war</goal>
                         </goals>
@@ -135,8 +134,8 @@
                     </execution>
                     <!-- Build default configuration: session granularity and never passivates. -->
                     <execution>
-                        <phase>package</phase>
                         <id>build-default-war</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>war</goal>
                         </goals>
@@ -163,8 +162,8 @@
                     </execution>
                     <!-- Build passivating configuration: session granularity but passivation enabled. -->
                     <execution>
-                        <phase>package</phase>
                         <id>build-passivating-war</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>war</goal>
                         </goals>
@@ -191,8 +190,8 @@
                     </execution>
                     <!-- Build granular configuration: attribute granularity but never passivates. -->
                     <execution>
-                        <phase>package</phase>
                         <id>build-granular-war</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>war</goal>
                         </goals>
@@ -260,8 +259,8 @@
                             </execution>
                             <!-- Build default configuration: SESSION granularity and never passivates. -->
                             <execution>
-                                <phase>package</phase>
                                 <id>build-default-war</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>war</goal>
                                 </goals>
@@ -288,8 +287,8 @@
                             </execution>
                             <!-- Build granular configuration: ATTRIBUTE granularity but never passivates. -->
                             <execution>
-                                <phase>package</phase>
                                 <id>build-granular-war</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>war</goal>
                                 </goals>
@@ -356,8 +355,8 @@
                             </execution>
                             <!-- Build default configuration: SESSION granularity and never passivates. -->
                             <execution>
-                                <phase>package</phase>
                                 <id>build-default-war</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>war</goal>
                                 </goals>
@@ -384,8 +383,8 @@
                             </execution>
                             <!-- Build granular configuration: ATTRIBUTE granularity but never passivates. -->
                             <execution>
-                                <phase>package</phase>
                                 <id>build-granular-war</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>war</goal>
                                 </goals>
@@ -456,8 +455,8 @@
                             </execution>
                             <!-- Build default configuration: SESSION granularity and never passivates. -->
                             <execution>
-                                <phase>package</phase>
                                 <id>build-default-war</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>war</goal>
                                 </goals>
@@ -488,8 +487,8 @@
                             </execution>
                             <!-- Build granular configuration: ATTRIBUTE granularity but never passivates. -->
                             <execution>
-                                <phase>package</phase>
                                 <id>build-granular-war</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>war</goal>
                                 </goals>
@@ -564,8 +563,8 @@
                             </execution>
                             <!-- Build default configuration: SESSION granularity and never passivates. -->
                             <execution>
-                                <phase>package</phase>
                                 <id>build-default-war</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>war</goal>
                                 </goals>
@@ -596,8 +595,8 @@
                             </execution>
                             <!-- Build granular configuration: ATTRIBUTE granularity but never passivates. -->
                             <execution>
-                                <phase>package</phase>
                                 <id>build-granular-war</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>war</goal>
                                 </goals>

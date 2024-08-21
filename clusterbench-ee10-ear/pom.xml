@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
   ~ Copyright The ClusterBench Authors
   ~ SPDX-License-Identifier: Apache-2.0
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
+        <artifactId>clusterbench</artifactId>
         <version>10.0.1.Final-SNAPSHOT</version>
     </parent>
 
@@ -25,6 +23,32 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <wildfly.skip>false</wildfly.skip>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>clusterbench-ee10-ejb</artifactId>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>clusterbench-ee10-web</artifactId>
+            <classifier>default</classifier>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>clusterbench-ee10-web</artifactId>
+            <classifier>passivating</classifier>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>clusterbench-ee10-web</artifactId>
+            <classifier>granular</classifier>
+            <type>war</type>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>clusterbench-ee10</finalName>
@@ -72,40 +96,14 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-ee10-ejb</artifactId>
-            <type>ejb</type>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-ee10-web</artifactId>
-            <classifier>default</classifier>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-ee10-web</artifactId>
-            <classifier>passivating</classifier>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-ee10-web</artifactId>
-            <classifier>granular</classifier>
-            <type>war</type>
-        </dependency>
-    </dependencies>
-
     <profiles>
         <profile>
             <!-- OpenShift will run the following with extra properties: "mvn -e -Popenshift -DskipTests -B package" -->
             <!-- See https://github.com/wildfly/wildfly-charts/blob/main/charts/wildfly/README.md -->
             <id>openshift</id>
             <build>
-                <finalName>ROOT</finalName>
                 <directory>../target</directory>
+                <finalName>ROOT</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.wildfly.plugins</groupId>
