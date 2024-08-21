@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
   ~ Copyright The ClusterBench Authors
   ~ SPDX-License-Identifier: Apache-2.0
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -36,8 +34,8 @@
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
                 <version>${version.org.jboss.arquillian}</version>
-                <scope>import</scope>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -158,11 +156,11 @@
                 <executions>
                     <execution>
                         <id>provision-server-for-testing</id>
+                        <phase>process-test-classes</phase>
                         <goals>
                             <!-- Reference: https://docs.wildfly.org/wildfly-maven-plugin/releases/5.0/package-mojo.html -->
                             <goal>package</goal>
                         </goals>
-                        <phase>process-test-classes</phase>
                     </execution>
                 </executions>
             </plugin>

@@ -3,7 +3,6 @@
   ~ Copyright The ClusterBench Authors
   ~ SPDX-License-Identifier: Apache-2.0
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -27,11 +26,6 @@
         </license>
     </licenses>
 
-    <scm>
-        <developerConnection>scm:git:git@github.com:clusterbench/clusterbench.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-
     <modules>
         <module>bom</module>
         <module>clusterbench-common</module>
@@ -40,6 +34,11 @@
         <module>clusterbench-ee10-ear</module>
         <module>integration-tests</module>
     </modules>
+
+    <scm>
+        <developerConnection>scm:git:git@github.com:clusterbench/clusterbench.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <linkXRef>false</linkXRef>
@@ -64,9 +63,9 @@
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-ee-with-tools</artifactId>
-                <scope>import</scope>
-                <type>pom</type>
                 <version>${version.org.wildfly}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.wildfly</groupId>
@@ -99,6 +98,15 @@
     </dependencyManagement>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>${version.org.wildfly.maven.plugin}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -110,15 +118,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.wildfly.plugins</groupId>
-                    <artifactId>wildfly-maven-plugin</artifactId>
-                    <version>${version.org.wildfly.maven.plugin}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <profiles>
