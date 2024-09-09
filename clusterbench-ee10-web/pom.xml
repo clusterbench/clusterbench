@@ -28,23 +28,12 @@
         <!-- Project dependencies -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-ee10-ejb</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>clusterbench-common</artifactId>
             <scope>compile</scope>
         </dependency>
-        <!-- Jakarta dependencies -->
         <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.inject</groupId>
-            <artifactId>jakarta.inject-api</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>clusterbench-ee10-ejb</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -57,16 +46,27 @@
             <artifactId>jakarta.faces-api</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- @org.wildfly.clustering.web.annotation.Immutable -->
         <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-clustering-web-api</artifactId>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Jakarta dependencies -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- /debug servlet -->
         <dependency>
             <groupId>org.jgroups</groupId>
             <artifactId>jgroups</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- @org.wildfly.clustering.web.annotation.Immutable -->
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-clustering-web-api</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
