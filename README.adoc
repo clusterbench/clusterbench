@@ -11,14 +11,15 @@ at the same time it can be easily checked the correctness of replicated sessions
 |===
 |Branch |WildFly Version |Tomcat Version |EE Version(s) |Base JDK
 
-|`main`|33 |10.1 |Jakarta EE 10 |11
-|`9.x` |32 |10.1 |Jakarta EE 10 |11
-|`8.x` |31 |10.1 |Jakarta EE 10 |11
-|`7.x` |30 |10.1 |Jakarta EE 10 |11
-|`6.x` |29 |10.1 |Jakarta EE 10 |11
-|`5.x` |28 |10.1 |Jakarta EE 10 |11
-|`4.x` |27 |10.1 |Jakarta EE 10 |11
-|`3.x` |26 (and previous) | |Java EE 5, EE 6, EE 7, EE 8 |8
+|`main` |34 |10.1 |Jakarta EE 10 |11
+|`10.x` |33 |10.1 |Jakarta EE 10 |11
+|`9.x`  |32 |10.1 |Jakarta EE 10 |11
+|`8.x`  |31 |10.1 |Jakarta EE 10 |11
+|`7.x`  |30 |10.1 |Jakarta EE 10 |11
+|`6.x`  |29 |10.1 |Jakarta EE 10 |11
+|`5.x`  |28 |10.1 |Jakarta EE 10 |11
+|`4.x`  |27 |10.1 |Jakarta EE 10 |11
+|`3.x`  |26 (and previous) | |Java EE 5, EE 6, EE 7, EE 8 |8
 |===
 
 == Building
