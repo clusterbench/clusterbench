@@ -22,10 +22,10 @@
     </properties>
 
     <dependencies>
+        <!-- Needed by ARQ -->
         <dependency>
-            <groupId>org.jboss.test</groupId>
-            <artifactId>clusterbench-ee10-web</artifactId>
-            <classifier>classes</classifier>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -49,10 +49,10 @@
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Needed by ARQ -->
         <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
+            <groupId>org.jboss.test</groupId>
+            <artifactId>clusterbench-ee10-web</artifactId>
+            <classifier>classes</classifier>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -68,19 +68,19 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-clustering-web-api</artifactId>
-                <!-- TODO this should be managed by the BOM! -->
-                <version>${version.org.wildfly}</version>
-                <scope>provided</scope>
-            </dependency>
             <!-- Only for Dependabot, this is never referenced via Maven dependencies -->
             <dependency>
                 <groupId>org.wildfly.cloud</groupId>
                 <artifactId>wildfly-cloud-galleon-pack</artifactId>
                 <version>${version.org.wildfly.cloud-feature-pack}</version>
                 <type>zip</type>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-clustering-web-api</artifactId>
+                <!-- TODO this should be managed by the BOM! -->
+                <version>${version.org.wildfly}</version>
+                <scope>provided</scope>
             </dependency>
             <!-- Test dependencies -->
             <dependency>

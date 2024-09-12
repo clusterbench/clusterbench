@@ -22,10 +22,9 @@
     </properties>
 
     <dependencies>
-        <!-- Jakarta dependencies -->
         <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -33,9 +32,10 @@
             <artifactId>jakarta.ejb-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!-- Jakarta dependencies -->
         <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Test dependencies -->
