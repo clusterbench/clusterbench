@@ -100,8 +100,8 @@ renaming it accordingly to the desired context, typically to `clusterbench.war` 
 cp ~/git/clusterbench/clusterbench-ee10-web/target/clusterbench-ee10-web-tomcat.war webapps/clusterbench.war
 ----
 
-Note that CDI, debug, EJB, granular, JSF servlets are unsupported on Tomcat and not bundled in the `war`.
-That makes the session servlet the only one available for benchmarking.
+Note that CDI, EJB, JSF, granular, and debug servlets are unsupported on Tomcat and not bundled in the `war`.
+That makes the session servlet the only one available for performance benchmarking.
 
 === Deploying to OpenShift
 
@@ -184,10 +184,12 @@ Stores serial and data in `@jakarta.ejb.Stateful` Jakarta Enterprise Bean (SFSB)
 
 ==== GranularSessionServlet
 
-http://localhost:8080/clusterbench-granular/granular[/clusterbench-granular/granular]
+http://localhost:8080/clusterbench/granular[/clusterbench/granular]
 
 Stores serial number and data separately and are both directly put to `jakarta.servlet.http.HttpSession`.
-The byte array is never changed therefore this can be used to test effectiveness of using granular session replication.
+The byte array is never changed and thus can be used to test the efficiency of using granular session replication.
+
+CAUTION: The server configuration in use *must* be configured with `ATTRIBUTE` session granularity!
 
 === Load Servlets
 
@@ -227,6 +229,9 @@ The `/scripts` directory contains CLI scripts for reconfiguring the application 
 
 |===
 | Script | Description
+
+| infinispan-session-management-attribute.cli
+| Reconfigures the default session manager to use `ATTRIBUTE` granularity.
 
 | infinispan-session-management-offload-attribute.cli
 | Reconfigures the default session manager to use cache `offload` with `ATTRIBUTE` granularity.
