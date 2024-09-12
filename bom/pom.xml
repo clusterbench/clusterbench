@@ -73,13 +73,6 @@
                 <classifier>passivating</classifier>
                 <type>war</type>
             </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>clusterbench-ee10-web</artifactId>
-                <version>${project.version}</version>
-                <classifier>granular</classifier>
-                <type>war</type>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

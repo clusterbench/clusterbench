@@ -132,7 +132,7 @@
                             <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]</packagingExcludes>
                         </configuration>
                     </execution>
-                    <!-- Build default configuration: session granularity and never passivates. -->
+                    <!-- Build default configuration -->
                     <execution>
                         <id>build-default-war</id>
                         <phase>package</phase>
@@ -152,7 +152,7 @@
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                            <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
+                            <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
                                     <Dependencies>org.jgroups</Dependencies>
@@ -160,7 +160,7 @@
                             </archive>
                         </configuration>
                     </execution>
-                    <!-- Build passivating configuration: session granularity but passivation enabled. -->
+                    <!-- Build passivating configuration -->
                     <execution>
                         <id>build-passivating-war</id>
                         <phase>package</phase>
@@ -180,35 +180,7 @@
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-passivating</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
-                            <packagingExcludes>%regex[.*granular.*],%regex[.*clusterbench-common.*]</packagingExcludes>
-                            <archive>
-                                <manifestEntries>
-                                    <Dependencies>org.jgroups</Dependencies>
-                                </manifestEntries>
-                            </archive>
-                        </configuration>
-                    </execution>
-                    <!-- Build granular configuration: attribute granularity but never passivates. -->
-                    <execution>
-                        <id>build-granular-war</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>war</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>granular</classifier>
-                            <webResources>
-                                <resource>
-                                    <filtering>true</filtering>
-                                    <directory>src/main/webapp-granular</directory>
-                                    <includes>
-                                        <include>**/web.xml</include>
-                                    </includes>
-                                </resource>
-                            </webResources>
-                            <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
-                            <warSourceDirectory>${basedir}/src/main/webapp-granular</warSourceDirectory>
-                            <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*],%regex[.*clusterbench-common.*]</packagingExcludes>
+                            <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
                                     <Dependencies>org.jgroups</Dependencies>
