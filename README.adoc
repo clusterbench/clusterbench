@@ -221,6 +221,20 @@ http://localhost:8080/clusterbench/jboss-node-name[/clusterbench/jboss-node-name
 
 Servlet which prints out the node name as a value of the `jboss.node.name` system property.
 
+== Server Configurations
+
+The `/scripts` directory contains CLI scripts for reconfiguring the application server for specific test scenarios:
+
+|===
+| Script | Description
+
+| infinispan-session-management-offload-attribute.cli
+| Reconfigures the default session manager to use cache `offload` with `ATTRIBUTE` granularity.
+
+| infinispan-session-management-offload-session.cli
+| Reconfigures the default session manager to use cache `offload` with `SESSION` granularity.
+|===
+
 == Custom Build Profiles
 
 There a several profiles to test specific scenarios where the standard build needs to be modified.
