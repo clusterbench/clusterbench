@@ -225,7 +225,9 @@ Servlet which prints out the node name as a value of the `jboss.node.name` syste
 
 == Server Configurations
 
-The `/scripts` directory contains CLI scripts for reconfiguring the application server for specific test scenarios:
+The `scripts` directory at the root of the repository contains CLI scripts
+for reconfiguring the application server for specific test scenarios.
+These scripts can be combined to achieve a desired resulting configuration.
 
 |===
 | Script | Description
@@ -233,11 +235,9 @@ The `/scripts` directory contains CLI scripts for reconfiguring the application 
 | infinispan-session-management-attribute.cli
 | Reconfigures the default session manager to use `ATTRIBUTE` granularity.
 
-| infinispan-session-management-offload-attribute.cli
-| Reconfigures the default session manager to use cache `offload` with `ATTRIBUTE` granularity.
+| infinispan-session-management-offload.cli
+| Reconfigures the default session manager to use cache `offload`.
 
-| infinispan-session-management-offload-session.cli
-| Reconfigures the default session manager to use cache `offload` with `SESSION` granularity.
 |===
 
 == Custom Build Profiles

@@ -5,8 +5,4 @@
 
 # This script reconfigures the default session manager to use `ATTRIBUTE` granularity.
 
-batch
-/subsystem=distributable-web/infinispan-session-management=granular:add(cache-container=web, granularity=ATTRIBUTE)
-/subsystem=distributable-web/infinispan-session-management=granular/affinity=primary-owner:add()
-/subsystem=distributable-web:write-attribute(name=default-session-management, value=granular)
-run-batch
+/subsystem=distributable-web/infinispan-session-management=default:write-attribute(name=granularity, value=ATTRIBUTE) {allow-resource-service-restart=true}

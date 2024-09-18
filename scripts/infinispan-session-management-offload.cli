@@ -1,0 +1,9 @@
+#
+# Copyright The ClusterBench Authors
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# This script reconfigures the default session manager to use cache `offload`.
+# Running this requires the given `offload` cache to be already pre-configured in the `web` cache container.
+
+/subsystem=distributable-web/infinispan-session-management=default:write-attribute(name=cache, value=offload) {allow-resource-service-restart=true}
