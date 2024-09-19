@@ -246,7 +246,7 @@ There a several profiles to test specific scenarios where the standard build nee
 
 === shared-sessions
 
-This profile produces a build to tests a shared sessions scenario where two WARs in the same EAR share HTTP sessions:
+This profile produces a build to test a shared sessions scenario where two WARs in the same EAR share HTTP sessions:
 
 ----
 mvn install -P shared-sessions -DskipTests
