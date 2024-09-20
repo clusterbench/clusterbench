@@ -42,9 +42,9 @@
 
     <properties>
         <linkXRef>false</linkXRef>
-        <version.org.wildfly>33.0.1.Final</version.org.wildfly>
-        <version.org.wildfly.cloud-feature-pack>7.0.1.Final</version.org.wildfly.cloud-feature-pack>
-        <version.org.wildfly.maven.plugin>5.0.0.Final</version.org.wildfly.maven.plugin>
+        <version.org.wildfly>33.0.2.Final</version.org.wildfly>
+        <version.org.wildfly.cloud-feature-pack>7.0.2.Final</version.org.wildfly.cloud-feature-pack>
+        <version.org.wildfly.maven.plugin>5.0.1.Final</version.org.wildfly.maven.plugin>
 
         <!-- Consumed by jboss-parent-pom -->
         <maven.compiler.target>11</maven.compiler.target>
