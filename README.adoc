@@ -232,13 +232,77 @@ These scripts can be combined to achieve a desired resulting configuration.
 |===
 | Script | Description
 
-| infinispan-session-management-attribute.cli
+| `infinispan-session-management-attribute.cli`
 | Reconfigures the default session manager to use `ATTRIBUTE` granularity.
 
-| infinispan-session-management-offload.cli
+| `infinispan-session-management-offload.cli`
 | Reconfigures the default session manager to use cache `offload`.
 
+| `singleton-deployment-overlay-add.cli`
+| Adds a deployment overlay for the ClusterBench deployment which configures it for singleton deployment.
+
+| `singleton-deployment-overlay-remove.cli`
+| Removes the previously added deployment overlay so that it will no longer operate as a singleton deployment.
+
 |===
+
+.Example: singleton deployment
+[%collapsible]
+====
+Following is a singleton deployment walk-through.
+Start with two local servers already started and with `clusterbench-ee10.ear` deployed.
+First run the provided scripts against both servers:
+
+[code,shell]
+----
+[rhusar@puglia scripts]$ $JBOSS_HOME/bin/jboss-cli.sh --connect --file=singleton-deployment-overlay-add.cli
+[rhusar@puglia scripts]$ $JBOSS_HOME/bin/jboss-cli.sh --connect --controller=localhost:10090 --file=singleton-deployment-overlay-add.cli
+----
+
+The provided script adds a deployment overlay, which configures existing deployment for singleton deployment.
+This is achieved by overlaying a `META-INF/singleton-deployment.xml` file.
+Note that the script automatically redeploys the deployments affected by this overlay.
+
+Now that these have configured both deployments for singleton deployment, observe the server log:
+
+[code]
+----
+10:39:16,287 INFO  [org.wildfly.clustering.singleton.server] (main - 1) WFLYCLSN0003: node2 elected as the singleton provider of the jboss.deployment.unit."clusterbench-ee10.ear".installer service
+10:39:16,287 INFO  [org.wildfly.clustering.singleton.server] (main - 1) WFLYCLSN0001: This node will now operate as the singleton provider of the jboss.deployment.unit."clusterbench-ee10.ear".installer service
+----
+
+We can now verify that only one of the contexts is available:
+
+[code]
+----
+[rhusar@puglia wildfly]$ curl --head http://localhost:8080/clusterbench/
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-Length: 74
+Content-Type: text/html
+Date: Mon, 23 Sep 2024 08:50:28 GMT
+
+[rhusar@puglia wildfly]$ curl --head http://localhost:8180/clusterbench/
+HTTP/1.1 200 OK
+Connection: keep-alive
+Last-Modified: Fri, 03 May 2024 14:27:54 GMT
+Content-Type: text/html
+Content-Length: 1335
+Accept-Ranges: bytes
+Date: Mon, 23 Sep 2024 08:50:29 GMT
+----
+
+Notice that only one of the servers has returned a valid answer.
+
+To undo the changes, run the 'remove' variant of the scripts:
+
+[code,shell]
+----
+[rhusar@puglia scripts]$ $JBOSS_HOME/bin/jboss-cli.sh --connect --file=singleton-deployment-overlay-remove.cli
+[rhusar@puglia scripts]$ $JBOSS_HOME/bin/jboss-cli.sh --connect --controller=localhost:10090 --file=singleton-deployment-overlay-remove.cli
+----
+
+====
 
 == Custom Build Profiles
 

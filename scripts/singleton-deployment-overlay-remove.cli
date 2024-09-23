@@ -1,0 +1,7 @@
+#
+# Copyright The ClusterBench Authors
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Removes the previously added deployment overlay and redeploys
+deployment-overlay remove --name=clusterbench-ee10 --redeploy-affected
