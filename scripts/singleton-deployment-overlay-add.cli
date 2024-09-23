@@ -1,0 +1,7 @@
+#
+# Copyright The ClusterBench Authors
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Adds a deployment overlay for the ClusterBench deployment and redeploys
+deployment-overlay add --name=clusterbench-ee10 --deployments=clusterbench-ee10.ear --content=META-INF/singleton-deployment.xml=singleton-deployment.xml --redeploy-affected
