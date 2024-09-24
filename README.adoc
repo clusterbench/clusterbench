@@ -306,20 +306,22 @@ To undo the changes, run the 'remove' variant of the scripts:
 
 == Custom Build Profiles
 
-There a several profiles to test specific scenarios where the standard build needs to be modified.
+There are several profiles to test specific scenarios where the standard build needs to be modified.
+When no custom profile is specified, the `default` profile is used.
 
 === shared-sessions
 
 This profile produces a build to test a shared sessions scenario where two WARs in the same EAR share HTTP sessions:
 
+[source,shell]
 ----
 mvn install -P shared-sessions -DskipTests
 ----
 
 === short-names
 
-Used in order to shorten name of bundled JARs and WARs within the final EAR file.
-Usually used in database tests to produce database tables with short names.
+Used to shorten the names of bundled JARs and WARs within the resulting EAR file.
+Used in database tests to produce database tables with short names.
 
 [source,shell]
 ----
@@ -330,6 +332,7 @@ mvn clean install -P short-names -DskipTests
 
 This profile enables form authentication:
 
+[source,shell]
 ----
 mvn clean install -P sso-form -DskipTests
 ----
@@ -338,6 +341,7 @@ mvn clean install -P sso-form -DskipTests
 
 This profile adds the necessary JEBs to perform call forwarding to a second JEB cluster:
 
+[source,shell]
 ----
 mvn clean install -P 2clusters -DskipTests
 ----

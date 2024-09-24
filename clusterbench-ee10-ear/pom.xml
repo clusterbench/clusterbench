@@ -344,8 +344,7 @@
             </build>
         </profile>
         <profile>
-            <!-- mvn clean install -P core -->
-            <id>core</id>
+            <id>default</id>
             <build>
                 <plugins>
                     <plugin>
