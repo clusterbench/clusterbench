@@ -52,7 +52,7 @@
 
         <!-- Test dependencies -->
         <version.org.apache.tomcat>10.1.30</version.org.apache.tomcat>
-        <version.org.junit.jupiter>5.11.2</version.org.junit.jupiter>
+        <version.org.junit.jupiter>5.11.3</version.org.junit.jupiter>
         <version.org.jboss.arquillian>1.9.1.Final</version.org.jboss.arquillian>
         <version.org.jboss.arquillian.jakarta>10.0.0.Final</version.org.jboss.arquillian.jakarta>
 
