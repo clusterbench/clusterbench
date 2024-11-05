@@ -69,7 +69,7 @@ To do this manually, copy `clusterbench-ee10.ear` to server's deployments direct
 and start the standalone server in the HA mode:
 
 ----
-cd ~/wildfly-32.0.0.Final
+cd ~/wildfly-34.0.0.Final
 cp ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear standalone/deployments/
 ./bin/standalone.sh -c standalone-ha.xml
 ----
@@ -77,7 +77,7 @@ cp ~/clusterbench/clusterbench-ee10-ear/target/clusterbench-ee10.ear standalone/
 You can also use the CLI to do so by starting the server, connecting with CLI and using `deploy` command:
 
 ----
-cd ~/wildfly-32.0.0.Final
+cd ~/wildfly-34.0.0.Final
 ./bin/standalone.sh -c standalone-ha.xml
 ----
 
@@ -91,7 +91,7 @@ Then connect with the CLI:
 If you prefer GUI, you can start the server and navigate to http://localhost:9990/
 and follow the instructions.
 
-=== Tomcat 10 (and newer)
+=== Tomcat 10.1
 
 To deploy the Tomcat variant of ClusterBench, copy the following `war` file into Tomcat installation `webapps/` directory
 renaming it accordingly to the desired context, typically to `clusterbench.war` to correspond with the context path on WildFly.
