@@ -51,7 +51,7 @@
         <maven.compiler.source>11</maven.compiler.source>
 
         <!-- Test dependencies -->
-        <version.org.apache.tomcat>10.1.30</version.org.apache.tomcat>
+        <version.org.apache.tomcat>10.1.33</version.org.apache.tomcat>
         <version.org.junit.jupiter>5.11.3</version.org.junit.jupiter>
         <version.org.jboss.arquillian>1.9.1.Final</version.org.jboss.arquillian>
         <version.org.jboss.arquillian.jakarta>10.0.0.Final</version.org.jboss.arquillian.jakarta>
