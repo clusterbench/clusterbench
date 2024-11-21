@@ -22,7 +22,7 @@ import org.jboss.test.clusterbench.common.ClusterBenchConstants;
  * Optionally, log level can be provided in the 'level' parameter.
  * The default level is INFO.
  *
- * @author Tommasso Borgato
+ * @author Tommaso Borgato
  * @author Radoslav Husar
  */
 @WebServlet(name = "LoggerServlet", urlPatterns = {"/log"})

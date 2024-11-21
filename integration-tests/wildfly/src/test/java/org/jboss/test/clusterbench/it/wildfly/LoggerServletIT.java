@@ -1,5 +1,5 @@
 /**
- * @author Tommasso Borgato
+ * @author Tommaso Borgato
  * @author Radoslav Husar
  */
 package org.jboss.test.clusterbench.it.wildfly;
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
- * @author Tommasso Borgato
+ * @author Tommaso Borgato
  * @author Radoslav Husar
  */
 @ExtendWith(ArquillianExtension.class)
