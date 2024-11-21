@@ -5,6 +5,9 @@
 
 package org.jboss.test.clusterbench.common;
 
+/**
+ * @author Radoslav Husar
+ */
 public interface ClusterBenchConstants {
 
     String CREATE = "create";
@@ -14,4 +17,9 @@ public interface ClusterBenchConstants {
     String INVALIDATE = "invalidate";
 
     String CARGOKB = "cargokb";
+
+    /**
+     * Standard plain text HTTP response body.
+     */
+    String SUCCESS = "Success";
 }
