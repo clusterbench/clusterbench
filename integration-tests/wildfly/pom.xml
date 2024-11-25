@@ -70,7 +70,7 @@
         <dependency>
             <groupId>org.wildfly.arquillian</groupId>
             <artifactId>wildfly-arquillian-container-managed</artifactId>
-            <version>5.1.0.Beta6</version>
+            <version>5.1.0.Beta7</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
