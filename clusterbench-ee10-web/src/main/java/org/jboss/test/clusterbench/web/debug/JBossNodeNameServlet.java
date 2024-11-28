@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 
 /**
- * @author Tommasso Borgato
+ * @author Tommaso Borgato
  * @author Radoslav Husar
  */
 @WebServlet(name = "JBossNodeNameServlet", urlPatterns = { "/jboss-node-name" })

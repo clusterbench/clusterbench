@@ -223,6 +223,15 @@ http://localhost:8080/clusterbench/jboss-node-name[/clusterbench/jboss-node-name
 
 Servlet which prints out the node name as a value of the `jboss.node.name` system property.
 
+==== LoggerServlet
+
+http://localhost:8080/clusterbench/log?level=WARN&msg=Example%20warning.[/clusterbench/log?level=WARN&msg=Example%20warning.]
+
+Servlet which logs the provided message in the `msg` parameter to the server log.
+If no message is provided, a simple `ping` message is logged.
+The log message level can be optionally provided in the `level` parameter.
+Logs at `INFO` level by default.
+
 == Server Configurations
 
 The `scripts` directory at the root of the repository contains CLI scripts
