@@ -26,14 +26,16 @@ at the same time it can be easily checked the correctness of replicated sessions
 
 Clone the Git repository first and switch to its directory:
 
+[source,shell]
 ----
 git clone https://github.com/clusterbench/clusterbench.git
 ----
 
 Build the default `main` branch to build the latest Jakarta EE 10 version:
 
+[source,shell]
 ----
-mvn clean package
+./mvnw clean package
 ----
 
 Output files:
@@ -47,8 +49,9 @@ Output files:
 You can also use `wildfly-maven-plugin` to run a container with the project already deployed.
 It will also provision the server without having to download anything manually.
 
+[source,shell]
 ----
-mvn clean wildfly:run
+./mvnw clean wildfly:run
 ----
 
 and navigate your browser to http://localhost:8080/clusterbench/.
@@ -59,8 +62,9 @@ and navigate your browser to http://localhost:8080/clusterbench/.
 
 You can use the `deploy` goal of the https://docs.wildfly.org/wildfly-maven-plugin/[WildFly Maven Plugin] to deploy to your running instance by running:
 
+[source,shell]
 ----
-mvn wildfly:deploy
+./mvnw wildfly:deploy
 ----
 
 which will deploy the resulting EAR to the running server.
@@ -305,7 +309,7 @@ Notice that only one of the servers has returned a valid answer.
 
 To undo the changes, run the 'remove' variant of the scripts:
 
-[code,shell]
+[code]
 ----
 [rhusar@puglia scripts]$ $JBOSS_HOME/bin/jboss-cli.sh --connect --file=singleton-deployment-overlay-remove.cli
 [rhusar@puglia scripts]$ $JBOSS_HOME/bin/jboss-cli.sh --connect --controller=localhost:10090 --file=singleton-deployment-overlay-remove.cli
@@ -324,7 +328,7 @@ This profile produces a build to test a shared sessions scenario where two WARs 
 
 [source,shell]
 ----
-mvn install -P shared-sessions -DskipTests
+./mvnw install -P shared-sessions -DskipTests
 ----
 
 === short-names
@@ -334,7 +338,7 @@ Used in database tests to produce database tables with short names.
 
 [source,shell]
 ----
-mvn clean install -P short-names -DskipTests
+./mvnw clean install -P short-names -DskipTests
 ----
 
 === sso-form
@@ -343,7 +347,7 @@ This profile enables form authentication:
 
 [source,shell]
 ----
-mvn clean install -P sso-form -DskipTests
+./mvnw clean install -P sso-form -DskipTests
 ----
 
 === 2clusters
@@ -352,22 +356,19 @@ This profile adds the necessary JEBs to perform call forwarding to a second JEB 
 
 [source,shell]
 ----
-mvn clean install -P 2clusters -DskipTests
+./mvnw clean install -P 2clusters -DskipTests
 ----
 
 == Configuration
 
 The default payload size can be overridden by a system property specifying integer number of bytes to use in a payload:
 
+[source,shell]
 ----
 ./bin/standalone.sh -c standalone-ha.xml -Dorg.jboss.test.clusterbench.cargokb=5
 ----
 
-____
-
 NOTE: Ensure identical value is specified for all containers in the cluster!
-
-____
 
 == Issues
 
