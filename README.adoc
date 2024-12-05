@@ -33,7 +33,7 @@ git clone https://github.com/clusterbench/clusterbench.git
 Build the default `main` branch to build the latest Jakarta EE 10 version:
 
 ----
-mvn clean install
+mvn clean package
 ----
 
 Output files:
