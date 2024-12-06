@@ -13,8 +13,6 @@
     </parent>
 
     <artifactId>clusterbench-it-tomcat-10.1</artifactId>
-    <packaging>jar</packaging>
-
     <name>ClusterBench ITs: Tomcat 10.1</name>
 
     <properties>
@@ -22,28 +20,6 @@
     </properties>
 
     <dependencies>
-        <!-- Needed by ARQ -->
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- Workaround for https://issues.redhat.com/browse/WFLY-19914 -->
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.container</groupId>
             <artifactId>arquillian-tomcat-managed-10</artifactId>
@@ -51,14 +27,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
-            <artifactId>clusterbench-ee10-web</artifactId>
-            <classifier>classes</classifier>
+            <artifactId>clusterbench-it-shares</artifactId>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -90,30 +66,11 @@
             </testResource>
         </testResources>
         <plugins>
+            <!-- Deploy built clusterbench.war -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
-                    <execution>
-                        <id>copy-war</id>
-                        <phase>generate-test-resources</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.jboss.test</groupId>
-                                    <artifactId>clusterbench-ee10-web</artifactId>
-                                    <type>war</type>
-                                    <overWrite>true</overWrite>
-                                    <classifier>tomcat</classifier>
-                                    <outputDirectory>${project.build.directory}</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                            <stripVersion>true</stripVersion>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>unpack-tomcat</id>
                         <phase>generate-test-resources</phase>
@@ -132,6 +89,27 @@
                                     <includes>**</includes>
                                 </artifactItem>
                             </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-war</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee10-web</artifactId>
+                                    <type>war</type>
+                                    <overWrite>true</overWrite>
+                                    <classifier>tomcat</classifier>
+                                    <outputDirectory>${catalina.home}/webapps</outputDirectory>
+                                    <destFileName>clusterbench.war</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                            <stripVersion>true</stripVersion>
                         </configuration>
                     </execution>
                 </executions>

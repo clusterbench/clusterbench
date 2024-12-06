@@ -18,12 +18,18 @@
     <name>ClusterBench ITs (parent)</name>
 
     <modules>
+        <module>shared</module>
         <module>tomcat-10.1</module>
         <module>wildfly</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${version.org.apache.httpcomponents.client5}</version>
+            </dependency>
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
@@ -44,13 +50,6 @@
                 <version>${version.org.junit.jupiter}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <!-- Workaround for https://issues.redhat.com/browse/WFLY-19914 -->
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>${version.commons-logging}</version>
-                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
