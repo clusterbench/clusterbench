@@ -11,7 +11,8 @@ at the same time it can be easily checked the correctness of replicated sessions
 |===
 |Branch |WildFly Version |Tomcat Version |EE Version(s) |Base JDK
 
-|`main` |34 |10.1 |Jakarta EE 10 |11
+|`main` |35 |10.1 |Jakarta EE 10 |11
+|`11.x` |34 |10.1 |Jakarta EE 10 |11
 |`10.x` |33 |10.1 |Jakarta EE 10 |11
 |`9.x`  |32 |10.1 |Jakarta EE 10 |11
 |`8.x`  |31 |10.1 |Jakarta EE 10 |11
