@@ -10,11 +10,11 @@
     <parent>
         <groupId>org.jboss.test</groupId>
         <artifactId>clusterbench</artifactId>
-        <version>11.0.1.Final</version>
+        <version>12.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-ee10-ear</artifactId>
-    <version>11.0.1.Final</version>
+    <version>12.0.0.Final-SNAPSHOT</version>
     <packaging>ear</packaging>
 
     <name>ClusterBench: EE 10 - EAR</name>
