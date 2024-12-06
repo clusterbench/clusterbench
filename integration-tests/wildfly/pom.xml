@@ -13,8 +13,6 @@
     </parent>
 
     <artifactId>clusterbench-it-wildfly</artifactId>
-    <packaging>jar</packaging>
-
     <name>ClusterBench ITs: WildFly</name>
 
     <properties>
@@ -42,29 +40,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- Workaround for https://issues.redhat.com/browse/WFLY-19914 -->
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.junit5</groupId>
-            <artifactId>arquillian-junit5-container</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.junit5</groupId>
-            <artifactId>arquillian-junit5-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -73,61 +50,17 @@
             <version>5.1.0.Beta7</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.test</groupId>
+            <artifactId>clusterbench-it-shares</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-war</id>
-                        <phase>generate-test-resources</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.jboss.test</groupId>
-                                    <artifactId>clusterbench-ee10-ear</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>ear</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>${project.build.directory}</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                            <stripVersion>true</stripVersion>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>smoke-test</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                        <configuration>
-                            <systemProperties>
-                                <jboss.home>${jboss.home}</jboss.home>
-                            </systemProperties>
-                            <trimStackTrace>false</trimStackTrace>
-                            <classpathDependencyExcludes>
-                                <exclude>org.jboss.arquillian.junit:arquillian-junit-container</exclude>
-                                <exclude>org.jboss.arquillian.junit:arquillian-junit-core</exclude>
-                            </classpathDependencyExcludes>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
+            <!-- Provision WildFly -->
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
@@ -162,11 +95,63 @@
                 <executions>
                     <execution>
                         <id>provision-server-for-testing</id>
-                        <phase>process-test-classes</phase>
+                        <phase>generate-test-resources</phase>
                         <goals>
                             <!-- Reference: https://docs.wildfly.org/wildfly-maven-plugin/releases/5.0/package-mojo.html -->
                             <goal>package</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Deploy built clusterbench.ear -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-war</id>
+                        <phase>process-test-classes</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.jboss.test</groupId>
+                                    <artifactId>clusterbench-ee10-ear</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>ear</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/wildfly/standalone/deployments</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                            <stripVersion>true</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Execute tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>smoke-test</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <systemProperties>
+                                <jboss.home>${jboss.home}</jboss.home>
+                            </systemProperties>
+                            <trimStackTrace>false</trimStackTrace>
+                            <classpathDependencyExcludes>
+                                <exclude>org.jboss.arquillian.junit:arquillian-junit-container</exclude>
+                                <exclude>org.jboss.arquillian.junit:arquillian-junit-core</exclude>
+                            </classpathDependencyExcludes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
