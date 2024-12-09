@@ -4,11 +4,11 @@
  */
 package org.jboss.test.clusterbench.it.wildfly;
 
-import org.jboss.test.clusterbench.it.shared.AbstractDebugServletIT;
+import org.jboss.test.clusterbench.it.shared.AbstractAverageSystemLoadServletIT;
 
 /**
  * @author Radoslav Husar
  */
-public class DebugServletIT extends AbstractDebugServletIT {
+public class AverageSystemLoadServletIT extends AbstractAverageSystemLoadServletIT {
     // Inherit.
 }
