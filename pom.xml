@@ -42,7 +42,7 @@
 
     <properties>
         <linkXRef>false</linkXRef>
-        <version.org.wildfly>34.0.1.Final</version.org.wildfly>
+        <version.org.wildfly>35.0.0.Beta1</version.org.wildfly>
         <version.org.wildfly.cloud-feature-pack>7.0.2.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>5.0.1.Final</version.org.wildfly.maven.plugin>
 
