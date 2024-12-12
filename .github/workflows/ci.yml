@@ -27,16 +27,11 @@ jobs:
         with:
           distribution: temurin
           java-version: ${{ matrix.java }}
-      - name: Cache local Maven repository
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          cache: maven
       - name: Build with Maven
-        run: mvn -B verify
-      - name: Build with Maven (-Dquickly)
-        run: mvn -B clean verify -Dquickly
-      - name: Build with Maven (-Popenshift)
-        run: mvn -B -e -Popenshift -DskipTests clean package
+        run: ./mvnw --batch-mode --no-transfer-progress verify
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: surefire-${{ matrix.os }}-${{ matrix.java }}-${{ matrix.container }}
+          path: '**/surefire-reports/*.txt'
