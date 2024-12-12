@@ -18,7 +18,7 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
         # Keep this list as: all supported LTS JDKs, the latest GA JDK, and optionally the latest EA JDK (if available).
         # https://www.oracle.com/java/technologies/java-se-support-roadmap.html
-        java: [ 11, 17, 21, 23 ]
+        java: [ 17, 21, 23 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,16 +27,11 @@ jobs:
         with:
           distribution: temurin
           java-version: ${{ matrix.java }}
-      - name: Cache local Maven repository
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          cache: maven
       - name: Build with Maven
-        run: mvn -B verify
-      - name: Build with Maven (-Dquickly)
-        run: mvn -B clean verify -Dquickly
-      - name: Build with Maven (-Popenshift)
-        run: mvn -B -e -Popenshift -DskipTests clean package
+        run: ./mvnw --batch-mode --no-transfer-progress verify
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: surefire-${{ matrix.os }}-${{ matrix.java }}-${{ matrix.container }}
+          path: '**/surefire-reports/*.txt'
