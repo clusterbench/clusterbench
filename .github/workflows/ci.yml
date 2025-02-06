@@ -33,5 +33,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: surefire-${{ matrix.os }}-${{ matrix.java }}-${{ matrix.container }}
+          name: surefire-${{ matrix.os }}-${{ matrix.java }}
           path: '**/surefire-reports/*.txt'
