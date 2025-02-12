@@ -10,6 +10,8 @@ import jakarta.ejb.Remote;
 import org.jboss.test.clusterbench.common.ejb.CommonStatefulSB;
 
 /**
+ * The {@link Remote} variant of {@link CommonStatefulSB}.
+ *
  * @author Radoslav Husar
  */
 @Remote

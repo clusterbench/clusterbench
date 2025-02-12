@@ -11,6 +11,6 @@ import jakarta.ejb.TransactionAttributeType;
 
 @Stateless
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-public class NonTxForwardingStatelessSBImpl extends AbstractForwardingStatelessSBImpl
-        implements RemoteStatelessSB {
+public class NonTxForwardingStatelessSBImpl extends AbstractForwardingStatelessSBImpl implements RemoteStatelessSB {
+    // Inherit.
 }
