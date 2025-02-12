@@ -18,10 +18,6 @@
 
     <name>ClusterBench: EE 10 - EJB</name>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <!-- Project dependencies -->
         <dependency>

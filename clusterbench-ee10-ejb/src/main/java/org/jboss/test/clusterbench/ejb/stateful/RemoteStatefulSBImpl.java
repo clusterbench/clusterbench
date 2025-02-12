@@ -5,6 +5,7 @@
 
 package org.jboss.test.clusterbench.ejb.stateful;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Stateful;
 
 import org.jboss.test.clusterbench.common.ejb.CommonStatefulSBImpl;
@@ -14,5 +15,10 @@ import org.jboss.test.clusterbench.common.ejb.CommonStatefulSBImpl;
  */
 @Stateful
 public class RemoteStatefulSBImpl extends CommonStatefulSBImpl implements RemoteStatefulSB {
-    // Inherit.
+
+    @PostConstruct
+    private void ejbInitialize() {
+        super.init();
+    }
+
 }

@@ -5,23 +5,20 @@
 
 package org.jboss.test.clusterbench.ejb.stateful;
 
+import java.util.Hashtable;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import java.util.Hashtable;
 
 public class AbstractForwardingStatefulSBImpl {
     private RemoteStatefulSB bean;
 
-    @SuppressWarnings("unchecked")
     private RemoteStatefulSB forward() {
         if (bean == null) {
             try {
-                Hashtable props = new Hashtable();
-                props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-                Context context = new InitialContext(props);
-                bean = (RemoteStatefulSB) context.lookup(
-                        "ejb:clusterbench-ee10/clusterbench-ee10-ejb/RemoteStatefulSBImpl!org.jboss.test.clusterbench.ejb.stateful.RemoteStatefulSB?stateful"
-                );
+                Hashtable<String, String> environment = new Hashtable<>();
+                environment.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+                Context context = new InitialContext(environment);
+                bean = (RemoteStatefulSB) context.lookup("ejb:clusterbench-ee10/clusterbench-ee10-ejb/RemoteStatefulSBImpl!org.jboss.test.clusterbench.ejb.stateful.RemoteStatefulSB?stateful");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

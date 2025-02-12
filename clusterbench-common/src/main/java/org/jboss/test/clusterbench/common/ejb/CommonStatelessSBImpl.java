@@ -5,6 +5,9 @@
 
 package org.jboss.test.clusterbench.common.ejb;
 
+/**
+ * @author Radoslav Husar
+ */
 public class CommonStatelessSBImpl implements CommonStatelessSB {
 
     public static final String JBOSS_NODE_NAME_PROPERTY = "jboss.node.name";
