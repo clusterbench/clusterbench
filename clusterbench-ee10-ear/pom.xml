@@ -20,7 +20,6 @@
     <name>ClusterBench: EE 10 - EAR</name>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <wildfly.skip>false</wildfly.skip>
     </properties>
 
