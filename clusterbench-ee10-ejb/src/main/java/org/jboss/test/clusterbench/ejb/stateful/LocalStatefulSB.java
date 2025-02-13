@@ -5,6 +5,7 @@
 
 package org.jboss.test.clusterbench.ejb.stateful;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateful;
 import jakarta.enterprise.context.SessionScoped;
@@ -18,5 +19,10 @@ import org.jboss.test.clusterbench.common.ejb.CommonStatefulSBImpl;
 @LocalBean
 @SessionScoped
 public class LocalStatefulSB extends CommonStatefulSBImpl {
-    // Inherit.
+
+    @PostConstruct
+    private void ejbInitialize() {
+        super.init();
+    }
+
 }

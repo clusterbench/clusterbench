@@ -5,7 +5,11 @@
 
 package org.jboss.test.clusterbench.common.ejb;
 
+/**
+ * @author Radoslav Husar
+ */
 public interface CommonStatelessSB {
 
     String getNodeName();
+
 }

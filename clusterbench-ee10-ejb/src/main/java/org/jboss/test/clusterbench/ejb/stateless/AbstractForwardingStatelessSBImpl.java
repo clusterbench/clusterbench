@@ -5,21 +5,18 @@
 
 package org.jboss.test.clusterbench.ejb.stateless;
 
+import java.util.Hashtable;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import java.util.Hashtable;
 
 public class AbstractForwardingStatelessSBImpl {
 
-    @SuppressWarnings("unchecked")
     private RemoteStatelessSB forward() {
         try {
-            Hashtable props = new Hashtable();
-            props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-            Context context = new InitialContext(props);
-            return (RemoteStatelessSB) context.lookup(
-                    "ejb:clusterbench-ee10/clusterbench-ee10-ejb/RemoteStatelessSBImpl!org.jboss.test.clusterbench.ejb.stateless.RemoteStatelessSB"
-            );
+            Hashtable<String, String> environment = new Hashtable<>();
+            environment.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+            Context context = new InitialContext(environment);
+            return (RemoteStatelessSB) context.lookup("ejb:clusterbench-ee10/clusterbench-ee10-ejb/RemoteStatelessSBImpl!org.jboss.test.clusterbench.ejb.stateless.RemoteStatelessSB");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -28,4 +25,5 @@ public class AbstractForwardingStatelessSBImpl {
     public String getNodeName() {
         return forward().getNodeName();
     }
+
 }

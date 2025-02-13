@@ -5,6 +5,9 @@
 
 package org.jboss.test.clusterbench.common.ejb;
 
+/**
+ * @author Radoslav Husar
+ */
 public interface CommonStatefulSB {
 
     int getSerial();
@@ -12,4 +15,5 @@ public interface CommonStatefulSB {
     int getSerialAndIncrement();
 
     byte[] getCargo();
+
 }

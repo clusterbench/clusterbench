@@ -11,6 +11,6 @@ import jakarta.ejb.TransactionAttributeType;
 
 @Stateful
 @TransactionAttribute(TransactionAttributeType.REQUIRED) // this is the default anyway
-public class ForwardingStatefulSBImpl extends AbstractForwardingStatefulSBImpl
-        implements RemoteStatefulSB  {
+public class ForwardingStatefulSBImpl extends AbstractForwardingStatefulSBImpl implements RemoteStatefulSB {
+    // Inherit.
 }

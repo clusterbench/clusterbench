@@ -16,28 +16,11 @@
     <packaging>jar</packaging>
 
     <name>ClusterBench: Common</name>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <description>Module containing Jakarta version-agnostic base class (POJO) implementations of SerialBean object and base interfaces and classes for EJBs.</description>
 
     <dependencies>
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.ejb</groupId>
-            <artifactId>jakarta.ejb-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Jakarta dependencies -->
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!-- Ensure there are no jakarta.* dependencies here! -->
+
         <!-- Test dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
