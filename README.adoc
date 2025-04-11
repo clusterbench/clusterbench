@@ -247,13 +247,11 @@ It is important to specify identical value for all containers within the cluster
 === Session Passivation
 
 The deployment at `/clusterbench-passivating` has preconfigured `<max-active-sessions>` to `10000`.
-This value can be overridden by a `clusterbench.max-active-sessions` system property.
-
-// TODO: this property is not names with a namespace, rename it!
+This value can be overridden by a `org.jboss.test.clusterbench.max-active-sessions` system property.
 
 [source,shell]
 ----
-./bin/standalone.sh -c standalone-ha.xml -Dclusterbench.max-active-sessions=5
+./bin/standalone.sh -c standalone-ha.xml -Dorg.jboss.test.clusterbench.max-active-sessions=5
 ----
 
 === Payload size
