@@ -400,7 +400,8 @@ https://github.com/clusterbench/clusterbench/issues
 
 Contributions are welcome!
 Submit pull requests against the upstream repository on GitHub.
-Please follow the coding standards to keep the application simple and clean.
+Please follow the existing coding standards to keep the application clean and simple.
+This repository uses link:https://www.conventionalcommits.org/en/v1.0.0/[Conventional Commits].
 
 https://github.com/clusterbench/clusterbench
 
