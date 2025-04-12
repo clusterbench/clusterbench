@@ -54,8 +54,7 @@ public class CommonHttpSessionServlet extends HttpServlet {
         bean.setSerial(serial + 1);
 
         // Now store bean in the session
-        // Workaround for "WFLY-18727 ATTRIBUTE granularity distributed sessions should always replicate on setAttribute(...)" by wrapping into a new object instance.
-        session.setAttribute(KEY, this.wrapSerialBean(bean));
+        session.setAttribute(KEY, bean);
 
         resp.getWriter().print(serial);
 
@@ -72,11 +71,6 @@ public class CommonHttpSessionServlet extends HttpServlet {
 
     protected Object createSerialBean() {
         return new SerialBean();
-    }
-
-    // n.b. all of the CommonHttpSessionServlet will be removed from the common module.
-    protected Object wrapSerialBean(SerialBean serialBean) {
-        throw new UnsupportedOperationException();
     }
 
     @Override
