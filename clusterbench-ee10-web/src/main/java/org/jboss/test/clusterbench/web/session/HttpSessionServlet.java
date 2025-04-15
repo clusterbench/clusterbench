@@ -5,7 +5,6 @@
 
 package org.jboss.test.clusterbench.web.session;
 
-import org.jboss.test.clusterbench.common.SerialBean;
 import org.jboss.test.clusterbench.common.session.CommonHttpSessionServlet;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -19,13 +18,5 @@ public class HttpSessionServlet extends CommonHttpSessionServlet {
     @Override
     protected Object createSerialBean() {
         return new ImmutableSerialBean();
-    }
-
-    @Override
-    protected Object wrapSerialBean(SerialBean serialBean) {
-        SerialBean wrapper = new ImmutableSerialBean();
-        wrapper.setSerial(serialBean.getSerial());
-        wrapper.setCargo(serialBean.getCargo());
-        return wrapper;
     }
 }
