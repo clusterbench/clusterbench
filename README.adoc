@@ -238,6 +238,13 @@ If no message is provided, a simple `ping` message is logged.
 The log message level can be optionally provided in the `level` parameter.
 Logs at `INFO` level by default.
 
+==== ExitServlet
+
+http://localhost:8080/clusterbench/exit[/clusterbench/exit]
+
+Invoking this servlet causes server to completely stop without sending proper response and triggering shutdown hooks.
+This servlet can be used in orchestrating failover scenarios from a client.
+
 
 == Application Configuration
 
