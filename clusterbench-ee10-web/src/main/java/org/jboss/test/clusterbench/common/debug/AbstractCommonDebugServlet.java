@@ -94,6 +94,8 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
         out.println("ServletRequest.getLocalPort(): " + req.getLocalPort());
         // Fetch just the node name for now
         out.println("Node name: " + System.getProperty("jboss.node.name"));
+        // Available Processors
+        out.println("Runtime.getRuntime().availableProcessors(): " + Runtime.getRuntime().availableProcessors());
         // All parameters from current request
         out.println(printRequestParameters(req));
 
