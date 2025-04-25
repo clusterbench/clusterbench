@@ -5,11 +5,13 @@
 package org.jboss.test.clusterbench.it.shared;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Optional;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -21,6 +23,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
+ * Verifies jboss.node.name or Runtime.getRuntime().availableProcessors() is obtainable from the debug servlet.
+ * Intended to cover other properties as well.
+ *
  * @author Radoslav Husar
  */
 @ExtendWith(ArquillianExtension.class)
@@ -29,9 +34,6 @@ public abstract class AbstractDebugServletIT {
 
     public static final String JBOSS_NODE_NAME = "clusterbench-1";
 
-    /**
-     * Verifies jboss.node.name is obtainable from debug servlet.
-     */
     @Test
     public void test() throws Exception {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
@@ -42,24 +44,23 @@ public abstract class AbstractDebugServletIT {
 
                 HttpEntity entity = response.getEntity();
 
-                Optional<String> optionalNodeName = new BufferedReader(new InputStreamReader(entity.getContent()))
+                Map<String, String> values = new BufferedReader(new InputStreamReader(entity.getContent()))
                         .lines()
-                        .filter(line -> line.startsWith("Node name:"))
-                        .map(line -> {
-                            String[] split = line.split(":");
-                            return split[1].trim();
-                        })
-                        .findFirst();
+                        // Skip duplicated request headers and empty lines
+                        .filter(line -> line.contains(":") && !line.startsWith("Request header:") && !line.trim().isEmpty())
+                        .map(line -> line.split(":", 2))
+                        .collect(Collectors.toMap(segment -> segment[0].trim(), segment -> segment[1].trim()));
 
-
-                if (optionalNodeName.isPresent()) {
-                    assertEquals(JBOSS_NODE_NAME, optionalNodeName.get());
-                } else {
-                    fail("Missing node name.");
-                }
+                check(values, "Node name", value -> assertEquals(JBOSS_NODE_NAME, value));
+                check(values, "Runtime.getRuntime().availableProcessors()", value -> assertEquals(Integer.parseInt(value), Runtime.getRuntime().availableProcessors()));
 
                 return null;
             });
         }
+    }
+
+    private static void check(Map<String, String> values, String key, Consumer<String> consumer) {
+        assertTrue(values.containsKey(key), "Missing key: " + key);
+        consumer.accept(values.get(key));
     }
 }
