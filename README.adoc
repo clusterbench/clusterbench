@@ -53,7 +53,7 @@ It will also provision the server without having to download anything manually.
 
 [source,shell]
 ----
-./mvnw clean wildfly:run
+./mvnw clean wildfly:run -f clusterbench-ee10-ear/pom.xml
 ----
 
 and navigate your browser to http://localhost:8080/clusterbench/.
@@ -66,7 +66,7 @@ You can use the `deploy` goal of the https://docs.wildfly.org/wildfly-maven-plug
 
 [source,shell]
 ----
-./mvnw wildfly:deploy
+./mvnw wildfly:deploy -f clusterbench-ee10-ear/pom.xml
 ----
 
 which will deploy the resulting EAR to the running server.
