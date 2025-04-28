@@ -28,7 +28,6 @@ import org.jboss.test.clusterbench.common.SerialBean;
  * Servlet which outputs debug information provided by the {@link #getContainerSpecificDebugInfo(HttpServletRequest)} method.
  *
  * @author Radoslav Husar
- * @version April 2012
  */
 public abstract class AbstractCommonDebugServlet extends HttpServlet {
 
@@ -95,6 +94,8 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
         // Fetch just the node name for now
         out.println("Node name: " + System.getProperty("jboss.node.name"));
         // Available Processors
+        // Useful for understanding the default size of the ForkJoinPool
+        // see https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/ForkJoinPool.html
         out.println("Runtime.getRuntime().availableProcessors(): " + Runtime.getRuntime().availableProcessors());
         // All parameters from current request
         out.println(printRequestParameters(req));
