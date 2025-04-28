@@ -58,7 +58,7 @@
         <version.org.junit.jupiter>5.12.2</version.org.junit.jupiter>
         <version.org.jboss.arquillian>1.9.4.Final</version.org.jboss.arquillian>
         <version.org.jboss.arquillian.jakarta>10.0.0.Final</version.org.jboss.arquillian.jakarta>
-        <version.org.apache.httpcomponents.client5>5.4.3</version.org.apache.httpcomponents.client5>
+        <version.org.apache.httpcomponents.client5>5.4.4</version.org.apache.httpcomponents.client5>
 
         <wildfly.skip>true</wildfly.skip>
     </properties>
