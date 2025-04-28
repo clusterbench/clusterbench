@@ -19,10 +19,6 @@
 
     <name>ClusterBench: EE 10 - EAR</name>
 
-    <properties>
-        <wildfly.skip>false</wildfly.skip>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
