@@ -20,6 +20,7 @@
     <modules>
         <module>shared</module>
         <module>tomcat-10.1</module>
+        <module>tomcat-11.0</module>
         <module>wildfly</module>
     </modules>
 
@@ -43,6 +44,12 @@
                 <version>${version.org.jboss.arquillian.jakarta}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-tomcat-managed-10</artifactId>
+                <version>${version.org.jboss.arquillian.container.tomcat}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.junit</groupId>
