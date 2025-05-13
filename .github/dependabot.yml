@@ -5,6 +5,26 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: org.apache.tomcat:tomcat
+  - package-ecosystem: maven
+    directory: "/integration-tests/tomcat-10.1"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: org.apache.tomcat:tomcat
+        versions:
+          - ">= 11"
+  - package-ecosystem: maven
+    directory: "/integration-tests/tomcat-11.0"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: org.apache.tomcat:tomcat
+        versions:
+          - ">= 12"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

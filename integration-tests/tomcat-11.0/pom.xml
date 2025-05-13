@@ -16,6 +16,7 @@
     <name>ClusterBench ITs: Tomcat 11.0</name>
 
     <properties>
+        <version.org.apache.tomcat-11.0>11.0.6</version.org.apache.tomcat-11.0>
         <catalina.home>${project.build.directory}/apache-tomcat-${version.org.apache.tomcat-11.0}</catalina.home>
     </properties>
 
