@@ -54,8 +54,7 @@
         <version.org.wildfly.maven.plugin>5.1.3.Final</version.org.wildfly.maven.plugin>
 
         <!-- Test dependencies -->
-        <version.org.apache.tomcat-10.1>10.1.40</version.org.apache.tomcat-10.1>
-        <version.org.apache.tomcat-11.0>11.0.6</version.org.apache.tomcat-11.0>
+        <!-- n.b. tomcat versions are defined in their respective modules in integration-tests/tomcat-*/pom.xml -->
         <version.org.junit.jupiter>5.12.2</version.org.junit.jupiter>
         <version.org.jboss.arquillian>1.9.4.Final</version.org.jboss.arquillian>
         <version.org.jboss.arquillian.jakarta>10.0.0.Final</version.org.jboss.arquillian.jakarta>
