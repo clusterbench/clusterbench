@@ -15,7 +15,7 @@
 
     <groupId>org.jboss.test</groupId>
     <artifactId>clusterbench-bom</artifactId>
-    <version>13.0.0.Final-SNAPSHOT</version>
+    <version>13.0.0.Final</version>
     <packaging>pom</packaging>
 
     <name>ClusterBench: BOM</name>
@@ -77,6 +77,6 @@
     </dependencyManagement>
 
   <scm>
-    <tag>12.0.1.Final</tag>
+    <tag>13.0.0.Final</tag>
   </scm>
 </project>

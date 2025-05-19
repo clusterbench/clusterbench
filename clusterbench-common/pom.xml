@@ -8,11 +8,11 @@
     <parent>
         <groupId>org.jboss.test</groupId>
         <artifactId>clusterbench</artifactId>
-        <version>13.0.0.Final-SNAPSHOT</version>
+        <version>13.0.0.Final</version>
     </parent>
 
     <artifactId>clusterbench-common</artifactId>
-    <version>13.0.0.Final-SNAPSHOT</version>
+    <version>13.0.0.Final</version>
     <packaging>jar</packaging>
 
     <name>ClusterBench: Common</name>

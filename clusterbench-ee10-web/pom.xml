@@ -8,11 +8,11 @@
     <parent>
         <groupId>org.jboss.test</groupId>
         <artifactId>clusterbench</artifactId>
-        <version>13.0.0.Final-SNAPSHOT</version>
+        <version>13.0.0.Final</version>
     </parent>
 
     <artifactId>clusterbench-ee10-web</artifactId>
-    <version>13.0.0.Final-SNAPSHOT</version>
+    <version>13.0.0.Final</version>
     <packaging>war</packaging>
 
     <name>ClusterBench: EE 10 - WEB</name>
