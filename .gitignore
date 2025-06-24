@@ -1,17 +1,20 @@
 # Backup files
 *.*~
 
+# Maven
+target/
+
 # Eclipse IDE
 .classpath
 .project
 .settings
 
-# Maven
-target/
-
 # NetBeans IDE
 nb-configuration.xml
 *.NavData
+
+# VS Code-based IDEs
+.vscode/
 
 # IntelliJ IDEA IDE
 .idea/
@@ -24,5 +27,6 @@ nb-configuration.xml
 # Red Hat OpenShift
 deployments/
 
+# Tommaso's personal scripting ;-)
 remote-copy.sh
 build-all.sh
