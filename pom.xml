@@ -56,7 +56,7 @@
 
         <!-- Test dependencies -->
         <!-- n.b. tomcat versions are defined in their respective modules in integration-tests/tomcat-*/pom.xml -->
-        <version.org.junit.jupiter>5.13.2</version.org.junit.jupiter>
+        <version.org.junit.jupiter>5.13.3</version.org.junit.jupiter>
         <version.org.jboss.arquillian>1.10.0.Final</version.org.jboss.arquillian>
         <version.org.jboss.arquillian.jakarta>10.0.0.Final</version.org.jboss.arquillian.jakarta>
         <version.org.jboss.arquillian.container.tomcat>1.2.3.Final</version.org.jboss.arquillian.container.tomcat>
