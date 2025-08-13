@@ -86,10 +86,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <executions>
                     <!-- Add the default execution as workaround for IDE to pick up the default configuration. -->
@@ -207,8 +203,8 @@
         <profile>
             <id>sso-form</id>
             <properties>
-                <enable.security.start />
-                <enable.security.end />
+                <enable.security.start/>
+                <enable.security.end/>
             </properties>
         </profile>
     </profiles>
