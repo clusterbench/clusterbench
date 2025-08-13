@@ -52,7 +52,7 @@
         </dependency>
         <dependency>
             <groupId>org.wildfly.clustering.benchmark</groupId>
-            <artifactId>clusterbench-it-shares</artifactId>
+            <artifactId>clusterbench-it-shared</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
