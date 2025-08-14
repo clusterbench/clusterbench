@@ -17,10 +17,6 @@
 
     <name>ClusterBench ITs (parent)</name>
 
-    <properties>
-        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
-    </properties>
-
     <modules>
         <module>shared</module>
         <module>tomcat-10.1</module>
@@ -28,13 +24,14 @@
         <module>wildfly</module>
     </modules>
 
+    <properties>
+        <!-- Do NOT deploy any of the ITs module -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.apache.httpcomponents.client5</groupId>
-                <artifactId>httpclient5</artifactId>
-                <version>${version.org.apache.httpcomponents.client5}</version>
-            </dependency>
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
@@ -50,17 +47,22 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.jboss.arquillian.container</groupId>
-                <artifactId>arquillian-tomcat-managed-10</artifactId>
-                <version>${version.org.jboss.arquillian.container.tomcat}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
                 <version>${version.org.junit.jupiter}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${version.org.apache.httpcomponents.client5}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-tomcat-managed-10</artifactId>
+                <version>${version.org.jboss.arquillian.container.tomcat}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

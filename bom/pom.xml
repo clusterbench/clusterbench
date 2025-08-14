@@ -17,8 +17,42 @@
     <artifactId>clusterbench-bom</artifactId>
     <version>13.0.1.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
-
     <name>ClusterBench: BOM</name>
+    <description>ClusterBench is a Jakarta EE clustering benchmark application.</description>
+    <url>https://github.com/clusterbench/clusterbench</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Radoslav Husar</name>
+            <email>rhusar@redhat.com</email>
+            <roles>
+                <role>developer</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <developerConnection>scm:git:git@github.com:clusterbench/clusterbench.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <nexus.staging.tag>${project.groupId}-${project.version}</nexus.staging.tag>
+
+        <!-- Uncomment the following to use a staging repo -->
+        <!--
+        <nexus.repository.staging>wildfly-staging</nexus.repository.staging>
+        -->
+    </properties>
 
     <dependencyManagement>
         <dependencies>
