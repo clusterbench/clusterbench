@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.jboss.test</groupId>
+        <groupId>org.wildfly.clustering.benchmark</groupId>
         <artifactId>clusterbench-bom</artifactId>
         <version>13.0.1.Final-SNAPSHOT</version>
         <relativePath>bom</relativePath>
@@ -18,14 +18,6 @@
     <packaging>pom</packaging>
     <name>ClusterBench (parent)</name>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
     <modules>
         <module>bom</module>
         <module>clusterbench-common</module>
@@ -34,11 +26,6 @@
         <module>clusterbench-ee10-ear</module>
         <module>integration-tests</module>
     </modules>
-
-    <scm>
-        <developerConnection>scm:git:git@github.com:clusterbench/clusterbench.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
 
     <properties>
         <!-- Project configuration -->
@@ -110,17 +97,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <goals>deploy</goals>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <tagNameFormat>@{project.version}</tagNameFormat>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
     <profiles>
