@@ -43,7 +43,13 @@
     <scm>
         <developerConnection>scm:git:git@github.com:clusterbench/clusterbench.git</developerConnection>
         <tag>HEAD</tag>
+        <url>https://github.com/clusterbench/clusterbench</url>
     </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/clusterbench/clusterbench/issues</url>
+    </issueManagement>
 
     <properties>
         <nexus.staging.tag>${project.groupId}-${project.version}</nexus.staging.tag>

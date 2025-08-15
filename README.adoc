@@ -1,4 +1,4 @@
-= ClusterBench image:https://github.com/clusterbench/clusterbench/workflows/CI/badge.svg[CI,link=https://github.com/clusterbench/clusterbench/actions] image:https://img.shields.io/maven-central/v/org.jboss.test/clusterbench?logo=apache-maven[Version,link=https://search.maven.org/artifact/org.jboss.test/clusterbench]
+= ClusterBench image:https://github.com/clusterbench/clusterbench/workflows/CI/badge.svg[CI,link=https://github.com/clusterbench/clusterbench/actions] image:https://img.shields.io/maven-central/v/org.wildfly.clustering.benchmark/clusterbench-bom?logo=apache-maven[Version,link=https://central.sonatype.com/artifact/org.wildfly.clustering.benchmark/clusterbench-bom]
 :toc:
 :toclevels: 1
 
