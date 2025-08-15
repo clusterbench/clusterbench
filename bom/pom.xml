@@ -15,7 +15,7 @@
 
     <groupId>org.wildfly.clustering.benchmark</groupId>
     <artifactId>clusterbench-bom</artifactId>
-    <version>13.0.1.Final</version>
+    <version>14.0.0.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>ClusterBench: BOM</name>
     <description>ClusterBench is a Jakarta EE clustering benchmark application.</description>
@@ -42,7 +42,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:clusterbench/clusterbench.git</developerConnection>
-        <tag>13.0.1.Final</tag>
+        <tag>HEAD</tag>
         <url>https://github.com/clusterbench/clusterbench</url>
     </scm>
 
