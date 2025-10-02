@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.wildfly.clustering.benchmark</groupId>
         <artifactId>clusterbench</artifactId>
-        <version>14.0.0.Final</version>
+        <version>14.0.1.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-it-parent</artifactId>
