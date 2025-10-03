@@ -9,11 +9,11 @@
     <parent>
         <groupId>org.wildfly.clustering.benchmark</groupId>
         <artifactId>clusterbench</artifactId>
-        <version>14.0.1.Final</version>
+        <version>15.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-ee10-ejb</artifactId>
-    <version>14.0.1.Final</version>
+    <version>15.0.0.Final-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
     <name>ClusterBench: EE 10 - EJB</name>

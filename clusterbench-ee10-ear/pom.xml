@@ -10,11 +10,11 @@
     <parent>
         <groupId>org.wildfly.clustering.benchmark</groupId>
         <artifactId>clusterbench</artifactId>
-        <version>14.0.1.Final</version>
+        <version>15.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>clusterbench-ee10-ear</artifactId>
-    <version>14.0.1.Final</version>
+    <version>15.0.0.Final-SNAPSHOT</version>
     <packaging>ear</packaging>
 
     <name>ClusterBench: EE 10 - EAR</name>
