@@ -37,7 +37,7 @@
         <maven.compiler.source>17</maven.compiler.source>
 
         <!-- WildFly components versions -->
-        <version.org.wildfly>37.0.1.Final</version.org.wildfly>
+        <version.org.wildfly>38.0.0.Beta1</version.org.wildfly>
         <version.org.wildfly.cloud-feature-pack>8.0.0.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>5.1.4.Final</version.org.wildfly.maven.plugin>
 
@@ -118,22 +118,5 @@
             </properties>
         </profile>
     </profiles>
-
-    <repositories>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
 
 </project>
