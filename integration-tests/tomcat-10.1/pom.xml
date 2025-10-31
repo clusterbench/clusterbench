@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.wildfly.clustering.benchmark</groupId>
         <artifactId>clusterbench-it-parent</artifactId>
-        <version>15.0.0.Final-SNAPSHOT</version>
+        <version>15.0.0.Final</version>
     </parent>
 
     <artifactId>clusterbench-it-tomcat-10.1</artifactId>
