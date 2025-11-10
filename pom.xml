@@ -24,7 +24,6 @@
         <module>clusterbench-ee10-ejb</module>
         <module>clusterbench-ee10-web</module>
         <module>clusterbench-ee10-ear</module>
-        <module>integration-tests</module>
     </modules>
 
     <properties>
@@ -100,6 +99,23 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>build-default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>integration-tests</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>build-skip-ITs</id>
+            <activation>
+                <property>
+                    <name>skipTests</name>
+                </property>
+            </activation>
+        </profile>
         <profile>
             <id>build-quickly</id>
             <activation>
