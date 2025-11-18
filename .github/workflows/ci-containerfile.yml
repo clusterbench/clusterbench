@@ -1,0 +1,79 @@
+name: CI – Containerfile
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+  merge_group:
+    types: [ checks_requested ]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Build container image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Containerfile
+        push: false
+        load: true
+        tags: clusterbench-ee10:test
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+    
+    - name: Start container
+      run: |
+        docker run -d --name clusterbench-ee10-test -p 8080:8080 clusterbench-ee10:test
+    
+    - name: Wait for WildFly to start
+      run: |
+        echo "Waiting for WildFly to be ready..."
+        timeout=120
+        elapsed=0
+        while [ $elapsed -lt $timeout ]; do
+          if curl -f -s http://localhost:8080/clusterbench/ > /dev/null 2>&1; then
+            echo "WildFly is ready!"
+            exit 0
+          fi
+          echo "Waiting... ($elapsed/$timeout seconds)"
+          sleep 5
+          elapsed=$((elapsed + 5))
+        done
+        echo "Timeout waiting for WildFly to start"
+        exit 1
+    
+    - name: Test application response
+      run: |
+        echo "Testing application endpoint..."
+        response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/clusterbench/session)
+        if [ "$response" = "200" ]; then
+          echo "✓ Application is responding (HTTP $response)"
+          # Also verify we get some content
+          content=$(curl -s http://localhost:8080/clusterbench/ || true)
+          if [ -n "$content" ]; then
+            echo "✓ Application returned content"
+            exit 0
+          else
+            echo "✗ Application returned empty response"
+            exit 1
+          fi
+        else
+          echo "✗ Application returned unexpected status code: $response"
+          exit 1
+        fi
+    
+    - name: Show container logs on failure
+      if: failure()
+      run: |
+        echo "Container logs:"
+        docker logs clusterbench-ee10-test || true
