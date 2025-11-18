@@ -37,7 +37,7 @@
         <maven.compiler.source>17</maven.compiler.source>
 
         <!-- WildFly components versions -->
-        <version.org.wildfly>38.0.0.Final</version.org.wildfly>
+        <version.org.wildfly>38.0.1.Final</version.org.wildfly>
         <version.org.wildfly.cloud-feature-pack>8.1.0.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>5.1.5.Final</version.org.wildfly.maven.plugin>
 
