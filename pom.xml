@@ -9,12 +9,12 @@
     <parent>
         <groupId>org.wildfly.clustering.benchmark</groupId>
         <artifactId>clusterbench-bom</artifactId>
-        <version>15.0.1.Final</version>
+        <version>15.0.2.Final-SNAPSHOT</version>
         <relativePath>bom</relativePath>
     </parent>
 
     <artifactId>clusterbench</artifactId>
-    <version>15.0.1.Final</version>
+    <version>15.0.2.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>ClusterBench (parent)</name>
 
