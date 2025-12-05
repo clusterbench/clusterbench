@@ -11,16 +11,28 @@
         <version>16.0.0.Final-SNAPSHOT</version>
     </parent>
 
-    <artifactId>clusterbench-ee10-web</artifactId>
+    <artifactId>clusterbench-ee11-web</artifactId>
     <packaging>war</packaging>
 
-    <name>ClusterBench: Jakarta EE 10 - WEB</name>
+    <name>ClusterBench: Jakarta EE 11 - WEB</name>
 
     <properties>
         <!-- Used to comment out security in web.xml -->
         <enable.security.start>&lt;!--</enable.security.start>
         <enable.security.end>--&gt;</enable.security.end>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-ee-preview-with-tools</artifactId>
+                <version>${version.org.wildfly}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- Project dependencies -->
@@ -31,7 +43,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>clusterbench-ee10-ejb</artifactId>
+            <artifactId>clusterbench-ee11-ejb</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -83,6 +95,37 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+            <!-- Use EE10 sources, allowing local overrides if needed -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-ee10-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/../clusterbench-ee10-web/src/main/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>add-ee10-test-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/../clusterbench-ee10-web/src/test/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -99,13 +142,13 @@
                             <webResources>
                                 <resource>
                                     <filtering>true</filtering>
-                                    <directory>${basedir}/src/main/webapp</directory>
+                                    <directory>${project.basedir}/../clusterbench-ee10-web/src/main/webapp</directory>
                                     <includes>
                                         <include>**/web.xml</include>
                                     </includes>
                                 </resource>
                             </webResources>
-                            <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                            <warSourceDirectory>${project.basedir}/../clusterbench-ee10-web/src/main/webapp</warSourceDirectory>
                             <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
@@ -126,14 +169,14 @@
                             <webResources>
                                 <resource>
                                     <filtering>true</filtering>
-                                    <directory>src/main/webapp-tomcat</directory>
+                                    <directory>${project.basedir}/../clusterbench-ee10-web/src/main/webapp-tomcat</directory>
                                     <includes>
                                         <include>**/web.xml</include>
                                     </includes>
                                 </resource>
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-tomcat</webappDirectory>
-                            <warSourceDirectory>${basedir}/src/main/webapp-tomcat</warSourceDirectory>
+                            <warSourceDirectory>${project.basedir}/../clusterbench-ee10-web/src/main/webapp-tomcat</warSourceDirectory>
                             <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]</packagingExcludes>
                         </configuration>
                     </execution>
@@ -149,14 +192,14 @@
                             <webResources>
                                 <resource>
                                     <filtering>true</filtering>
-                                    <directory>src/main/webapp</directory>
+                                    <directory>${project.basedir}/../clusterbench-ee10-web/src/main/webapp</directory>
                                     <includes>
                                         <include>**/web.xml</include>
                                     </includes>
                                 </resource>
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
-                            <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                            <warSourceDirectory>${project.basedir}/../clusterbench-ee10-web/src/main/webapp</warSourceDirectory>
                             <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
@@ -177,14 +220,14 @@
                             <webResources>
                                 <resource>
                                     <filtering>true</filtering>
-                                    <directory>src/main/webapp-passivating</directory>
+                                    <directory>${project.basedir}/../clusterbench-ee10-web/src/main/webapp-passivating</directory>
                                     <includes>
                                         <include>**/web.xml</include>
                                     </includes>
                                 </resource>
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-passivating</webappDirectory>
-                            <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
+                            <warSourceDirectory>${project.basedir}/../clusterbench-ee10-web/src/main/webapp-passivating</warSourceDirectory>
                             <packagingExcludes>%regex[.*clusterbench-common.*]</packagingExcludes>
                             <archive>
                                 <manifestEntries>
