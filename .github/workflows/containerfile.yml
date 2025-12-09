@@ -1,4 +1,4 @@
-name: CI – Containerfile
+name: Containerfile
 
 on:
   push:
@@ -8,15 +8,20 @@ on:
     branches:
       - '*'
   merge_group:
-    types: [ checks_requested ]
+    types:
+      - checks_requested
+
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
+    - name: Checkout
       uses: actions/checkout@v6
-    
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
     
@@ -30,7 +35,7 @@ jobs:
         tags: clusterbench-ee10:test
         cache-from: type=gha
         cache-to: type=gha,mode=max
-    
+
     - name: Start container
       run: |
         docker run -d --name clusterbench-ee10-test -p 8080:8080 clusterbench-ee10:test
@@ -57,18 +62,18 @@ jobs:
         echo "Testing application endpoint..."
         response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/clusterbench/session)
         if [ "$response" = "200" ]; then
-          echo "✓ Application is responding (HTTP $response)"
+          echo "Application is responding (HTTP $response)"
           # Also verify we get some content
-          content=$(curl -s http://localhost:8080/clusterbench/ || true)
+          content=$(curl -s http://localhost:8080/clusterbench/session || true)
           if [ -n "$content" ]; then
-            echo "✓ Application returned content"
+            echo "Application returned content"
             exit 0
           else
-            echo "✗ Application returned empty response"
+            echo "Application returned empty response"
             exit 1
           fi
         else
-          echo "✗ Application returned unexpected status code: $response"
+          echo "Application returned unexpected status code: $response"
           exit 1
         fi
     

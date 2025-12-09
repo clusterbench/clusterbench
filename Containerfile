@@ -7,7 +7,7 @@ WORKDIR /build
 COPY . .
 
 # Build the project and install artifacts
-RUN mvn clean install -DskipTests
+RUN ./mvnw clean install --batch-mode --no-transfer-progress --define skipTests
 
 # Runtime stage
 # TODO handle wildfly version
