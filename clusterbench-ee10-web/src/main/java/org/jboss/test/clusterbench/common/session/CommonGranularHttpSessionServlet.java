@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.SerialBean;
 
-public class CommonGranularHttpSessionServlet extends HttpServlet {
+public abstract class CommonGranularHttpSessionServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(CommonGranularHttpSessionServlet.class.getName());
     public static final String KEY_SERIAL = CommonGranularHttpSessionServlet.class.getName() + "Serial";

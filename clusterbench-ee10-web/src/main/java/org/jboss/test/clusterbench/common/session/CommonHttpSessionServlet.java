@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.SerialBean;
 
-public class CommonHttpSessionServlet extends HttpServlet {
+public abstract class CommonHttpSessionServlet extends HttpServlet {
 
     protected static final Logger log = Logger.getLogger(CommonHttpSessionServlet.class.getName());
     public static final String KEY = CommonHttpSessionServlet.class.getName();
