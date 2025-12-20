@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.jboss.test.clusterbench.common.load;
+package org.jboss.test.clusterbench.web.load;
 
 import javax.management.AttributeNotFoundException;
 import javax.management.JMException;
@@ -17,20 +17,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Stressing MemoryUsageStress
+ * Some reading:
+ * <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/management/MemoryUsage.html">MemoryUsage Javadoc</a>,
+ * <a href="http://stackoverflow.com/questions/3422557/sun-jvm-committed-virtual-memory-high-consumption">stackoverflow discusssion</a>.
  *
  * @author Michal Babacek
- *      Some reading: http://docs.oracle.com/javase/6/docs/api/java/lang/management/MemoryUsage.html
- *      http://stackoverflow.com/questions/3422557/sun-jvm-committed-virtual-memory-high-consumption
- *
  */
 public class MemoryUsageStress {
     private static final Logger log = Logger.getLogger(MemoryUsageStress.class.getName());
     private static final String FREE_MEMORY_SIZE = "FreePhysicalMemorySize";
     private static final String TOTAL_MEMORY_SIZE = "TotalPhysicalMemorySize";
-    private MBeanServer server;
+    private final MBeanServer server;
+    private final MemoryMXBean memBean;
     private ObjectName osMXBeanObjectName;
-    private MemoryMXBean memBean;
 
     public MemoryUsageStress() {
         this.server = ManagementFactory.getPlatformMBeanServer();

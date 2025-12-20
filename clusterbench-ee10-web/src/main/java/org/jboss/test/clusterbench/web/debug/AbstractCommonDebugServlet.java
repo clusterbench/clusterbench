@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.jboss.test.clusterbench.common.debug;
+package org.jboss.test.clusterbench.web.debug;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,8 +60,7 @@ public abstract class AbstractCommonDebugServlet extends HttpServlet {
             return;
         }
 
-        int serial = bean.getSerial();
-        bean.setSerial(serial + 1);
+        int serial = bean.getSerialAndIncrement();
 
         // Now store bean in the session
         session.setAttribute(KEY, bean);

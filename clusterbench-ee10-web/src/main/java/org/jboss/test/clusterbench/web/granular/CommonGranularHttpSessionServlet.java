@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.jboss.test.clusterbench.common.session;
+package org.jboss.test.clusterbench.web.granular;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.SerialBean;
 
-public class CommonGranularHttpSessionServlet extends HttpServlet {
+public abstract class CommonGranularHttpSessionServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(CommonGranularHttpSessionServlet.class.getName());
     public static final String KEY_SERIAL = CommonGranularHttpSessionServlet.class.getName() + "Serial";
@@ -33,27 +34,23 @@ public class CommonGranularHttpSessionServlet extends HttpServlet {
 
             // Reuse serial bean logic to generate the data but don't store the SerialBean instance directly.
             SerialBean tempBean = new SerialBean();
-            session.setAttribute(KEY_SERIAL, tempBean.getSerial());
+            session.setAttribute(KEY_SERIAL, new AtomicInteger(tempBean.getSerial()));
             this.storeCargo(session, tempBean.getCargo());
         }
 
-        Integer serial = (Integer) session.getAttribute(KEY_SERIAL);
-        byte[] cargo = this.loadCargo(session);
+        AtomicInteger serial = (AtomicInteger) session.getAttribute(KEY_SERIAL);
 
         resp.setContentType("text/plain");
 
         // Readonly?
         if (req.getParameter(ClusterBenchConstants.READONLY) != null) {
-            resp.getWriter().print(serial);
+            resp.getWriter().print(serial.get());
             return;
         }
 
-        // Now store the serial in an attribute
-        session.setAttribute(KEY_SERIAL, serial + 1);
+        resp.getWriter().print(serial.getAndIncrement());
 
-        // Do nothing with cargo.
-
-        resp.getWriter().print(serial);
+        // n.b. no need to call jakarta.servlet.http.HttpSession#setAttribute as the attribute value is AtomicInteger which is mutable type
 
         // Invalidate?
         if (req.getParameter(ClusterBenchConstants.INVALIDATE) != null) {

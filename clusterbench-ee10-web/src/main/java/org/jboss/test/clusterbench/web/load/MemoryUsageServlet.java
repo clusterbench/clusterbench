@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
-import org.jboss.test.clusterbench.common.load.MemoryUsageStress;
 
 import java.io.IOException;
 import java.util.logging.Logger;

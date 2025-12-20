@@ -10,7 +10,6 @@ import java.io.Serializable;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpSession;
 
-import org.jboss.test.clusterbench.common.session.CommonGranularHttpSessionServlet;
 import org.wildfly.clustering.web.annotation.Immutable;
 
 /**

@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
-import org.jboss.test.clusterbench.common.load.AverageSystemLoad;
 
 /**
  * AverageSystemLoadServlet is used for stressing the server's CPU.
