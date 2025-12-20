@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.jboss.test.clusterbench.common.load;
+package org.jboss.test.clusterbench.web.load;
 
 import javax.management.AttributeNotFoundException;
 import javax.management.JMException;
@@ -12,7 +12,6 @@ import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
-import java.lang.management.MemoryUsage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,15 +23,15 @@ import java.util.logging.Logger;
  *      http://stackoverflow.com/questions/3422557/sun-jvm-committed-virtual-memory-high-consumption
  *
  */
-public class MemoryUsageStress {
-    private static final Logger log = Logger.getLogger(MemoryUsageStress.class.getName());
+public class MemoryUsage {
+    private static final Logger log = Logger.getLogger(MemoryUsage.class.getName());
     private static final String FREE_MEMORY_SIZE = "FreePhysicalMemorySize";
     private static final String TOTAL_MEMORY_SIZE = "TotalPhysicalMemorySize";
     private MBeanServer server;
     private ObjectName osMXBeanObjectName;
     private MemoryMXBean memBean;
 
-    public MemoryUsageStress() {
+    public MemoryUsage() {
         this.server = ManagementFactory.getPlatformMBeanServer();
         this.memBean = ManagementFactory.getMemoryMXBean();
         try {
@@ -89,11 +88,11 @@ public class MemoryUsageStress {
         return getAttribute(TOTAL_MEMORY_SIZE, Number.class).longValue();
     }
 
-    public MemoryUsage getHeapMem() {
+    public java.lang.management.MemoryUsage getHeapMem() {
         return memBean.getHeapMemoryUsage();
     }
 
-    public MemoryUsage getNonHeapMem() {
+    public java.lang.management.MemoryUsage getNonHeapMem() {
         return memBean.getNonHeapMemoryUsage();
     }
 

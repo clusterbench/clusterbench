@@ -60,8 +60,8 @@ public abstract class AbstractConcurrentHttpSessionServletIT {
             httpClient.execute(new HttpGet("http://localhost:8080/clusterbench/concurrent"), response -> {
                 assertEquals(200, response.getCode());
                 String responseBody = EntityUtils.toString(response.getEntity());
-                assertEquals("1", responseBody);
-                observedValues.add(1);
+                assertEquals("0", responseBody);
+                observedValues.add(0);
 
                 // Ensure session is created
                 Optional<String> sessionIdCookie = Arrays.stream(response.getHeaders("Set-Cookie"))
@@ -123,8 +123,8 @@ public abstract class AbstractConcurrentHttpSessionServletIT {
             int expectedTotalRequests = 1 + totalRequests;
             assertEquals(expectedTotalRequests, observedValues.size(), "All values should be unique");
 
-            // Verify values are in expected range [1..expectedTotalRequests]
-            Set<Integer> expectedValues = IntStream.rangeClosed(1, expectedTotalRequests).boxed().collect(Collectors.toSet());
+            // Verify values are in expected range [0..expectedTotalRequests-1]
+            Set<Integer> expectedValues = IntStream.range(0, expectedTotalRequests).boxed().collect(Collectors.toSet());
             assertEquals(expectedValues, observedValues, "Observed values should match expected range");
         }
     }

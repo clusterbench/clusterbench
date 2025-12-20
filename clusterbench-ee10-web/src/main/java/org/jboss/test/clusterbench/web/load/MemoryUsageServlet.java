@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jboss.test.clusterbench.common.ClusterBenchConstants;
-import org.jboss.test.clusterbench.common.load.MemoryUsageStress;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -43,7 +42,7 @@ public class MemoryUsageServlet extends HttpServlet {
     private static final long serialVersionUID = -3449582182280915069L;
     @SuppressWarnings("unused")
     private static final Logger log = Logger.getLogger(MemoryUsageServlet.class.getName());
-    private final MemoryUsageStress memoryUsageStress = new MemoryUsageStress();
+    private final MemoryUsage memoryUsageStress = new MemoryUsage();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

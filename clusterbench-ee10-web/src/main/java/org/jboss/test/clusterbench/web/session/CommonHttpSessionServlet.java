@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.jboss.test.clusterbench.common.session;
+package org.jboss.test.clusterbench.web.session;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -50,8 +50,8 @@ public abstract class CommonHttpSessionServlet extends HttpServlet {
             return;
         }
 
-        int serial = bean.getSerial();
-        bean.setSerial(serial + 1);
+        // Use getSerialAndIncrement for atomic operation (important for concurrent access)
+        int serial = bean.getSerialAndIncrement();
 
         // Now store bean in the session
         session.setAttribute(KEY, bean);
@@ -65,7 +65,7 @@ public abstract class CommonHttpSessionServlet extends HttpServlet {
         }
     }
 
-    private Object createSerialBean(int cargokbytes) {
+    protected Object createSerialBean(int cargokbytes) {
         return new SerialBean(cargokbytes);
     }
 

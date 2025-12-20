@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.jboss.test.clusterbench.common.session;
+package org.jboss.test.clusterbench.web.granular;
 
 import java.io.IOException;
 import java.util.logging.Level;

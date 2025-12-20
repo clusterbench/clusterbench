@@ -9,7 +9,6 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.jboss.test.clusterbench.common.debug.AbstractCommonDebugServlet;
 import org.jgroups.JChannel;
 
 /**

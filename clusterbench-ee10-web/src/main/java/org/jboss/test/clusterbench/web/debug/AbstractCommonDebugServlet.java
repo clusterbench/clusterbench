@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.jboss.test.clusterbench.common.debug;
+package org.jboss.test.clusterbench.web.debug;
 
 import java.io.IOException;
 import java.io.PrintWriter;
