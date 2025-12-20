@@ -11,7 +11,8 @@
         <container qualifier="wildfly" default="true">
             <configuration>
                 <property name="javaVmArguments">-Djboss.node.name=clusterbench-1</property>
-                <property name="jbossHome">${jboss.home}</property>
+                <!-- Add a default value so that the test can be easily run from an IDE directly -->
+                <property name="jbossHome">${jboss.home:target/wildfly/}</property>
             </configuration>
         </container>
     </group>
