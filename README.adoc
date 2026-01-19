@@ -49,6 +49,24 @@ Output files:
 ./clusterbench-ee10-ear/target/clusterbench-ee10.ear
 ----
 
+=== Building Container Image
+
+To build a container image with Podman:
+
+[source,shell]
+----
+podman build -t clusterbench-ee10 .
+----
+
+To run the container:
+
+[source,shell]
+----
+podman run -p 8080:8080 -p 9990:9990 clusterbench-ee10
+----
+
+and navigate your browser to http://localhost:8080/clusterbench/.
+
 == Running
 
 You can also use `wildfly-maven-plugin` to run a container with the project already deployed.
@@ -213,7 +231,7 @@ CAUTION: The server configuration in use *must* be configured with `ATTRIBUTE` s
 
 === Load Servlets
 
-There are also two oad generating Servlets for memory and CPU usage. These Servlets simulate load on the target system. These can be
+There are also two load generating Servlets for memory and CPU usage. These Servlets simulate load on the target system. These can be
 used to test the load-balancing mechanism of the reverse proxy.
 
 ==== AverageSystemLoadServlet
