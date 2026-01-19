@@ -12,11 +12,11 @@
         <version>16.0.0.Final-SNAPSHOT</version>
     </parent>
 
-    <artifactId>clusterbench-it-wildfly</artifactId>
-    <name>ClusterBench ITs: WildFly</name>
+    <artifactId>clusterbench-it-wildfly-preview</artifactId>
+    <name>ClusterBench ITs: WildFly Preview</name>
 
     <properties>
-        <jboss.home>${project.build.directory}/wildfly</jboss.home>
+        <jboss.home>${project.build.directory}/wildfly-preview</jboss.home>
     </properties>
 
     <dependencyManagement>
@@ -39,6 +39,12 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.wildfly.clustering.benchmark</groupId>
+            <artifactId>clusterbench-ee11-ear</artifactId>
+            <version>${project.version}</version>
+            <type>ear</type>
+        </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite</artifactId>
@@ -71,7 +77,7 @@
                     <feature-packs>
                         <feature-pack>
                             <groupId>org.wildfly</groupId>
-                            <artifactId>wildfly-ee-galleon-pack</artifactId>
+                            <artifactId>wildfly-preview-feature-pack</artifactId>
                             <version>${version.org.wildfly}</version>
                         </feature-pack>
                     </feature-packs>
@@ -118,11 +124,11 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.wildfly.clustering.benchmark</groupId>
-                                    <artifactId>clusterbench-ee10-ear</artifactId>
+                                    <artifactId>clusterbench-ee11-ear</artifactId>
                                     <version>${project.version}</version>
                                     <type>ear</type>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>${project.build.directory}/wildfly/standalone/deployments</outputDirectory>
+                                    <outputDirectory>${jboss.home}/standalone/deployments</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                             <stripVersion>true</stripVersion>

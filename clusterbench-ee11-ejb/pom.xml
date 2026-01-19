@@ -12,10 +12,22 @@
         <version>16.0.0.Final-SNAPSHOT</version>
     </parent>
 
-    <artifactId>clusterbench-ee10-ejb</artifactId>
+    <artifactId>clusterbench-ee11-ejb</artifactId>
     <packaging>ejb</packaging>
 
-    <name>ClusterBench: Jakarta EE 10 - EJB</name>
+    <name>ClusterBench: Jakarta EE 11 - EJB</name>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-ee-preview-with-tools</artifactId>
+                <version>${version.org.wildfly}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- Project dependencies -->
@@ -39,6 +51,37 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+            <!-- Use EE10 sources, allowing local overrides if needed -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-ee10-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/../clusterbench-ee10-ejb/src/main/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>add-ee10-test-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/../clusterbench-ee10-ejb/src/test/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>

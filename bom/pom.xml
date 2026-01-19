@@ -68,6 +68,9 @@
                 <artifactId>clusterbench-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!-- Jakarta EE 10 -->
+
             <!-- EAR -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -109,6 +112,54 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>clusterbench-ee10-web</artifactId>
+                <version>${project.version}</version>
+                <classifier>passivating</classifier>
+                <type>war</type>
+            </dependency>
+
+            <!-- Jakarta EE 11 -->
+
+            <!-- EAR -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee11-ear</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- EJB -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee11-ejb</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee11-ejb</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <!-- WEB -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee11-web</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee11-web</artifactId>
+                <version>${project.version}</version>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee11-web</artifactId>
+                <version>${project.version}</version>
+                <classifier>default</classifier>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>clusterbench-ee11-web</artifactId>
                 <version>${project.version}</version>
                 <classifier>passivating</classifier>
                 <type>war</type>

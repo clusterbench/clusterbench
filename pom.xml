@@ -14,7 +14,6 @@
     </parent>
 
     <artifactId>clusterbench</artifactId>
-    <version>16.0.0.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>ClusterBench (parent)</name>
 
@@ -51,6 +50,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Jakarta EE 10 BOM - EE 11 modules override with wildfly-ee-preview-with-tools -->
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-ee-with-tools</artifactId>
@@ -106,6 +106,17 @@
             </activation>
             <modules>
                 <module>integration-tests</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>ee11</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>clusterbench-ee11-ejb</module>
+                <module>clusterbench-ee11-web</module>
+                <module>clusterbench-ee11-ear</module>
             </modules>
         </profile>
         <profile>
