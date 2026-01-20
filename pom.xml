@@ -20,9 +20,6 @@
     <modules>
         <module>bom</module>
         <module>clusterbench-common</module>
-        <module>clusterbench-ee10-ejb</module>
-        <module>clusterbench-ee10-web</module>
-        <module>clusterbench-ee10-ear</module>
     </modules>
 
     <properties>
@@ -106,6 +103,17 @@
             </activation>
             <modules>
                 <module>integration-tests</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>ee10</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>clusterbench-ee10-ejb</module>
+                <module>clusterbench-ee10-web</module>
+                <module>clusterbench-ee10-ear</module>
             </modules>
         </profile>
         <profile>

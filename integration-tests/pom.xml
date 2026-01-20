@@ -19,11 +19,30 @@
 
     <modules>
         <module>shared</module>
-        <module>tomcat-10.1</module>
-        <module>tomcat-11.0</module>
-        <module>wildfly</module>
-        <module>wildfly-preview</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>ee10</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>tomcat-10.1</module>
+                <module>tomcat-11.0</module>
+                <module>wildfly</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>ee11</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>wildfly-preview</module>
+            </modules>
+        </profile>
+    </profiles>
 
     <properties>
         <!-- Do NOT deploy any of the ITs module -->
