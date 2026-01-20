@@ -10,8 +10,7 @@ COPY . .
 RUN ./mvnw clean install --batch-mode --no-transfer-progress --define skipTests
 
 # Runtime stage
-# TODO handle wildfly version
-FROM quay.io/wildfly/wildfly:latest
+FROM quay.io/wildfly/wildfly:39.0.0.Final-jdk17
 
 LABEL maintainer="Radoslav Husar <radosoft@gmail.com>"
 
