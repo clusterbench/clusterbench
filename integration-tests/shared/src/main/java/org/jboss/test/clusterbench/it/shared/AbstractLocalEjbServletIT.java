@@ -25,12 +25,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
  */
 @ExtendWith(ArquillianExtension.class)
 @RunAsClient
-public abstract class AbstractHttpSessionServletIT {
+public abstract class AbstractLocalEjbServletIT {
 
     @Test
     public void test() throws Exception {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            HttpGet httpGet = new HttpGet("http://localhost:8080/clusterbench/session");
+            HttpGet httpGet = new HttpGet("http://localhost:8080/clusterbench/ejbservlet");
 
             httpClient.execute(httpGet, response -> {
                 assertEquals(200, response.getCode());
