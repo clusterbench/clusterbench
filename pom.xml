@@ -44,7 +44,7 @@
         <version.org.junit.jupiter>6.0.2</version.org.junit.jupiter>
         <version.org.jboss.arquillian>1.10.0.Final</version.org.jboss.arquillian>
         <version.org.jboss.arquillian.jakarta>10.0.0.Final</version.org.jboss.arquillian.jakarta>
-        <version.org.jboss.arquillian.container.tomcat>1.2.3.Final</version.org.jboss.arquillian.container.tomcat>
+        <version.org.jboss.arquillian.container.tomcat>1.2.4.Final</version.org.jboss.arquillian.container.tomcat>
         <version.org.apache.httpcomponents.client5>5.6</version.org.apache.httpcomponents.client5>
     </properties>
 
