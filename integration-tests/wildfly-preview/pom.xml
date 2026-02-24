@@ -72,6 +72,7 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>${version.org.wildfly.maven.plugin}</version>
                 <configuration>
+                    <skip>${skipTests}</skip>
                     <provisioning-dir>${jboss.home}</provisioning-dir>
                     <jboss-home>${jboss.home}</jboss-home>
                     <feature-packs>
@@ -121,6 +122,7 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
+                            <skip>${skipTests}</skip>
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.wildfly.clustering.benchmark</groupId>
@@ -140,24 +142,23 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <systemProperties>
+                        <jboss.home>${jboss.home}</jboss.home>
+                    </systemProperties>
+                    <trimStackTrace>false</trimStackTrace>
+                    <classpathDependencyExcludes>
+                        <exclude>org.jboss.arquillian.junit:arquillian-junit-container</exclude>
+                        <exclude>org.jboss.arquillian.junit:arquillian-junit-core</exclude>
+                    </classpathDependencyExcludes>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>smoke-test</id>
                         <phase>integration-test</phase>
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
-                        <configuration>
-                            <systemProperties>
-                                <jboss.home>${jboss.home}</jboss.home>
-                            </systemProperties>
-                            <trimStackTrace>false</trimStackTrace>
-                            <classpathDependencyExcludes>
-                                <exclude>org.jboss.arquillian.junit:arquillian-junit-container</exclude>
-                                <exclude>org.jboss.arquillian.junit:arquillian-junit-core</exclude>
-                            </classpathDependencyExcludes>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

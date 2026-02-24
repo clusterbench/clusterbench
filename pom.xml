@@ -23,6 +23,10 @@
         <module>clusterbench-ee10-ejb</module>
         <module>clusterbench-ee10-web</module>
         <module>clusterbench-ee10-ear</module>
+        <module>clusterbench-ee11-ejb</module>
+        <module>clusterbench-ee11-web</module>
+        <module>clusterbench-ee11-ear</module>
+        <module>integration-tests</module>
     </modules>
 
     <properties>
@@ -99,34 +103,6 @@
 
     <profiles>
         <profile>
-            <id>build-default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>integration-tests</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>ee11</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>clusterbench-ee11-ejb</module>
-                <module>clusterbench-ee11-web</module>
-                <module>clusterbench-ee11-ear</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>build-skip-ITs</id>
-            <activation>
-                <property>
-                    <name>skipTests</name>
-                </property>
-            </activation>
-        </profile>
-        <profile>
             <id>build-quickly</id>
             <activation>
                 <property>
@@ -142,6 +118,80 @@
                 <license.skip>true</license.skip>
                 <wildfly.skip>true</wildfly.skip>
             </properties>
+        </profile>
+        <profile>
+            <!-- Additional test executions using older LTS java versions -->
+            <id>lts</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>java17-integration-test</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                                <configuration>
+                                    <jdkToolchain>
+                                        <version>[17,18)</version>
+                                    </jdkToolchain>
+                                    <reportsDirectory>${project.build.directory}/failsafe-reports-java17</reportsDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>java21-integration-test</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                                <configuration>
+                                    <jdkToolchain>
+                                        <version>[21,22)</version>
+                                    </jdkToolchain>
+                                    <reportsDirectory>${project.build.directory}/failsafe-reports-java21</reportsDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>java17-test</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <jdkToolchain>
+                                        <version>[17,18)</version>
+                                    </jdkToolchain>
+                                    <reportsDirectory>${project.build.directory}/surefire-reports-java17</reportsDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>java21-test</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <jdkToolchain>
+                                        <version>[21,22)</version>
+                                    </jdkToolchain>
+                                    <reportsDirectory>${project.build.directory}/surefire-reports-java21</reportsDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
