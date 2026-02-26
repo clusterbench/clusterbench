@@ -46,7 +46,7 @@ jobs:
       - name: Build with Maven
         run: ./mvnw --batch-mode --no-transfer-progress --activate-profiles lts verify
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: ${{ matrix.os }}-${{ matrix.java }}-test-reports
