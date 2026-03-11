@@ -27,8 +27,7 @@
 
     <properties>
         <!-- Do NOT deploy any of the ITs module -->
-        <maven.deploy.skip>true</maven.deploy.skip>
-        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+        <central.skipPublishing>true</central.skipPublishing>
     </properties>
 
     <dependencyManagement>

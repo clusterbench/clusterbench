@@ -15,6 +15,7 @@
     <packaging>war</packaging>
 
     <name>ClusterBench: Jakarta EE 10 - WEB</name>
+    <description>ClusterBench Jakarta EE 10 web module containing servlet implementations.</description>
 
     <properties>
         <!-- Used to comment out security in web.xml -->

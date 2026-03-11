@@ -30,13 +30,6 @@
     </modules>
 
     <properties>
-        <!-- Project configuration -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <linkXRef>false</linkXRef>
-
-        <!-- Consumed by jboss-parent-pom -->
-        <maven.compiler.release>17</maven.compiler.release>
-
         <!-- WildFly components versions -->
         <version.org.wildfly>39.0.0.Final</version.org.wildfly>
         <version.org.wildfly.cloud-feature-pack>9.0.0.Final</version.org.wildfly.cloud-feature-pack>
