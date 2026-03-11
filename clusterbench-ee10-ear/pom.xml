@@ -17,6 +17,7 @@
     <packaging>ear</packaging>
 
     <name>ClusterBench: Jakarta EE 10 - EAR</name>
+    <description>ClusterBench Jakarta EE 10 EAR assembly module.</description>
 
     <dependencies>
         <dependency>

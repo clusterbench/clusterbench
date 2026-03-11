@@ -16,6 +16,7 @@
     <packaging>ejb</packaging>
 
     <name>ClusterBench: Jakarta EE 11 - EJB</name>
+    <description>ClusterBench Jakarta EE 11 EJB module containing session bean implementations.</description>
 
     <dependencyManagement>
         <dependencies>

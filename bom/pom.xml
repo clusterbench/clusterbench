@@ -51,13 +51,24 @@
         <url>https://github.com/clusterbench/clusterbench/issues</url>
     </issueManagement>
 
-    <properties>
-        <nexus.staging.tag>${project.groupId}-${project.version}</nexus.staging.tag>
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>https://github.com/clusterbench/clusterbench/actions</url>
+    </ciManagement>
 
-        <!-- Uncomment the following to use a staging repo -->
-        <!--
-        <nexus.repository.staging>wildfly-staging</nexus.repository.staging>
-        -->
+    <properties>
+        <!-- jboss-parent-pom -->
+        <maven.compiler.release>17</maven.compiler.release>
+        <central.deploymentName>${project.groupId}-${project.version}</central.deploymentName>
+
+        <!-- maven-release-plugin configuration - override jboss-parent defaults -->
+        <releaseProfiles>central-release</releaseProfiles>
+        <localCheckout>true</localCheckout>
+        <arguments>-DskipTests=true -DskipItTests=true -Dcentral.autoPublish=${central.autoPublish} -Dcentral.waitUntil=${central.waitUntil}</arguments>
+
+        <!-- Temporarily keep publishing manual -->
+        <pushChanges>false</pushChanges>
+        <central.autoPublish>false</central.autoPublish>
     </properties>
 
     <dependencyManagement>
