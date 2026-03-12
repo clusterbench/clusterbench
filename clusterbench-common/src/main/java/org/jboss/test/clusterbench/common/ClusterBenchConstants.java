@@ -18,6 +18,8 @@ public interface ClusterBenchConstants {
 
     String CARGOKB = "cargokb";
 
+    String MILLISECONDS = "milliseconds";
+
     /**
      * Standard plain text HTTP response body.
      */
