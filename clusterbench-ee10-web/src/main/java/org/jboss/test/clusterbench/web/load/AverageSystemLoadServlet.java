@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.load.AverageSystemLoad;
 
 /**
@@ -42,7 +43,7 @@ public class AverageSystemLoadServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int milliseconds = Integer.parseInt(request.getParameter("milliseconds"));
+        int milliseconds = Integer.parseInt(request.getParameter(ClusterBenchConstants.MILLISECONDS));
         int numberOfThreads = Integer.parseInt(request.getParameter("threads"));
         response.setContentType("text/plain");
         String resultLogMessage = averageSystemLoad.spawnLoadThreads(numberOfThreads, milliseconds);

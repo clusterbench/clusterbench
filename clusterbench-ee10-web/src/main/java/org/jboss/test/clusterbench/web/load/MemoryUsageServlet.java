@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.jboss.test.clusterbench.common.ClusterBenchConstants;
 import org.jboss.test.clusterbench.common.load.MemoryUsageStress;
 
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class MemoryUsageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int milliseconds = Integer.parseInt(request.getParameter("milliseconds"));
+        int milliseconds = Integer.parseInt(request.getParameter(ClusterBenchConstants.MILLISECONDS));
         int megabytes = Integer.parseInt(request.getParameter("megabytes"));
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");

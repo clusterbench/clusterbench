@@ -14,6 +14,11 @@
     <!-- https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.html#the-preferred-way -->
     <dependencies>
         <dependency>
+            <groupId>org.wildfly.clustering.benchmark</groupId>
+            <artifactId>clusterbench-common</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
         </dependency>
