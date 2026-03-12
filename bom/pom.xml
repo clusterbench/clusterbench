@@ -65,10 +65,6 @@
         <releaseProfiles>central-release</releaseProfiles>
         <localCheckout>true</localCheckout>
         <arguments>-DskipTests=true -DskipItTests=true -Dcentral.autoPublish=${central.autoPublish} -Dcentral.waitUntil=${central.waitUntil}</arguments>
-
-        <!-- Temporarily keep publishing manual -->
-        <pushChanges>false</pushChanges>
-        <central.autoPublish>false</central.autoPublish>
     </properties>
 
     <dependencyManagement>
