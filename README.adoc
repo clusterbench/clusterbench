@@ -11,6 +11,7 @@ at the same time it can be easily checked the correctness of replicated sessions
 |===
 |ClusterBench Version |WildFly Version |Tomcat Version |EE Version(s) |Base JDK
 
+|17 |40 & 40-preview |10.1 & 11.0 |Jakarta EE 10 & 11 |17
 |16 |39 & 39-preview |10.1 & 11.0 |Jakarta EE 10 & 11 |17
 |15 |38 |10.1 & 11.0 |Jakarta EE 10 |17
 |14 |37 |10.1 & 11.0 |Jakarta EE 10 |17
@@ -262,6 +263,12 @@ http://localhost:8080/clusterbench/averagesystemload?milliseconds=10000&threads=
 
 Servlet simulating CPU load of the cluster node. Parameters are `milliseconds` (duration) and `threads`.
 
+==== MemoryUsageServlet
+
+http://localhost:8080/clusterbench/memoryusage?milliseconds=10000&megabytes=500[/clusterbench/memoryusage?milliseconds=10000&amp;megabytes=500]
+
+Servlet simulating memory load of the cluster node. Parameters are `milliseconds` (duration) and `megabytes` (amount of memory to allocate).
+
 === Debug Servlets
 
 ==== DebugServlet
@@ -291,6 +298,13 @@ Servlet which logs the provided message in the `msg` parameter to the server log
 If no message is provided, a simple `ping` message is logged.
 The log message level can be optionally provided in the `level` parameter.
 Logs at `INFO` level by default.
+
+==== SlowRespondingServlet
+
+http://localhost:8080/clusterbench/slowresponding?milliseconds=5000[/clusterbench/slowresponding?milliseconds=5000]
+
+Servlet that sleeps for a given number of milliseconds before responding. Parameter `milliseconds` controls the delay.
+Useful for testing timeout behavior.
 
 ==== ExitServlet
 
