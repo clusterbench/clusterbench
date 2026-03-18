@@ -135,7 +135,7 @@
                             </webResources>
                             <webappDirectory>${project.build.directory}/${project.build.finalName}-tomcat</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-tomcat</warSourceDirectory>
-                            <packagingExcludes>%regex[.*/(cdi|debug|ejb|granular|jsf).*]</packagingExcludes>
+                            <packagingExcludes>%regex[.*/(cdi|ejb|granular|jsf)/.*],%regex[.*/debug/(?!SlowResponding).*]</packagingExcludes>
                         </configuration>
                     </execution>
                     <!-- Build default configuration -->
