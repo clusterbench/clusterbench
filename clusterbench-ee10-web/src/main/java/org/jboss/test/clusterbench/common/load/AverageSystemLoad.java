@@ -47,7 +47,7 @@ public class AverageSystemLoad {
         return stillActiveRunners;
     }
 
-    private class LoadRunner implements Runnable {
+    private static class LoadRunner implements Runnable {
 
         private int milliseconds;
         private boolean isComplete = false;
