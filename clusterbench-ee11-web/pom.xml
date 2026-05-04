@@ -23,18 +23,6 @@
         <enable.security.end>--&gt;</enable.security.end>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-ee-preview-with-tools</artifactId>
-                <version>${version.org.wildfly}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <!-- Project dependencies -->
         <dependency>
