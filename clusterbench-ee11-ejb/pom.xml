@@ -18,18 +18,6 @@
     <name>ClusterBench: Jakarta EE 11 - EJB</name>
     <description>ClusterBench Jakarta EE 11 EJB module containing session bean implementations.</description>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-ee-preview-with-tools</artifactId>
-                <version>${version.org.wildfly}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <!-- Project dependencies -->
         <dependency>

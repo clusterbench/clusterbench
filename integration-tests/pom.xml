@@ -22,7 +22,7 @@
         <module>tomcat-10.1</module>
         <module>tomcat-11.0</module>
         <module>wildfly</module>
-        <module>wildfly-preview</module>
+        <module>wildfly-ee-10</module>
     </modules>
 
     <properties>
