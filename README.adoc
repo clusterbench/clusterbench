@@ -243,6 +243,14 @@ http://localhost:8080/clusterbench/ejbservlet[/clusterbench/ejbservlet]
 
 Stores serial and data in `@jakarta.ejb.Stateful` Jakarta Enterprise Bean (SFSB). The JEB is then invoked on every request.
 
+==== AccessorServlet
+
+http://localhost:8080/clusterbench/accessor[/clusterbench/accessor]
+
+Uses the Jakarta Servlet 6.1 `HttpSession.getAccessor()` feature to access and modify session data from a non-request thread.
+This is useful for testing session replication with async operations in a cluster.
+Only available in the EE 11 variant.
+
 ==== GranularSessionServlet
 
 http://localhost:8080/clusterbench/granular[/clusterbench/granular]
