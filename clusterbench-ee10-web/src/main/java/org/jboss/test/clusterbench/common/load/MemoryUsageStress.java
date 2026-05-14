@@ -56,7 +56,7 @@ public class MemoryUsageStress {
         try {
             long started = System.currentTimeMillis();
             String before = getStats();
-            log.log(Level.INFO, "\nBEFORE:" + before);
+            log.log(Level.INFO, "\nBEFORE: {0}", before);
             // Allocate as many megabytes as specified
             @SuppressWarnings("unused")
             byte[] rubbish = new byte[1024 * 1024 * megabytes];
@@ -67,7 +67,7 @@ public class MemoryUsageStress {
             rubbish = null;
             // TODO: Hmm, tell JVM to .gc()? Well, it shall take care of itself...
             String after = getStats();
-            log.log(Level.INFO, "\nAFTER: " + after);
+            log.log(Level.INFO, "\nAFTER: {0}", after);
             return "BEFORE:" + before + "\n AFTER:" + after + "\nDuration (including warm-up): " + (System.currentTimeMillis() - started) + " milliseconds";
         } catch (JMException e) {
             log.log(Level.SEVERE, "Can't work with OS MXBEAN", e);
