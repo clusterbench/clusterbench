@@ -7,13 +7,15 @@ package org.jboss.test.clusterbench.it.shared;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
@@ -47,13 +49,11 @@ public abstract class AbstractConcurrentSessionServletIT {
     @ParameterizedTest
     @MethodSource("servletPaths")
     public void concurrent(String servletPath) throws Exception {
-        int numberOfThreads = 10;
-        int requestsPerThread = 10;
-        int totalRequests = numberOfThreads * requestsPerThread;
+        int numberOfBatches = 10;
+        int concurrentRequestsPerBatch = 10;
+        int totalRequests = numberOfBatches * concurrentRequestsPerBatch;
 
-        ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
-        CountDownLatch startLatch = new CountDownLatch(1);
-        CountDownLatch doneLatch = new CountDownLatch(numberOfThreads);
+        ExecutorService executorService = Executors.newFixedThreadPool(concurrentRequestsPerBatch);
 
         Set<Integer> observedValues = ConcurrentHashMap.newKeySet();
         AtomicInteger errorCount = new AtomicInteger(0);
@@ -78,14 +78,15 @@ public abstract class AbstractConcurrentSessionServletIT {
                 return null;
             });
 
-            // Now submit concurrent tasks - all will use the same session established above
-            for (int i = 0; i < numberOfThreads; i++) {
-                executorService.submit(() -> {
-                    try {
-                        // Wait for all threads to be ready
-                        startLatch.await();
+            // Run sequential batches of concurrent requests
+            long startTime = System.nanoTime();
 
-                        for (int j = 0; j < requestsPerThread; j++) {
+            for (int batch = 0; batch < numberOfBatches; batch++) {
+                List<Future<?>> futures = new ArrayList<>(concurrentRequestsPerBatch);
+
+                for (int j = 0; j < concurrentRequestsPerBatch; j++) {
+                    futures.add(executorService.submit(() -> {
+                        try {
                             httpClient.execute(new HttpGet(url), response -> {
                                 if (response.getCode() == 200) {
                                     String responseBody = EntityUtils.toString(response.getEntity());
@@ -95,27 +96,24 @@ public abstract class AbstractConcurrentSessionServletIT {
                                 }
                                 return null;
                             });
+                        } catch (Exception e) {
+                            errorCount.incrementAndGet();
+                            log.log(Level.SEVERE, "Error during concurrent request execution", e);
                         }
-                    } catch (Exception e) {
-                        errorCount.incrementAndGet();
-                        log.log(Level.SEVERE, "Error during concurrent request execution", e);
-                    } finally {
-                        doneLatch.countDown();
-                    }
-                });
+                    }));
+                }
+
+                // Wait for all concurrent requests in this batch to complete before the next batch
+                for (Future<?> future : futures) {
+                    future.get(30, TimeUnit.SECONDS);
+                }
             }
 
-            // Start all threads at once and capture timing
-            long startTime = System.nanoTime();
-            startLatch.countDown();
-
-            // Wait for all threads to complete
-            assertTrue(doneLatch.await(30, TimeUnit.SECONDS), "Concurrent requests did not complete in time");
             long endTime = System.nanoTime();
 
             long durationMs = TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
-            log.info(String.format("Concurrent execution of %s completed: %d threads x %d requests = %d total requests in %d ms",
-                    servletPath, numberOfThreads, requestsPerThread, totalRequests, durationMs));
+            log.info(String.format("Concurrent execution of %s completed: %d batches x %d concurrent requests = %d total requests in %d ms",
+                    servletPath, numberOfBatches, concurrentRequestsPerBatch, totalRequests, durationMs));
 
             // Shutdown executor
             executorService.shutdown();
@@ -123,7 +121,7 @@ public abstract class AbstractConcurrentSessionServletIT {
 
             // Verify results
             assertEquals(0, errorCount.get(), "There should be no errors for " + servletPath);
-            // Total requests is initial request (1) + concurrent requests (numberOfThreads * requestsPerThread)
+            // Total requests is initial request (1) + concurrent requests (numberOfBatches * concurrentRequestsPerBatch)
             int expectedTotalRequests = 1 + totalRequests;
             assertEquals(expectedTotalRequests, observedValues.size(), "All values should be unique for " + servletPath);
 
