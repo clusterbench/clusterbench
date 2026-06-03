@@ -32,17 +32,13 @@ public class CdiServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
 
-        int serial = bean.getSerial();
-
         // Readonly?
         if (req.getParameter(ClusterBenchConstants.READONLY) != null) {
             resp.getWriter().print(bean.getSerial());
             return;
         }
 
-        bean.setSerial(serial + 1);
-
-        resp.getWriter().print(serial);
+        resp.getWriter().print(bean.getSerialAndIncrement());
 
         // Invalidate?
         if (req.getParameter(ClusterBenchConstants.INVALIDATE) != null) {

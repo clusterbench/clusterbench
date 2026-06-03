@@ -7,13 +7,16 @@ package org.jboss.test.clusterbench.common;
 
 import java.io.Serializable;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * Thread-safe serializable bean storing a serial counter and a byte array cargo.
+ *
  * @author Radoslav Husar
  */
 public class SerialBean implements Serializable {
 
-    private int serial;
+    private final AtomicInteger serial;
     private byte[] cargo;
     public static final String CARGOKB_SYSTEM_PROPERTY = "org.jboss.test.clusterbench.cargokb";
     public static final int CARGOKB;
@@ -37,7 +40,7 @@ public class SerialBean implements Serializable {
     }
 
     public SerialBean(int cargokb) {
-        this.serial = 0;
+        this.serial = new AtomicInteger(0);
         this.cargo = new byte[cargokb * 1024];
         Random rand = new Random();
         rand.nextBytes(cargo);
@@ -52,16 +55,14 @@ public class SerialBean implements Serializable {
     }
 
     public int getSerial() {
-        return serial;
+        return this.serial.get();
     }
 
     public int getSerialAndIncrement() {
-        int retVal = this.getSerial();
-        serial++;
-        return retVal;
+        return this.serial.getAndIncrement();
     }
 
     public void setSerial(int serial) {
-        this.serial = serial;
+        this.serial.set(serial);
     }
 }
