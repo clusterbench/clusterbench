@@ -3,6 +3,10 @@ FROM eclipse-temurin:25 AS build
 
 WORKDIR /build
 
+# Install unzip required by Maven Wrapper to download the .zip distribution;
+# without it, mvnw downloads .tar.gz which doesn't match distributionSha256Sum
+RUN apt-get update && apt-get install -y unzip
+
 # Copy entire source code
 COPY . .
 
