@@ -13,4 +13,13 @@ import org.wildfly.clustering.web.annotation.Immutable;
  */
 @Immutable
 public class ImmutableSerialBean extends SerialBean {
+
+    public ImmutableSerialBean() {
+        super();
+    }
+
+    public ImmutableSerialBean(int cargoSizeKB) {
+        super(cargoSizeKB);
+    }
+
 }

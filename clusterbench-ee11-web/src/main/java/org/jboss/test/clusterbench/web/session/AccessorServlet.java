@@ -41,13 +41,12 @@ public class AccessorServlet extends HttpServlet {
         String sessionId = session.getId();
         boolean isNew = session.isNew();
 
-        // Parse cargokb parameter
-        String cargokbParam = req.getParameter(ClusterBenchConstants.CARGOKB);
-        int cargokb = SerialBean.DEFAULT_CARGOKB;
-        if (cargokbParam != null && cargokbParam.matches("[0-9]+")) {
-            cargokb = Integer.parseInt(cargokbParam);
+        String cargoSizeKBParam = req.getParameter(ClusterBenchConstants.CARGO_SIZE_KB);
+        int cargoSizeKB = SerialBean.DEFAULT_CARGO_SIZE_KB;
+        if (cargoSizeKBParam != null && cargoSizeKBParam.matches("[0-9]+")) {
+            cargoSizeKB = Integer.parseInt(cargoSizeKBParam);
         }
-        final int finalCargokb = cargokb;
+        final int finalCargoSizeKB = cargoSizeKB;
 
         resp.setContentType("text/plain");
 
@@ -61,11 +60,11 @@ public class AccessorServlet extends HttpServlet {
             // Initialize if needed
             if (serialBean == null) {
                 if (isNew) {
-                    log.log(Level.INFO, "New session created: {0} with {1}kB cargo", new Object[] {sessionId, finalCargokb});
+                    log.log(Level.INFO, "New session created: {0} with {1}kB cargo", new Object[] {sessionId, finalCargoSizeKB});
                 } else {
                     log.log(Level.INFO, "Session is not new, creating SerialBean: {0}", sessionId);
                 }
-                serialBean = new SerialBean(finalCargokb);
+                serialBean = new SerialBean(finalCargoSizeKB);
             }
 
             // Readonly?
