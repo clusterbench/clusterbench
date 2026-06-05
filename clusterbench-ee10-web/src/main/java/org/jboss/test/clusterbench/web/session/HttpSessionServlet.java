@@ -34,11 +34,11 @@ public class HttpSessionServlet extends HttpServlet {
 
         if (session.isNew()) {
             if (req.getParameter(ClusterBenchConstants.CARGO_SIZE_KB) != null && req.getParameter(ClusterBenchConstants.CARGO_SIZE_KB).matches("[0-9]+")) {
-                log.log(Level.INFO, "New session created: {0} with {1}kB cargo", new Object[] {session.getId(), req.getParameter(ClusterBenchConstants.CARGO_SIZE_KB)});
+                log.log(Level.INFO, "New session created: {0} with {1} KB cargo", new Object[] {session.getId(), req.getParameter(ClusterBenchConstants.CARGO_SIZE_KB)});
                 int cargoSizeKB = Integer.parseInt(req.getParameter(ClusterBenchConstants.CARGO_SIZE_KB));
                 session.setAttribute(KEY, new ImmutableSerialBean(cargoSizeKB));
             } else {
-                log.log(Level.INFO, "New session created: {0} with {1}kB cargo", new Object[] {session.getId(), SerialBean.DEFAULT_CARGO_SIZE_KB});
+                log.log(Level.INFO, "New session created: {0} with {1} KB cargo", new Object[] {session.getId(), SerialBean.DEFAULT_CARGO_SIZE_KB});
                 session.setAttribute(KEY, new ImmutableSerialBean());
             }
         } else if (session.getAttribute(KEY) == null) {

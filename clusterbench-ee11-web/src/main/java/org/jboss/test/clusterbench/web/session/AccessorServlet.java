@@ -60,7 +60,7 @@ public class AccessorServlet extends HttpServlet {
             // Initialize if needed
             if (serialBean == null) {
                 if (isNew) {
-                    log.log(Level.INFO, "New session created: {0} with {1}kB cargo", new Object[] {sessionId, finalCargoSizeKB});
+                    log.log(Level.INFO, "New session created: {0} with {1} KB cargo", new Object[] {sessionId, finalCargoSizeKB});
                 } else {
                     log.log(Level.INFO, "Session is not new, creating SerialBean: {0}", sessionId);
                 }
