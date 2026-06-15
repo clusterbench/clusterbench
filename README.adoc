@@ -1,6 +1,6 @@
 = ClusterBench image:https://github.com/clusterbench/clusterbench/workflows/CI/badge.svg[CI,link=https://github.com/clusterbench/clusterbench/actions] image:https://img.shields.io/maven-central/v/org.wildfly.clustering.benchmark/clusterbench-bom?logo=apache-maven[Version,link=https://central.sonatype.com/artifact/org.wildfly.clustering.benchmark/clusterbench-bom]
 :toc:
-:toclevels: 1
+:toclevels: 2
 
 ClusterBench is a simple application that can be deployed in a cluster of JBoss AS 7 (EAP 6), WildFly 8 and newer.
 Once deployed it is easy to stress (using JMeter, curl, etc.) and monitor the performance of the cluster while
@@ -237,11 +237,17 @@ http://localhost:8080/clusterbench/cdi[/clusterbench/cdi]
 
 Stores a serial number in `@jakarta.enterprise.context.SessionScoped` bean.
 
+WARNING: Unlike e.g. `HttpSessionServlet` which wraps the bean in an `@Immutable` wrapper to avoid triggering session mutation on readonly access,
+the CDI servlet will always result in a session mutation even with `?readonly` parameter,
+because any access to a `@SessionScoped` CDI bean triggers mutation.
+The serial counter itself will not increase.
+
 ==== LocalEjbServlet
 
 http://localhost:8080/clusterbench/ejbservlet[/clusterbench/ejbservlet]
 
-Stores serial and data in `@jakarta.ejb.Stateful` Jakarta Enterprise Bean (SFSB). The JEB is then invoked on every request.
+Stores serial and data in `@jakarta.ejb.Stateful` Jakarta Enterprise Bean (SFSB).
+The SFSB is then invoked on every request.
 
 ==== AccessorServlet
 
@@ -440,7 +446,7 @@ This profile produces a build to test a shared sessions scenario where two WARs 
 
 [source,shell]
 ----
-./mvnw install -P shared-sessions -DskipTests
+./mvnw clean install -P shared-sessions
 ----
 
 === short-names
@@ -450,7 +456,7 @@ Used in database tests to produce database tables with short names.
 
 [source,shell]
 ----
-./mvnw clean install -P short-names -DskipTests
+./mvnw clean install -P short-names
 ----
 
 === sso-form
@@ -459,16 +465,16 @@ This profile enables form authentication:
 
 [source,shell]
 ----
-./mvnw clean install -P sso-form -DskipTests
+./mvnw clean install -P sso-form
 ----
 
 === 2clusters
 
-This profile adds the necessary JEBs to perform call forwarding to a second JEB cluster:
+This profile adds the necessary Jakarta Enterprise Beans to perform call forwarding to a second cluster:
 
 [source,shell]
 ----
-./mvnw clean install -P 2clusters -DskipTests
+./mvnw clean install -P 2clusters
 ----
 
 == Issues
