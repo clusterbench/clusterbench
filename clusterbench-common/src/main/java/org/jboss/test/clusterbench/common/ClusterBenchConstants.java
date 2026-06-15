@@ -16,7 +16,7 @@ public interface ClusterBenchConstants {
 
     String INVALIDATE = "invalidate";
 
-    String CARGOKB = "cargokb";
+    String CARGO_SIZE_KB = "cargokb";
 
     String MILLISECONDS = "milliseconds";
 
