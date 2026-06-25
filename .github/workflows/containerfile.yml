@@ -17,7 +17,7 @@ permissions:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -32,13 +32,13 @@ jobs:
           file: ./Containerfile
           push: false
           load: true
-          tags: clusterbench-ee10:test
+          tags: clusterbench-ee11:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Start container
         run: |
-          docker run -d --name clusterbench-ee10-test -p 8080:8080 clusterbench-ee10:test
+          docker run -d --name clusterbench-ee11-test -p 8080:8080 clusterbench-ee11:test
 
       - name: Wait for WildFly to start
         run: |
@@ -81,4 +81,4 @@ jobs:
         if: failure()
         run: |
           echo "Container logs:"
-          docker logs clusterbench-ee10-test || true
+          docker logs clusterbench-ee11-test || true
