@@ -41,7 +41,7 @@
         <version.org.jboss.arquillian>1.10.2.Final</version.org.jboss.arquillian>
         <version.org.jboss.arquillian.jakarta>10.0.0.Final</version.org.jboss.arquillian.jakarta>
         <version.org.jboss.arquillian.container.tomcat>1.2.5.Final</version.org.jboss.arquillian.container.tomcat>
-        <version.org.apache.httpcomponents.client5>5.6.1</version.org.apache.httpcomponents.client5>
+        <version.org.apache.httpcomponents.client5>5.6.2</version.org.apache.httpcomponents.client5>
     </properties>
 
     <dependencyManagement>
