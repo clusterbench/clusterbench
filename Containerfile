@@ -15,7 +15,7 @@ RUN ./mvnw clean install --batch-mode --no-transfer-progress --define skipTests 
 
 # Runtime stage
 # https://quay.io/repository/wildfly/wildfly
-FROM quay.io/wildfly/wildfly:40.0.0.Final-jdk17
+FROM quay.io/wildfly/wildfly:40.0.1.Final-jdk17
 
 LABEL maintainer="Radoslav Husar <radosoft@gmail.com>"
 
