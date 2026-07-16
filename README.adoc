@@ -57,20 +57,34 @@ Output files:
 ./clusterbench-ee10-ear/target/clusterbench-ee10.ear
 ----
 
-=== Building Container Image
+=== Building Container Images
 
-To build a container image with Podman:
-
-[source,shell]
-----
-podman build -t clusterbench-ee10 .
-----
-
-To run the container:
+To build a WildFly container image with Podman:
 
 [source,shell]
 ----
-podman run -p 8080:8080 -p 9990:9990 clusterbench-ee10
+podman build -f Containerfile.wildfly -t clusterbench-wildfly .
+----
+
+To run the WildFly container:
+
+[source,shell]
+----
+podman run -p 8080:8080 -p 9990:9990 clusterbench-wildfly
+----
+
+To build a Tomcat container image:
+
+[source,shell]
+----
+podman build -f Containerfile.tomcat -t clusterbench-tomcat .
+----
+
+To run the Tomcat container:
+
+[source,shell]
+----
+podman run -p 8080:8080 clusterbench-tomcat
 ----
 
 and navigate your browser to http://localhost:8080/clusterbench/.
