@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y unzip
 # Copy entire source code
 COPY . .
 
-# Build only the EE11 EAR and its dependencies
-RUN ./mvnw clean install --batch-mode --no-transfer-progress --define skipTests --projects clusterbench-ee11-ejb,clusterbench-ee11-web,clusterbench-ee11-ear --also-make
+# Build only the deployment archive and its dependencies
+RUN ./mvnw clean install --batch-mode --no-transfer-progress --define skipTests --projects clusterbench-ee11-ear --also-make
 
 # Runtime stage
 # https://quay.io/repository/wildfly/wildfly

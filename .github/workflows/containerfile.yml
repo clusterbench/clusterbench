@@ -18,6 +18,12 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        runtime:
+          - wildfly
+          - tomcat
+
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -29,32 +35,32 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ./Containerfile
+          file: ./Containerfile.${{ matrix.runtime }}
           push: false
           load: true
-          tags: clusterbench-ee11:test
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          tags: clusterbench-${{ matrix.runtime }}
+          cache-from: type=gha,scope=${{ matrix.runtime }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.runtime }}
 
       - name: Start container
         run: |
-          docker run -d --name clusterbench-ee11-test -p 8080:8080 clusterbench-ee11:test
+          echo "CONTAINER_ID=$(docker run -d -p 8080:8080 clusterbench-${{ matrix.runtime }})" >> "$GITHUB_ENV"
 
-      - name: Wait for WildFly to start
+      - name: Wait for server to start
         run: |
-          echo "Waiting for WildFly to be ready..."
+          echo "Waiting for ${{ matrix.runtime }} to be ready..."
           timeout=120
           elapsed=0
           while [ $elapsed -lt $timeout ]; do
             if curl -f -s http://localhost:8080/clusterbench/ > /dev/null 2>&1; then
-              echo "WildFly is ready!"
+              echo "${{ matrix.runtime }} is ready!"
               exit 0
             fi
             echo "Waiting... ($elapsed/$timeout seconds)"
             sleep 5
             elapsed=$((elapsed + 5))
           done
-          echo "Timeout waiting for WildFly to start"
+          echo "Timeout waiting for ${{ matrix.runtime }} to start"
           exit 1
 
       - name: Test application response
@@ -81,4 +87,4 @@ jobs:
         if: failure()
         run: |
           echo "Container logs:"
-          docker logs clusterbench-ee11-test || true
+          docker logs "$CONTAINER_ID" || true
