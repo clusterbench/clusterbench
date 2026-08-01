@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Set up JDKs
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v5.6.0
         with:
           # Keep this list as: all supported LTS JDKs, the latest GA JDK, and optionally the latest EA JDK (if available).
           # Reference: https://adoptium.net/support/
