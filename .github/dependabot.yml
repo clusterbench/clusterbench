@@ -25,6 +25,11 @@ updates:
       - dependency-name: org.apache.tomcat:tomcat
         versions:
           - ">= 12"
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
