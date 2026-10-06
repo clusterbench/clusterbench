@@ -33,6 +33,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>clusterbench-ee10-ejb</artifactId>
+            <type>ejb</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
