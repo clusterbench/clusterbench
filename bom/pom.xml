@@ -83,6 +83,7 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>clusterbench-ee10-ear</artifactId>
                 <version>${project.version}</version>
+                <type>ear</type>
             </dependency>
             <!-- EJB -->
             <dependency>
@@ -131,6 +132,7 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>clusterbench-ee11-ear</artifactId>
                 <version>${project.version}</version>
+                <type>ear</type>
             </dependency>
             <!-- EJB -->
             <dependency>
