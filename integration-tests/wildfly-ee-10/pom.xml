@@ -78,7 +78,7 @@
                     <feature-packs>
                         <feature-pack>
                             <groupId>org.wildfly</groupId>
-                            <artifactId>wildfly-ee-10-feature-pack</artifactId>
+                            <artifactId>wildfly-ee-galleon-pack</artifactId>
                             <version>${version.org.wildfly}</version>
                         </feature-pack>
                     </feature-packs>
