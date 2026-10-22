@@ -101,7 +101,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.wildfly.clustering.benchmark</groupId>
-                                    <artifactId>clusterbench-ee10-web</artifactId>
+                                    <artifactId>clusterbench-ee11-web</artifactId>
                                     <type>war</type>
                                     <overWrite>true</overWrite>
                                     <classifier>tomcat</classifier>
