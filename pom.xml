@@ -32,6 +32,8 @@
     <properties>
         <!-- WildFly components versions -->
         <version.org.wildfly>42.0.0.Final</version.org.wildfly>
+        <!-- WildFly 41 is the last release to ship the EE 10 BOM; used by the EE 10 modules -->
+        <version.org.wildfly.ee10>41.0.1.Final</version.org.wildfly.ee10>
         <version.org.wildfly.cloud-feature-pack>9.2.3.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>6.1.0.Final</version.org.wildfly.maven.plugin>
 
