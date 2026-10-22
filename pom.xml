@@ -31,7 +31,9 @@
 
     <properties>
         <!-- WildFly components versions -->
-        <version.org.wildfly>42.0.0.Beta1</version.org.wildfly>
+        <version.org.wildfly>42.0.0.Final</version.org.wildfly>
+        <!-- WildFly 41 is the last release to ship the EE 10 BOM; used by the EE 10 modules -->
+        <version.org.wildfly.ee10>41.0.1.Final</version.org.wildfly.ee10>
         <version.org.wildfly.cloud-feature-pack>9.2.3.Final</version.org.wildfly.cloud-feature-pack>
         <version.org.wildfly.maven.plugin>6.1.0.Final</version.org.wildfly.maven.plugin>
 
@@ -41,6 +43,7 @@
         <version.org.jboss.arquillian>1.10.2.Final</version.org.jboss.arquillian>
         <version.org.jboss.arquillian.jakarta>10.0.0.Final</version.org.jboss.arquillian.jakarta>
         <version.org.jboss.arquillian.container.tomcat>1.2.5.Final</version.org.jboss.arquillian.container.tomcat>
+        <version.org.wildfly.arquillian>5.1.0.Final</version.org.wildfly.arquillian>
         <version.org.apache.httpcomponents.client5>5.6.5</version.org.apache.httpcomponents.client5>
     </properties>
 

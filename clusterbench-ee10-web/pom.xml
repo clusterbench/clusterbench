@@ -23,6 +23,19 @@
         <enable.security.end>--&gt;</enable.security.end>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- EE 10 BOM takes precedence over the EE 11 BOM imported by the parent -->
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-ee-10-with-tools</artifactId>
+                <version>${version.org.wildfly.ee10}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <!-- Project dependencies -->
         <dependency>
@@ -85,6 +98,33 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+            <!-- Guard against EE 11 APIs leaking into the EE 10 variant -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>ban-ee11-apis</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedDependencies>
+                                    <excludes>
+                                        <exclude>jakarta.annotation:jakarta.annotation-api:[3.0,)</exclude>
+                                        <exclude>jakarta.el:jakarta.el-api:[6.0,)</exclude>
+                                        <exclude>jakarta.enterprise:jakarta.enterprise.cdi-api:[4.1,)</exclude>
+                                        <exclude>jakarta.faces:jakarta.faces-api:[4.1,)</exclude>
+                                        <exclude>jakarta.interceptor:jakarta.interceptor-api:[2.2,)</exclude>
+                                        <exclude>jakarta.servlet:jakarta.servlet-api:[6.1,)</exclude>
+                                    </excludes>
+                                </bannedDependencies>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>

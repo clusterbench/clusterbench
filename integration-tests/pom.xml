@@ -64,6 +64,12 @@
                 <version>${version.org.jboss.arquillian.container.tomcat}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.wildfly.arquillian</groupId>
+                <artifactId>wildfly-arquillian-container-managed</artifactId>
+                <version>${version.org.wildfly.arquillian}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

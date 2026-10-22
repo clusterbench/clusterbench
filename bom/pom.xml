@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
-        <version>54</version>
+        <version>55</version>
         <relativePath />
     </parent>
 
@@ -63,7 +63,6 @@
 
         <!-- maven-release-plugin configuration - override jboss-parent defaults -->
         <releaseProfiles>central-release</releaseProfiles>
-        <localCheckout>true</localCheckout>
         <arguments>-DskipTests=true -DskipItTests=true -Dcentral.autoPublish=${central.autoPublish} -Dcentral.waitUntil=${central.waitUntil}</arguments>
     </properties>
 
