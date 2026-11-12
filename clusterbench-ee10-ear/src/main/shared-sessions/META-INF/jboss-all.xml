@@ -4,7 +4,7 @@
   ~ SPDX-License-Identifier: Apache-2.0
   -->
 
-<jboss umlns="urn:jboss:1.0">
+<jboss xmlns="urn:jboss:1.0">
     <shared-session-config xmlns="urn:jboss:shared-session-config:1.0">
         <session-config>
             <cookie-config>
