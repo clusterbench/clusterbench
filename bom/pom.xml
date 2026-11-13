@@ -63,7 +63,7 @@
 
         <!-- maven-release-plugin configuration - override jboss-parent defaults -->
         <releaseProfiles>central-release</releaseProfiles>
-        <arguments>-DskipTests=true -DskipItTests=true -Dcentral.autoPublish=${central.autoPublish} -Dcentral.waitUntil=${central.waitUntil}</arguments>
+        <arguments>-DskipTests=true -DskipITs=true -Dcentral.autoPublish=${central.autoPublish} -Dcentral.waitUntil=${central.waitUntil}</arguments>
     </properties>
 
     <dependencyManagement>
